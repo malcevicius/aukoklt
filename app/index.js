@@ -1,5 +1,5 @@
 import React from 'react';
 
-import Home from './routes/Home';
+import Home from './screens/Home';
 
 export default () => <Home />;
