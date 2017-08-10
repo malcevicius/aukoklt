@@ -1,7 +1,26 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { Text, Button } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-// import { styles } from '../config/styles';
 import { Container } from '../components/Container';
 
-export default () => <Container />;
+class HomeScreen extends Component {
+  static navigationOptions = {
+    title: 'Home',
+  };
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <Container>
+        <Text>I love home page!</Text>
+        <Button onPress={() => navigate('ProjectScreen')} title="Go to project page" />
+      </Container>
+    );
+  }
+}
+
+const Home = StackNavigator({
+  Home: { screen: HomeScreen },
+});
+
+export default Home;
