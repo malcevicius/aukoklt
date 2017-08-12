@@ -4,7 +4,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Welcome from './screens/Welcome';
 import ProjectList from './screens/ProjectList';
 import UserProjects from './screens/UserProjects';
 
@@ -14,7 +13,6 @@ const TabNav = TabNavigator(
       screen: ProjectList,
       path: '/projectlist',
       navigationOptions: {
-        title: 'Projektų sąrašas',
         tabBarLabel: 'Projektai',
         tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
@@ -50,8 +48,21 @@ const TabNav = TabNavigator(
 const StacksOverTabs = StackNavigator({
   Root: {
     screen: TabNav,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerTitleStyle: {},
+    },
   },
 });
 
-EStyleSheet.build();
+EStyleSheet.build({
+  // GLOBAL COLORS
+  $backgroundColor: '#fff',
+  $bodyTextColor: '#808080',
+  $titleTextColor: '#333333',
+  $brandColor: '#B9192B',
+  $borderColor: '#ededed',
+});
 export default StacksOverTabs;

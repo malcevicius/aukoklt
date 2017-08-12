@@ -5,7 +5,9 @@ const style = EStyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fa5448',
+    backgroundColor: '#fff',
+    height: 200,
+    marginTop: 50,
   },
 });
 
