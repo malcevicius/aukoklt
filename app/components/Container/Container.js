@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
-import styles from './styles';
+import style from './style';
 
 const Container = ({ children }) => (
-  <View style={styles.container}>
-    <Text style={styles.text}>Hello world!</Text>
-    {children}
+  <View style={style.container}>
+    <ScrollView style={style.scrollview}>
+      {children}
+    </ScrollView>
   </View>
 );
 
