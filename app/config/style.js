@@ -2,20 +2,20 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const globalstyle = EStyleSheet.create({
   h1: {
-    color: '$brandColor',
     fontSize: 40,
     fontWeight: '900',
     textAlign: 'left',
+    backgroundColor: 'transparent',
   },
   h2: {
-    color: '$titleTextColor',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: '700',
+    backgroundColor: 'transparent',
   },
-  description: {
-    color: '$bodyTextColor',
+  text: {
     fontSize: 16,
     fontWeight: '400',
+    backgroundColor: 'transparent',
   },
 });
 
