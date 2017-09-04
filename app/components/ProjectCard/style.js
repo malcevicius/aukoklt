@@ -2,15 +2,14 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const style = EStyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#999',
     marginBottom: 24,
+    borderRadius: 10,
     marginLeft: 20,
     marginRight: 20,
   },
   imageBackground: {
     height: 370,
-    // justifyContent: 'flex-start',
-    // alignItems: 'flex-start',
     borderRadius: 10,
     padding: 20,
     position: 'relative',

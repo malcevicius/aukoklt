@@ -5,8 +5,8 @@ import { TouchableOpacity, View, Text, Image } from 'react-native';
 import style from './style';
 import globalstyle from '../../config/style';
 
-const ProjectCard = ({ projectTitle, organisationName, thumbnail, neededAmount, currentAmount }) =>
-  <TouchableOpacity style={style.card}>
+const ProjectCard = ({ projectTitle, organisationName, thumbnail, needToDonate, donated }) =>
+  <TouchableOpacity style={style.card} activeOpacity={0.9} focusedOpacity={1}>
     <Image source={{ uri: thumbnail }} style={style.imageBackground}>
       <View style={style.titleView}>
         <Text style={[globalstyle.h2, style.title]}>
@@ -20,13 +20,13 @@ const ProjectCard = ({ projectTitle, organisationName, thumbnail, neededAmount, 
         <View style={style.numberItem}>
           <Text style={style.transparentText}>Reikia</Text>
           <Text style={style.numberText}>
-            {neededAmount} EUR
+            {needToDonate} EUR
           </Text>
         </View>
         <View style={style.numberItem}>
           <Text style={style.transparentText}>Surinkta</Text>
           <Text style={style.numberText}>
-            {currentAmount} EUR
+            {donated} EUR
           </Text>
         </View>
       </View>
@@ -37,8 +37,8 @@ ProjectCard.propTypes = {
   projectTitle: PropTypes.string,
   organisationName: PropTypes.string,
   thumbnail: PropTypes.any,
-  neededAmount: PropTypes.number,
-  currentAmount: PropTypes.number,
+  needToDonate: PropTypes.number,
+  donated: PropTypes.number,
 };
 
 export default ProjectCard;

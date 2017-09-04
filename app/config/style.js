@@ -2,8 +2,8 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const globalstyle = EStyleSheet.create({
   h1: {
-    fontSize: 40,
-    fontWeight: '900',
+    fontSize: 34,
+    fontWeight: '700',
     textAlign: 'left',
     backgroundColor: 'transparent',
   },
