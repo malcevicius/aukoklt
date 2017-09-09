@@ -13,9 +13,15 @@ const style = EStyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 10,
   },
+  buttonItemActive: {
+    backgroundColor: '#fff',
+  },
   buttonText: {
     color: '#FFF',
     fontSize: 14,
+  },
+  buttonTextActive: {
+    color: '$brandColor',
   },
 });
 
