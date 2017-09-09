@@ -3,6 +3,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const style = EStyleSheet.create({
   scrollViewContainer: {
     paddingLeft: 20,
+    paddingRight: 12,
     paddingVertical: 16,
   },
   buttonItem: {
