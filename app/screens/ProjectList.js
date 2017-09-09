@@ -81,16 +81,19 @@ class ProjectList extends Component {
 
   render() {
     return (
-      <FlatList
-        data={this.state.data}
-        renderItem={({ item }) =>
-          <ProjectCard projectInfo={item} navigation={this.props.navigation} />}
-        keyExtractor={item => item.project_id}
-        ListHeaderComponent={this.renderHeader}
-        ListFooterComponent={this.renderFooter}
-        onEndReached={this.handleLoadMore}
-        onEndReachedThreshold={50}
-      />
+      <Container>
+        <FlatList
+          data={this.state.data}
+          renderItem={({ item }) =>
+            <ProjectCard projectInfo={item} navigation={this.props.navigation} />}
+          keyExtractor={item => item.project_id}
+          ListHeaderComponent={this.renderHeader}
+          ListFooterComponent={this.renderFooter}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshold={50}
+          showsVerticalScrollIndicator={false}
+        />
+      </Container>
     );
   }
 }

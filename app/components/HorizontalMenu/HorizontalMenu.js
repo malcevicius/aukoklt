@@ -5,7 +5,7 @@ import style from './style';
 import MenuItem from './MenuItem';
 
 const HorizontalMenu = () =>
-  <ScrollView horizontal style={style.scrollViewContainer}>
+  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={style.scrollViewContainer}>
     <MenuItem name="Visi projektai" active />
     <MenuItem name="Vaikams ir šeimai" />
     <MenuItem name="Sveikatai ir neįgaliesiems" />
