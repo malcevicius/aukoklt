@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 import { Container } from '../components/Container';
 
-const UserProjects = () => (
+const UserProjects = () =>
   <Container>
     <Text>Look at my projects!</Text>
-  </Container>
-);
+  </Container>;
 
 export default UserProjects;

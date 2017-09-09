@@ -5,28 +5,33 @@ import { TouchableOpacity, View, Text, Image } from 'react-native';
 import style from './style';
 import globalstyle from '../../config/style';
 
-const ProjectCard = ({ projectTitle, organisationName, thumbnail, needToDonate, donated }) =>
-  <TouchableOpacity style={style.card} activeOpacity={0.9} focusedOpacity={1}>
-    <Image source={{ uri: thumbnail }} style={style.imageBackground}>
+const ProjectCard = ({ projectInfo, navigation }) =>
+  <TouchableOpacity
+    style={style.card}
+    activeOpacity={0.9}
+    focusedOpacity={1}
+    onPress={() => navigation.navigate('ProjectView', { project: projectInfo })}
+  >
+    <Image source={{ uri: projectInfo.img }} style={style.imageBackground}>
       <View style={style.titleView}>
         <Text style={[globalstyle.h2, style.title]}>
-          {projectTitle}
+          {projectInfo.title}
         </Text>
         <Text style={style.transparentText}>
-          {organisationName}
+          {projectInfo.company}
         </Text>
       </View>
       <View style={style.numbersView}>
         <View style={style.numberItem}>
           <Text style={style.transparentText}>Reikia</Text>
           <Text style={style.numberText}>
-            {needToDonate} EUR
+            {projectInfo.need_to_donate} EUR
           </Text>
         </View>
         <View style={style.numberItem}>
           <Text style={style.transparentText}>Surinkta</Text>
           <Text style={style.numberText}>
-            {donated} EUR
+            {projectInfo.donated} EUR
           </Text>
         </View>
       </View>
@@ -34,11 +39,8 @@ const ProjectCard = ({ projectTitle, organisationName, thumbnail, needToDonate, 
   </TouchableOpacity>;
 
 ProjectCard.propTypes = {
-  projectTitle: PropTypes.string,
-  organisationName: PropTypes.string,
-  thumbnail: PropTypes.any,
-  needToDonate: PropTypes.number,
-  donated: PropTypes.number,
+  projectInfo: PropTypes.object,
+  navigation: PropTypes.object,
 };
 
 export default ProjectCard;
