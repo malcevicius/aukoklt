@@ -12,7 +12,8 @@ const ProjectCard = ({ projectInfo, navigation }) =>
     focusedOpacity={1}
     onPress={() => navigation.navigate('ProjectView', { project: projectInfo })}
   >
-    <Image source={{ uri: projectInfo.img }} style={style.imageBackground}>
+    <Image source={{ uri: projectInfo.img }} style={style.imageBackground} />
+    <View style={style.details}>
       <View style={style.titleView}>
         <Text style={[globalstyle.h2, style.title]}>
           {projectInfo.title}
@@ -35,7 +36,7 @@ const ProjectCard = ({ projectInfo, navigation }) =>
           </Text>
         </View>
       </View>
-    </Image>
+    </View>
   </TouchableOpacity>;
 
 ProjectCard.propTypes = {

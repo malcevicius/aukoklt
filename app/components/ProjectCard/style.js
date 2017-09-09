@@ -5,8 +5,17 @@ const style = EStyleSheet.create({
     backgroundColor: '#999',
     marginBottom: 24,
     borderRadius: 10,
+    flex: 1,
     marginLeft: 20,
     marginRight: 20,
+    position: 'relative',
+  },
+  details: {
+    position: 'absolute',
+    height: 370,
+    top: 0,
+    left: 0,
+    right: 0,
   },
   imageBackground: {
     height: 370,
@@ -16,6 +25,7 @@ const style = EStyleSheet.create({
   },
   titleView: {
     alignItems: 'flex-start',
+    margin: 20,
   },
   title: {
     color: '#fff',
@@ -35,8 +45,7 @@ const style = EStyleSheet.create({
     position: 'absolute',
     backgroundColor: 'rgba(0,0,0,0.50)',
     borderRadius: 10,
-    paddingTop: 12,
-    paddingBottom: 12,
+    paddingVertical: 12,
   },
   numberItem: {
     flex: 1,

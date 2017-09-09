@@ -3,7 +3,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const style = EStyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
-    zIndex: 10,
     marginTop: 50,
     marginLeft: 20,
     marginBottom: 8,
@@ -37,7 +36,6 @@ const style = EStyleSheet.create({
     top: -200,
     left: 0,
     right: 0,
-    zIndex: 1,
   },
   categoryMenuContainer: {
     flexDirection: 'row',
