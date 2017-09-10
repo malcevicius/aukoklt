@@ -1,4 +1,6 @@
+import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { FormattedWrapper } from 'react-native-globalize';
 
 import Routes from './config/routes';
 
@@ -10,4 +12,10 @@ EStyleSheet.build({
   $brandColor: '#B9192B',
   $borderColor: '#ededed',
 });
-export default Routes;
+
+const AukokLt = () =>
+  <FormattedWrapper currency="EUR">
+    <Routes />
+  </FormattedWrapper>;
+
+export default AukokLt;
