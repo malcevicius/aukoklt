@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, Image } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 
 import style from './style';
 import globalstyle from '../../config/style';
-import Logo from '../Logo';
 
-const StickyHeader = ({ title }) => (
+const StickyHeader = ({ navigation }) =>
   <View style={style.headerComponent}>
-    <Image style={style.logo} source={require('../../images/logo.png')} />
-    <Text style={globalstyle.h2}>{title}</Text>
-  </View>
-);
+    <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={() => navigation.goBack(null)}>
+      <Text style={style.buttonText}>Go Back</Text>
+    </TouchableOpacity>
+  </View>;
 
 StickyHeader.propTypes = {
-  title: PropTypes.string,
+  navigation: PropTypes.object,
 };
 
 export default StickyHeader;

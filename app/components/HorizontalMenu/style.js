@@ -7,21 +7,18 @@ const style = EStyleSheet.create({
     paddingVertical: 16,
   },
   buttonItem: {
-    backgroundColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: 'transparent',
     marginRight: 8,
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 10,
   },
   buttonItemActive: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255,255,255,0.12)',
   },
   buttonText: {
     color: '#FFF',
     fontSize: 14,
-  },
-  buttonTextActive: {
-    color: '$brandColor',
   },
 });
 

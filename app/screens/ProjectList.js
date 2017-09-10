@@ -6,10 +6,6 @@ import { ProjectCard } from '../components/ProjectCard';
 import { ScreenTitle } from '../components/ScreenTitle';
 
 class ProjectList extends Component {
-  static navigationOptions = {
-    header: null,
-  };
-
   constructor(props) {
     super(props);
 

@@ -9,7 +9,7 @@ const globalstyle = EStyleSheet.create({
   },
   h2: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: '600',
     backgroundColor: 'transparent',
   },
   text: {

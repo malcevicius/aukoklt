@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View, Text, Image } from 'react-native';
 import { FormattedCurrency } from 'react-native-globalize';
+import { LinearGradient } from 'expo';
 
 import style from './style';
 import globalstyle from '../../config/style';
@@ -9,10 +10,14 @@ import globalstyle from '../../config/style';
 const ProjectCard = ({ projectInfo, navigation }) =>
   <TouchableOpacity
     style={style.card}
-    activeOpacity={0.9}
+    activeOpacity={1}
     focusedOpacity={1}
-    onPress={() => navigation.navigate('ProjectView', { project: projectInfo })}
+    onPress={() => navigation.navigate('ProjectView', { singleProject: projectInfo })}
   >
+    <View style={style.imageOverlay}>
+      <LinearGradient colors={['rgba(0,0,0,0.6)', 'transparent']} style={style.gradientTop} />
+      <LinearGradient colors={['transparent', 'rgba(0,0,0,0.5)']} style={style.gradientBottom} />
+    </View>
     <Image source={{ uri: projectInfo.gallery[0].url }} style={style.imageBackground} />
     <View style={style.details}>
       <View style={style.titleView}>

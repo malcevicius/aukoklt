@@ -1,11 +1,8 @@
-import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import ProjectList from '../screens/ProjectList';
-import SingleProject from '../screens/SingleProject';
+import ProjectView from '../screens/ProjectView';
 import UserProjects from '../screens/UserProjects';
 
 const TabNav = TabNavigator(
@@ -14,33 +11,23 @@ const TabNav = TabNavigator(
       screen: withMappedNavigationProps(ProjectList),
       path: '/projectlist',
       navigationOptions: {
-        tabBarLabel: 'Projektai',
-        tabBarIcon: ({ tintColor, focused }) =>
-          <Ionicons
-            name={focused ? 'ios-home' : 'ios-home-outline'}
-            size={26}
-            style={{ color: tintColor }}
-          />,
+        header: null,
+        tabBarVisible: false,
       },
     },
     UserProjects: {
       screen: withMappedNavigationProps(UserProjects),
       path: '/userprojects',
       navigationOptions: {
-        title: 'Mano projektai',
-        tabBarIcon: ({ tintColor, focused }) =>
-          <Ionicons
-            name={focused ? 'ios-contact' : 'ios-contact-outline'}
-            size={26}
-            style={{ color: tintColor }}
-          />,
+        header: null,
+        tabBarVisible: false,
       },
     },
   },
   {
     tabBarPosition: 'bottom',
     animationEnabled: false,
-    swipeEnabled: false,
+    swipeEnabled: true,
   },
 );
 
@@ -51,13 +38,12 @@ const Routes = StackNavigator({
       headerStyle: {
         backgroundColor: '#fff',
       },
-      headerTitleStyle: {},
     },
   },
   ProjectView: {
-    screen: withMappedNavigationProps(SingleProject),
+    screen: withMappedNavigationProps(ProjectView),
     navigationOptions: {
-      title: 'Projektas',
+      header: null,
     },
   },
 });

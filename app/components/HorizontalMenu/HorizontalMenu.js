@@ -10,7 +10,7 @@ const HorizontalMenu = () =>
     showsHorizontalScrollIndicator={false}
     contentContainerStyle={style.scrollViewContainer}
   >
-    <MenuItem name="Visi projektai" />
+    <MenuItem name="Visi projektai" toggle />
     <MenuItem name="Vaikams ir šeimai" />
     <MenuItem name="Sveikatai ir neįgaliesiems" />
     <MenuItem name="Gyvūnams ir gamtai" />

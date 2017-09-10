@@ -20,11 +20,11 @@ class MenuItem extends Component {
     return (
       <TouchableOpacity
         style={[style.buttonItem, this.state.toggle && style.buttonItemActive]}
-        activeOpacity={0.8}
+        activeOpacity={1}
         focusedOpacity={1}
         onPress={this.onButtonPress}
       >
-        <Text style={[style.buttonText, this.state.toggle && style.buttonTextActive]}>
+        <Text style={style.buttonText}>
           {this.props.name}
         </Text>
       </TouchableOpacity>
