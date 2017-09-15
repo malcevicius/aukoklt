@@ -1,6 +1,7 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const globalstyle = EStyleSheet.create({
+  // GLOBAL SIZES
   h1: {
     fontSize: 34,
     fontWeight: '700',

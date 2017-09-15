@@ -7,15 +7,18 @@ import Routes from './config/routes';
 EStyleSheet.build({
   // GLOBAL COLORS
   $backgroundColor: '#fff',
+  $lightText: '#FFFFFF',
+  $darkText: '#333333',
   $bodyTextColor: '#808080',
   $titleTextColor: '#333333',
   $brandColor: '#B9192B',
   $borderColor: '#ededed',
 });
 
-const AukokLt = () =>
+const AukokLt = () => (
   <FormattedWrapper currency="EUR">
     <Routes />
-  </FormattedWrapper>;
+  </FormattedWrapper>
+);
 
 export default AukokLt;

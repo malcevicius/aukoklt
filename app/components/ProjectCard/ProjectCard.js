@@ -1,56 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View, Text, Image } from 'react-native';
-import { FormattedCurrency } from 'react-native-globalize';
+
+import { TitleText } from '../TitleText';
+import { TargetNumbers } from '../TargetNumbers';
 
 import style from './style';
-import globalstyle from '../../config/style';
 
-const ProjectCard = ({ projectInfo, navigation }) =>
+const ProjectCard = ({ projectInfo, navigation }) => (
   <TouchableOpacity
     style={style.card}
     activeOpacity={1}
     focusedOpacity={1}
     onPress={() => navigation.navigate('ProjectView', { singleProject: projectInfo })}
   >
-    <View style={style.imageOverlay}>
-    </View>
+    <View style={style.imageOverlay} />
     <Image source={{ uri: projectInfo.gallery[0].url }} style={style.imageBackground} />
     <View style={style.details}>
       <View style={style.titleView}>
-        <Text style={[globalstyle.h2, style.title]}>
-          {projectInfo.title}
-        </Text>
-        <Text style={style.transparentText}>
-          {projectInfo.company}
-        </Text>
+        <TitleText light medium title={projectInfo.title} />
+        <Text style={style.transparentText}>{projectInfo.company}</Text>
       </View>
-      <View style={style.numbersView}>
-        <View style={style.numberItem}>
-          <Text style={style.transparentText}>Reikia</Text>
-          <Text style={style.numberText}>
-            <FormattedCurrency
-              value={projectInfo.need_to_donate}
-              currency="EUR"
-              numberStyle="symbol"
-              maximumFractionDigits="0"
-            />
-          </Text>
-        </View>
-        <View style={style.numberItem}>
-          <Text style={style.transparentText}>Surinkta</Text>
-          <Text style={style.numberText}>
-            <FormattedCurrency
-              value={projectInfo.donated}
-              currency="EUR"
-              numberStyle="symbol"
-              maximumFractionDigits="0"
-            />
-          </Text>
-        </View>
-      </View>
+      <TargetNumbers
+        targetAmount={projectInfo.need_to_donate}
+        donatedAmount={projectInfo.donated}
+      />
     </View>
-  </TouchableOpacity>;
+  </TouchableOpacity>
+);
 
 ProjectCard.propTypes = {
   projectInfo: PropTypes.object,

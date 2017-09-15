@@ -53,11 +53,12 @@ class ProjectList extends Component {
     );
   };
 
-  renderHeader = () =>
+  renderHeader = () => (
     <ScreenTitle
       title="Projektai"
       userAvatar="https://scontent-lhr3-1.xx.fbcdn.net/v/t31.0-8/17349947_10207250909505873_4889216807293798707_o.jpg?oh=d638b37fd311d8d9f1c57276990e3491&oe=5A2846BD"
-    />;
+    />
+  );
 
   renderFooter = () => {
     if (!this.state.loading) return null;
@@ -78,8 +79,9 @@ class ProjectList extends Component {
       <Container>
         <FlatList
           data={this.state.data}
-          renderItem={({ item }) =>
-            <ProjectCard projectInfo={item} navigation={this.props.navigation} />}
+          renderItem={({ item }) => (
+            <ProjectCard projectInfo={item} navigation={this.props.navigation} />
+          )}
           keyExtractor={item => item.project_id}
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}

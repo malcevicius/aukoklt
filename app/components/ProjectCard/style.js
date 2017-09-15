@@ -30,7 +30,7 @@ const style = EStyleSheet.create({
     position: 'relative',
   },
   imageOverlay: {
-    backgroundColor: 'rgba(0,0,0,0.24)',
+    backgroundColor: 'rgba(0,0,0,0.04)',
     borderRadius: 10,
     position: 'absolute',
     zIndex: 10,
@@ -55,38 +55,13 @@ const style = EStyleSheet.create({
   },
   titleView: {
     alignItems: 'flex-start',
-    margin: 20,
-  },
-  title: {
-    color: '#fff',
-    marginBottom: 8,
   },
   transparentText: {
     color: 'rgba(255,255,255,0.48)',
     fontSize: 14,
     backgroundColor: 'transparent',
-  },
-  numbersView: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    bottom: 20,
-    left: 20,
-    right: 20,
-    position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0.32)',
-    borderRadius: 10,
-    paddingVertical: 14,
-  },
-  numberItem: {
-    flex: 1,
-    alignItems: 'center',
-    paddingLeft: 8,
-    paddingRight: 8,
-  },
-  numberText: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#fff',
+    marginHorizontal: 20,
+    marginTop: 8,
   },
 });
 

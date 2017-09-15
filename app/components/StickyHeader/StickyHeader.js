@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Text } from 'react-native';
+import { TouchableOpacity, View, Image } from 'react-native';
 
 import style from './style';
 import globalstyle from '../../config/style';
 
-const StickyHeader = ({ navigation }) =>
+const StickyHeader = ({ navigation }) => (
   <View style={style.headerComponent}>
-    <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={() => navigation.goBack(null)}>
-      <Text style={style.buttonText}>Go Back</Text>
+    <TouchableOpacity
+      style={style.backButton}
+      activeOpacity={1}
+      focusedOpacity={1}
+      onPress={() => navigation.goBack(null)}
+    >
+      <Image source={require('../../images/back_icon_light_24.png')} style={style.backIcon} />
     </TouchableOpacity>
-  </View>;
+  </View>
+);
 
 StickyHeader.propTypes = {
   navigation: PropTypes.object,
