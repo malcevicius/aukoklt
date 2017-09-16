@@ -4,6 +4,7 @@ import { TouchableOpacity, View, Text, Image } from 'react-native';
 
 import { TitleText } from '../TitleText';
 import { TargetNumbers } from '../TargetNumbers';
+import { SemiTransparentLabel } from '../SemiTransparentLabel';
 
 import style from './style';
 
@@ -19,9 +20,11 @@ const ProjectCard = ({ projectInfo, navigation }) => (
     <View style={style.details}>
       <View style={style.titleView}>
         <TitleText light medium title={projectInfo.title} />
-        <Text style={style.transparentText}>{projectInfo.company}</Text>
+        <SemiTransparentLabel light textValue={projectInfo.company} />
       </View>
       <TargetNumbers
+        dark
+        onCard
         targetAmount={projectInfo.need_to_donate}
         donatedAmount={projectInfo.donated}
       />

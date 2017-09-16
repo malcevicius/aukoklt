@@ -56,13 +56,6 @@ const style = EStyleSheet.create({
   titleView: {
     alignItems: 'flex-start',
   },
-  transparentText: {
-    color: 'rgba(255,255,255,0.48)',
-    fontSize: 14,
-    backgroundColor: 'transparent',
-    marginHorizontal: 20,
-    marginTop: 8,
-  },
 });
 
 export default style;

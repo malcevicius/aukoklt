@@ -6,6 +6,8 @@ import { Container } from '../components/Container';
 import { ImageGallery } from '../components/ImageGallery';
 import { StickyHeader } from '../components/StickyHeader';
 import { TitleText } from '../components/TitleText';
+import { SemiTransparentLabel } from '../components/SemiTransparentLabel';
+import { TargetNumbers } from '../components/TargetNumbers';
 
 const ProjectView = ({ singleProject, navigation }) => (
   <Container>
@@ -14,6 +16,12 @@ const ProjectView = ({ singleProject, navigation }) => (
     <ScrollView>
       <ImageGallery imageList={singleProject.gallery} />
       <TitleText dark medium title={singleProject.title} />
+      <SemiTransparentLabel dark textValue={singleProject.company} />
+      <TargetNumbers
+        red
+        targetAmount={singleProject.need_to_donate}
+        donatedAmount={singleProject.donated}
+      />
     </ScrollView>
   </Container>
 );

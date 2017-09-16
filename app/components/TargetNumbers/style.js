@@ -3,14 +3,21 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const style = EStyleSheet.create({
   numbersView: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    bottom: 20,
-    left: 20,
-    right: 20,
-    position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0.32)',
     borderRadius: 10,
     paddingVertical: 14,
+    marginHorizontal: 20,
+    marginTop: 16,
+  },
+  onTheCard: {
+    alignItems: 'flex-end',
+    bottom: 20,
+    position: 'absolute',
+  },
+  darkTheme: {
+    backgroundColor: 'rgba(0,0,0,0.32)',
+  },
+  redTheme: {
+    backgroundColor: '$brandColor',
   },
   numberItem: {
     flex: 1,

@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import { FormattedCurrency } from 'react-native-globalize';
 
+import { SemiTransparentLabel } from '../SemiTransparentLabel';
+
 import style from './style';
 
-const TargetNumbers = ({ targetAmount, donatedAmount }) => (
-  <View style={style.numbersView}>
+const TargetNumbers = ({ dark, red, onCard, targetAmount, donatedAmount }) => (
+  <View
+    style={[
+      style.numbersView,
+      dark && style.darkTheme,
+      red && style.redTheme,
+      onCard && style.onTheCard,
+    ]}
+  >
     <View style={style.numberItem}>
-      <Text style={style.transparentText}>Reikia</Text>
+      <SemiTransparentLabel light textValue="Reikia" />
       <Text style={style.numberText}>
         <FormattedCurrency
           value={targetAmount}
@@ -19,7 +28,7 @@ const TargetNumbers = ({ targetAmount, donatedAmount }) => (
       </Text>
     </View>
     <View style={style.numberItem}>
-      <Text style={style.transparentText}>Surinkta</Text>
+      <SemiTransparentLabel light textValue="Surinkta" />
       <Text style={style.numberText}>
         <FormattedCurrency
           value={donatedAmount}
@@ -35,6 +44,9 @@ const TargetNumbers = ({ targetAmount, donatedAmount }) => (
 TargetNumbers.propTypes = {
   targetAmount: PropTypes.number,
   donatedAmount: PropTypes.number,
+  dark: PropTypes.bool,
+  red: PropTypes.bool,
+  onCard: PropTypes.bool,
 };
 
 export default TargetNumbers;
