@@ -3,10 +3,10 @@ import { Text } from 'react-native';
 
 import { Container } from '../components/Container';
 
-const Welcome = () => (
+const FundraiseLogIn = () => (
   <Container>
     <Text>Sveiki atvykę! Prisijunkite</Text>
   </Container>
 );
 
-export default Welcome;
+export default FundraiseLogIn;

@@ -11,7 +11,7 @@ import { TargetNumbers } from '../components/TargetNumbers';
 
 const ProjectView = ({ singleProject, navigation }) => (
   <Container>
-    <StatusBar hidden />
+    <StatusBar backgroundColor="black" barStyle="light-content" />
     <StickyHeader navigation={navigation} />
     <ScrollView>
       <ImageGallery imageList={singleProject.gallery} />
