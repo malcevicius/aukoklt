@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StatusBar } from 'react-native';
+import { ScrollView, StatusBar, TouchableOpacity, Text } from 'react-native';
 
 import { Container } from '../components/Container';
 import { ImageGallery } from '../components/ImageGallery';
@@ -22,6 +22,14 @@ const ProjectView = ({ singleProject, navigation }) => (
         targetAmount={singleProject.need_to_donate}
         donatedAmount={singleProject.donated}
       />
+      <TouchableOpacity
+        activeOpacity={1}
+        focusedOpacity={1}
+        onPress={() =>
+          navigation.navigate('ProjectCreation', { rootProjectId: singleProject.project_id })}
+      >
+        <Text>Rinkti lėšas šiam projektui</Text>
+      </TouchableOpacity>
     </ScrollView>
   </Container>
 );

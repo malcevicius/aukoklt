@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text, Image, StatusBar } from 'react-native';
 
 import { HorizontalMenu } from '../HorizontalMenu';
+import { FBLoginButton } from '../FBLoginButton';
 
 import style from './style';
 import globalstyle from '../../config/style';
@@ -19,7 +20,8 @@ const ScreenTitle = ({ title, userAvatar }) => (
       <Image source={{ uri: userAvatar }} style={style.avatarImage} />
     </View>
     <View style={style.categoryMenuContainer}>
-      <HorizontalMenu />
+      <FBLoginButton />
+      {/* <HorizontalMenu /> */}
     </View>
   </View>
 );

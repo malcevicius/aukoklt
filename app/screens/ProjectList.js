@@ -28,11 +28,11 @@ class ProjectList extends Component {
     this.setState({ loading: true });
 
     fetch(url)
-      .then(res => res.json())
-      .then((res) => {
+      .then(response => response.json())
+      .then((response) => {
         this.setState({
-          data: offset === 0 ? res.projects : [...this.state.data, ...res.projects],
-          error: res.error || null,
+          data: offset === 0 ? response.projects : [...this.state.data, ...response.projects],
+          error: response.error || null,
           loading: false,
           refreshing: false,
         });
