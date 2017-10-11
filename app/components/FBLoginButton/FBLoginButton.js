@@ -30,8 +30,8 @@ const FBLoginButton = () => (
           alert('login is cancelled.');
         } else {
           AccessToken.getCurrentAccessToken().then((data) => {
-            const user : object;
-            user = getUserDataFromFacebook(data.accessToken);
+            // const user : object;
+            // user = getUserDataFromFacebook(data.accessToken);
             console.log(user);
           });
         }
