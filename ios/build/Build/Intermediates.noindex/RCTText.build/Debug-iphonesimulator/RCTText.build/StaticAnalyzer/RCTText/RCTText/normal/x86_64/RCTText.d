@@ -1,21 +1,21 @@
 dependencies: \
-  /Users/karolis/aukoklt/node_modules/react-native/Libraries/Text/RCTText.m \
-  /Users/karolis/aukoklt/node_modules/react-native/Libraries/Text/RCTText.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
-  /Users/karolis/aukoklt/node_modules/react-native/Libraries/Text/RCTShadowText.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
-  /Users/karolis/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h
+  /Users/karolismalcevicius/aukoklt/node_modules/react-native/Libraries/Text/RCTText.m \
+  /Users/karolismalcevicius/aukoklt/node_modules/react-native/Libraries/Text/RCTText.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/karolismalcevicius/aukoklt/node_modules/react-native/Libraries/Text/RCTShadowText.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/karolismalcevicius/aukoklt/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h
