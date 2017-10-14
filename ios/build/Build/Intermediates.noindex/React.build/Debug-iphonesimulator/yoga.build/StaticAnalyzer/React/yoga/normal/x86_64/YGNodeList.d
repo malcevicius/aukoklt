@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/karolismalcevicius/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGNodeList.c \
-  /Users/karolismalcevicius/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGNodeList.h \
-  /Users/karolismalcevicius/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGMacros.h \
-  /Users/karolismalcevicius/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/Yoga.h \
-  /Users/karolismalcevicius/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGEnums.h
+  /Users/karolis/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGNodeList.c \
+  /Users/karolis/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGNodeList.h \
+  /Users/karolis/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGMacros.h \
+  /Users/karolis/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/Yoga.h \
+  /Users/karolis/aukoklt/node_modules/react-native/ReactCommon/yoga/yoga/YGEnums.h
