@@ -4,8 +4,9 @@ import { FlatList, ActivityIndicator, View } from 'react-native';
 import { Container } from '../components/Container';
 import { ProjectCard } from '../components/ProjectCard';
 import { ScreenTitle } from '../components/ScreenTitle';
+import { FacebookLoginButton } from '../components/FacebookLoginButton';
 
-class ProjectList extends Component {
+class RootProjectList extends Component {
   constructor(props) {
     super(props);
 
@@ -57,6 +58,7 @@ class ProjectList extends Component {
     <ScreenTitle
       title="Projektai"
       userAvatar="https://scontent-lhr3-1.xx.fbcdn.net/v/t31.0-8/17349947_10207250909505873_4889216807293798707_o.jpg?oh=d638b37fd311d8d9f1c57276990e3491&oe=5A2846BD"
+      navigation={this.props.navigation}
     />
   );
 
@@ -94,4 +96,4 @@ class ProjectList extends Component {
   }
 }
 
-export default ProjectList;
+export default RootProjectList;

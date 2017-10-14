@@ -9,7 +9,7 @@ import { TitleText } from '../components/TitleText';
 import { SemiTransparentLabel } from '../components/SemiTransparentLabel';
 import { TargetNumbers } from '../components/TargetNumbers';
 
-const ProjectView = ({ singleProject, navigation }) => (
+const RootProjectView = ({ singleProject, navigation }) => (
   <Container>
     <StatusBar backgroundColor="black" barStyle="light-content" />
     <StickyHeader navigation={navigation} />
@@ -26,7 +26,7 @@ const ProjectView = ({ singleProject, navigation }) => (
         activeOpacity={1}
         focusedOpacity={1}
         onPress={() =>
-          navigation.navigate('ProjectCreation', { rootProjectId: singleProject.project_id })}
+          navigation.navigate('FundraiseSetup', { rootProjectId: singleProject.project_id })}
       >
         <Text>Rinkti lėšas šiam projektui</Text>
       </TouchableOpacity>
@@ -34,9 +34,9 @@ const ProjectView = ({ singleProject, navigation }) => (
   </Container>
 );
 
-ProjectView.propTypes = {
+RootProjectView.propTypes = {
   singleProject: PropTypes.object,
   navigation: PropTypes.object,
 };
 
-export default ProjectView;
+export default RootProjectView;

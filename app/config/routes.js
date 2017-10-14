@@ -1,23 +1,62 @@
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
-import ProjectList from '../screens/ProjectList';
-import ProjectView from '../screens/ProjectView';
-import UserProjects from '../screens/UserProjects';
+import WelcomeView from '../screens/WelcomeView';
+import RootProjectList from '../screens/RootProjectList';
+import RootProjectView from '../screens/RootProjectView';
+import UserProjectList from '../screens/UserProjectList';
+import UserProjectView from '../screens/UserProjectView';
+import FundraiseSetup from '../screens/FundraiseSetup';
 
-const TabNav = TabNavigator(
+const RootStack = StackNavigator({
+  RootProjectList: {
+    screen: withMappedNavigationProps(RootProjectList),
+    path: '/RootProjectList',
+    navigationOptions: {
+      header: null,
+    },
+  },
+  RootProjectView: {
+    screen: withMappedNavigationProps(RootProjectView),
+    navigationOptions: {
+      header: null,
+    },
+  },
+  FundraiseSetup: {
+    screen: withMappedNavigationProps(FundraiseSetup),
+    navigationOptions: {
+      header: null,
+    },
+  },
+});
+
+const UserStack = StackNavigator({
+  UserProjectList: {
+    screen: withMappedNavigationProps(UserProjectList),
+    path: '/UserProjectList',
+    navigationOptions: {
+      header: null,
+    },
+  },
+  UserProjectView: {
+    screen: withMappedNavigationProps(UserProjectView),
+    navigationOptions: {
+      header: null,
+    },
+  },
+});
+
+const SignedIn = TabNavigator(
   {
-    Projects: {
-      screen: withMappedNavigationProps(ProjectList),
-      path: '/projectlist',
+    RootStack: {
+      screen: RootStack,
       navigationOptions: {
         header: null,
         tabBarVisible: false,
       },
     },
-    UserProjects: {
-      screen: withMappedNavigationProps(UserProjects),
-      path: '/userprojects',
+    UserStack: {
+      screen: UserStack,
       navigationOptions: {
         header: null,
         tabBarVisible: false,
@@ -31,21 +70,34 @@ const TabNav = TabNavigator(
   },
 );
 
-const Routes = StackNavigator({
-  Root: {
-    screen: TabNav,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#fff',
-      },
-    },
-  },
-  ProjectView: {
-    screen: withMappedNavigationProps(ProjectView),
+const SignedOut = StackNavigator({
+  WelcomeView: {
+    screen: withMappedNavigationProps(WelcomeView),
     navigationOptions: {
       header: null,
     },
   },
 });
 
-export default Routes;
+export const createRootNavigator = (signedIn = false) =>
+  StackNavigator(
+    {
+      SignedIn: {
+        screen: SignedIn,
+        navigationOptions: {
+          gesturesEnabled: false,
+        },
+      },
+      SignedOut: {
+        screen: SignedOut,
+        navigationOptions: {
+          gesturesEnabled: false,
+        },
+      },
+    },
+    {
+      headerMode: 'none',
+      mode: 'modal',
+      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut',
+    },
+  );

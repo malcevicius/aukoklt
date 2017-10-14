@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Text, Image } from 'react-native';
+import { TouchableOpacity, View, Image } from 'react-native';
 
 import { TitleText } from '../TitleText';
 import { TargetNumbers } from '../TargetNumbers';
@@ -13,7 +13,7 @@ const ProjectCard = ({ projectInfo, navigation }) => (
     style={style.card}
     activeOpacity={1}
     focusedOpacity={1}
-    onPress={() => navigation.navigate('ProjectView', { singleProject: projectInfo })}
+    onPress={() => navigation.navigate('RootProjectView', { singleProject: projectInfo })}
   >
     <View style={style.imageOverlay} />
     <Image source={{ uri: projectInfo.gallery[0].url }} style={style.imageBackground} />

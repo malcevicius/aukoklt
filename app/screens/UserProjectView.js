@@ -3,9 +3,10 @@ import { Text } from 'react-native';
 
 import { Container } from '../components/Container';
 
-const UserProjects = () =>
+const UserProjectView = () => (
   <Container>
-    <Text>Look at my projects!</Text>
-  </Container>;
+    <Text>Labas, čia yra User Project View</Text>
+  </Container>
+);
 
-export default UserProjects;
+export default UserProjectView;
