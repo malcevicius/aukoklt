@@ -1,6 +1,8 @@
 node_modules/
 ios/build/**
 ios/build
+ios/build/Build/**
+ios/build/Build
 .expo/
 npm-debug.*
 UserInterfaceState.xcuserstate
