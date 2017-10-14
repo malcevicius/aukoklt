@@ -1,4 +1,4 @@
 node_modules/
-.ios/build/
+ios/build/**
 .expo/
 npm-debug.*
