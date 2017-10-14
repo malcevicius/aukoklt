@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { FormattedWrapper } from 'react-native-globalize';
 import { createRootNavigator } from './config/routes';
@@ -15,7 +15,7 @@ EStyleSheet.build({
   $borderColor: '#ededed',
 });
 
-export default class AukokLt extends React.Component {
+export default class AukokLt extends Component {
   constructor(props) {
     super(props);
 

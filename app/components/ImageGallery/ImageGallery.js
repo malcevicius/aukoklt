@@ -34,7 +34,7 @@ class ImageGallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadQueue: [0, 0],
+      loadQueue: [0],
     };
     console.log(this.props.imageList);
     console.log(this.state.imgList);
