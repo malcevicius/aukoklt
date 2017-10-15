@@ -8,57 +8,62 @@ import UserProjectList from '../screens/UserProjectList';
 import UserProjectView from '../screens/UserProjectView';
 import FundraiseSetup from '../screens/FundraiseSetup';
 
-const RootStack = StackNavigator({
-  RootProjectList: {
-    screen: withMappedNavigationProps(RootProjectList),
-    path: '/RootProjectList',
-    navigationOptions: {
-      header: null,
+const AukokProjectsStack = StackNavigator(
+  {
+    RootProjectList: {
+      screen: withMappedNavigationProps(RootProjectList),
+      path: '/RootProjectList',
+    },
+    RootProjectView: {
+      screen: withMappedNavigationProps(RootProjectView),
     },
   },
-  RootProjectView: {
-    screen: withMappedNavigationProps(RootProjectView),
-    navigationOptions: {
-      header: null,
-    },
+  {
+    headerMode: 'none',
   },
-  FundraiseSetup: {
-    screen: withMappedNavigationProps(FundraiseSetup),
-    navigationOptions: {
-      header: null,
-    },
-  },
-});
+);
 
-const UserStack = StackNavigator({
-  UserProjectList: {
-    screen: withMappedNavigationProps(UserProjectList),
-    path: '/UserProjectList',
-    navigationOptions: {
-      header: null,
+const AukokProjectsTab = StackNavigator(
+  {
+    AukokProjectsStack: {
+      screen: AukokProjectsStack,
+    },
+    FundraiseSetup: {
+      screen: withMappedNavigationProps(FundraiseSetup),
     },
   },
-  UserProjectView: {
-    screen: withMappedNavigationProps(UserProjectView),
-    navigationOptions: {
-      header: null,
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  },
+);
+
+const UserTab = StackNavigator(
+  {
+    UserProjectList: {
+      screen: withMappedNavigationProps(UserProjectList),
+      path: '/UserProjectList',
+    },
+    UserProjectView: {
+      screen: withMappedNavigationProps(UserProjectView),
     },
   },
-});
+  {
+    headerMode: 'none',
+  },
+);
 
 const SignedIn = TabNavigator(
   {
-    RootStack: {
-      screen: RootStack,
+    AukokProjectsTab: {
+      screen: AukokProjectsTab,
       navigationOptions: {
-        header: null,
         tabBarVisible: false,
       },
     },
-    UserStack: {
-      screen: UserStack,
+    UserTab: {
+      screen: UserTab,
       navigationOptions: {
-        header: null,
         tabBarVisible: false,
       },
     },
@@ -67,17 +72,20 @@ const SignedIn = TabNavigator(
     tabBarPosition: 'bottom',
     animationEnabled: false,
     swipeEnabled: false,
+    headerMode: 'none',
   },
 );
 
-const SignedOut = StackNavigator({
-  WelcomeView: {
-    screen: withMappedNavigationProps(WelcomeView),
-    navigationOptions: {
-      header: null,
+const SignedOut = StackNavigator(
+  {
+    WelcomeView: {
+      screen: withMappedNavigationProps(WelcomeView),
     },
   },
-});
+  {
+    headerMode: 'none',
+  },
+);
 
 export const createRootNavigator = (signedIn = false) =>
   StackNavigator(
