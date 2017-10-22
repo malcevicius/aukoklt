@@ -1,9 +1,9 @@
 package com.aukoklt;
 
-import com.facebook.react.ReactActivity;
+import com.reactnativenavigation.controllers.SplashActivity;
 import android.content.Intent;
 
-public class MainActivity extends ReactActivity {
+public class MainActivity extends SplashActivity {
 
     /**
      * Returns the name of the main component registered from JavaScript.
@@ -13,10 +13,11 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "aukoklt";
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 }
+

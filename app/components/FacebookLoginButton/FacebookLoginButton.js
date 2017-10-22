@@ -1,23 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 
 const FBSDK = require('react-native-fbsdk');
 
 const { LoginButton } = FBSDK;
 
-const userSignedIn = NavigationActions.navigate({
-  routeName: 'SignedIn',
-  params: {},
-});
-
-const userSignedOut = NavigationActions.navigate({
-  routeName: 'SignedOut',
-  params: {},
-});
-
-const FacebookLoginButton = ({ navigation }) => (
+const FacebookLoginButton = ({ onLoginFinishedAction, onLogoutFinishedAction }) => (
   <View>
     <LoginButton
       readPermissions={['email']}
@@ -27,16 +16,16 @@ const FacebookLoginButton = ({ navigation }) => (
         } else if (result.isCancelled) {
           alert('Login was cancelled');
         } else {
-          navigation.dispatch(userSignedIn);
+          onLoginFinishedAction();
         }
       }}
-      onLogoutFinished={() => navigation.dispatch(userSignedOut)}
+      onLogoutFinished={() => onLogoutFinishedAction()}
     />
   </View>
 );
-
 FacebookLoginButton.propTypes = {
-  navigation: PropTypes.object,
+  onLoginFinishedAction: PropTypes.func.isRequired,
+  onLogoutFinishedAction: PropTypes.func.isRequired,
 };
 
 export default FacebookLoginButton;

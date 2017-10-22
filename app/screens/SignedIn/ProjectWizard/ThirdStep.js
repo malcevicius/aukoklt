@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, TouchableOpacity } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 
 import { Container } from '../../../components/Container';
 
 class ThirdStep extends Component {
   static propTypes = {
     rootProjectId: PropTypes.string,
-    navigation: PropTypes.object,
-    rootKey: PropTypes.string,
   };
   constructor(props) {
     super(props);
@@ -56,22 +53,10 @@ class ThirdStep extends Component {
   };
 
   render() {
-    const jumpToProjectList = NavigationActions.reset({
-      index: 0,
-      key: null,
-      actions: [NavigationActions.navigate({ routeName: 'SignedIn' })],
-    });
-
-    console.log(this.props.rootKey);
-
     return (
       <Container>
         <Text>Great success!</Text>
-        <TouchableOpacity
-          activeOpacity={1}
-          focusedOpacity={1}
-          onPress={() => this.props.navigation.dispatch(jumpToProjectList)}
-        >
+        <TouchableOpacity activeOpacity={1} focusedOpacity={1}>
           <Text>Grįžti į sąrašą</Text>
         </TouchableOpacity>
       </Container>

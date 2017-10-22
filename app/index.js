@@ -1,49 +1,15 @@
-import React, { Component } from 'react';
-import EStyleSheet from 'react-native-extended-stylesheet';
-import { FormattedWrapper } from 'react-native-globalize';
-import { createRootNavigator } from './config/routes';
-import { isSignedIn } from './config/auth';
+import { Navigation } from 'react-native-navigation';
+import { registerScreens } from './config/routes';
 
-EStyleSheet.build({
-  // GLOBAL COLORS
-  $backgroundColor: '#fff',
-  $lightText: '#FFFFFF',
-  $darkText: '#333333',
-  $bodyTextColor: '#808080',
-  $titleTextColor: '#333333',
-  $brandColor: '#B9192B',
-  $borderColor: '#ededed',
+registerScreens();
+
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: 'aukoklt.Main', // unique ID registered with Navigation.registerScreen
+    title: 'Main', // title of the screen as appears in the nav bar (optional)
+    navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+    navigatorButtons: {}, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
+  },
+  passProps: {}, // simple serializable object that will pass as props to all top screens (optional)
+  animationType: 'none', // optional, add transition animation to root change: 'none', 'slide-down', 'fade'
 });
-
-export default class AukokLt extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      signedIn: false,
-      checkedSignIn: false,
-    };
-  }
-
-  componentWillMount() {
-    isSignedIn()
-      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
-      .catch(err => alert(err));
-  }
-
-  render() {
-    const { checkedSignIn, signedIn } = this.state;
-
-    // If we haven't checked AsyncStorage yet, don't render anything. Better ways to do this...
-    if (!checkedSignIn) {
-      return null;
-    }
-
-    const Navigator = createRootNavigator(signedIn);
-    return (
-      <FormattedWrapper currency="EUR">
-        <Navigator />
-      </FormattedWrapper>
-    );
-  }
-}

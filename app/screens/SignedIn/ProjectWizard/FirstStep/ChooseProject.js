@@ -79,13 +79,7 @@ class ChooseProject extends Component {
       <Container>
         <FlatList
           data={this.state.data}
-          renderItem={({ item }) => (
-            <ProjectCard
-              projectInfo={item}
-              navigation={this.props.navigation}
-              rootKey={this.props.rootKey}
-            />
-          )}
+          renderItem={({ item }) => <ProjectCard projectInfo={item} />}
           keyExtractor={item => item.project_id}
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}

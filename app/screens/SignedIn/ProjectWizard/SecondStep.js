@@ -7,9 +7,7 @@ import { StickyHeader } from '../../../components/StickyHeader';
 
 class SecondStep extends Component {
   static propTypes = {
-    navigation: PropTypes.object,
     selectedProjectId: PropTypes.string,
-    rootKey: PropTypes.string,
   };
   constructor(props) {
     super(props);
@@ -43,7 +41,6 @@ class SecondStep extends Component {
   validateFormFields = () => {};
 
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <Container>
         <StickyHeader />
@@ -66,13 +63,7 @@ class SecondStep extends Component {
           value={this.state.goalNumber}
           autoCorrect={false}
         />
-        <TouchableOpacity
-          onPress={() =>
-            navigate('ThirdStep', {
-              rootProjectId: this.props.selectedProjectId,
-              rootKey: this.props.rootKey,
-            })}
-        >
+        <TouchableOpacity>
           <Text>Patvirtinti</Text>
         </TouchableOpacity>
       </Container>

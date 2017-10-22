@@ -9,7 +9,7 @@ import { TitleText } from '../../../../components/TitleText';
 import { SemiTransparentLabel } from '../../../../components/SemiTransparentLabel';
 import { TargetNumbers } from '../../../../components/TargetNumbers';
 
-const ProjectView = ({ singleProject, navigation, rootKey }) => (
+const ProjectView = ({ singleProject }) => (
   <Container>
     <StatusBar backgroundColor="black" barStyle="light-content" />
     <StickyHeader />
@@ -22,15 +22,7 @@ const ProjectView = ({ singleProject, navigation, rootKey }) => (
         targetAmount={singleProject.need_to_donate}
         donatedAmount={singleProject.donated}
       />
-      <TouchableOpacity
-        activeOpacity={1}
-        focusedOpacity={1}
-        onPress={() =>
-          navigation.navigate('SecondStep', {
-            selectedProjectId: singleProject.project_id,
-            rootKey,
-          })}
-      >
+      <TouchableOpacity activeOpacity={1} focusedOpacity={1}>
         <Text>Rinkti lėšas šiam projektui</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -39,7 +31,6 @@ const ProjectView = ({ singleProject, navigation, rootKey }) => (
 
 ProjectView.propTypes = {
   singleProject: PropTypes.object,
-  rootKey: PropTypes.string,
 };
 
 export default ProjectView;
