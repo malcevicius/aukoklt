@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StatusBar, Text, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, StatusBar, Text, TextInput } from 'react-native';
 
 import { Container } from '../../../components/Container';
 import { StickyHeader } from '../../../components/StickyHeader';
+import { Button } from '../../../components/Button';
 
 class SecondStep extends Component {
   constructor(props) {
@@ -122,14 +123,8 @@ class SecondStep extends Component {
             value={this.state.goalNumber}
             autoCorrect={false}
           />
-          <TouchableOpacity
-            activeOpacity={1}
-            focusedOpacity={1}
-            onPress={this.createFundraiseProject}
-          >
-            <Text>Patvirtinti</Text>
-          </TouchableOpacity>
         </ScrollView>
+        <Button textValue="Patvirtinti" onPressAction={this.createFundraiseProject} fixedBottom />
       </Container>
     );
   }

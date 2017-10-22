@@ -8,6 +8,7 @@ import { StickyHeader } from '../../../../components/StickyHeader';
 import { TitleText } from '../../../../components/TitleText';
 import { SemiTransparentLabel } from '../../../../components/SemiTransparentLabel';
 import { TargetNumbers } from '../../../../components/TargetNumbers';
+import { Button } from '../../../../components/Button';
 
 class ProjectView extends Component {
   onBackButtonPress = () => {
@@ -38,10 +39,12 @@ class ProjectView extends Component {
             targetAmount={this.props.projectInfo.need_to_donate}
             donatedAmount={this.props.projectInfo.donated}
           />
-          <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={this.openSecondStep}>
-            <Text>Rinkti lėšas šiam projektui</Text>
-          </TouchableOpacity>
         </ScrollView>
+        <Button
+          textValue="Rinkti lėšas šiam projektui"
+          onPressAction={this.openSecondStep}
+          fixedBottom
+        />
       </Container>
     );
   }

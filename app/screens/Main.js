@@ -18,9 +18,24 @@ EStyleSheet.build({
   // Our reds
   $lightRed: '#E71E35',
   $brandRed: '#B9192B',
-  $darkNormal: '#A10F20',
+  $darkRed: '#A10F20',
   $darkerRed: '#530303',
   $superDarkRed: '#310101',
+  // Spacing
+  $tiny: 8,
+  $small: 16,
+  $base: 24,
+  $large: 48,
+  $xLarge: 64,
+  // Text sizes
+  $microText: 10,
+  $smallText: 12,
+  $regularText: 14,
+  $largeText: 16,
+  $title4: 20,
+  $title3: 24,
+  $title2: 28,
+  $title1: 56,
 });
 
 class AukokLt extends Component {
@@ -46,7 +61,7 @@ class AukokLt extends Component {
   render() {
     const { checkedSignIn, signedIn } = this.state;
 
-    // If we haven't checked AsyncStorage yet, don't render anything. Better ways to do this...
+    // If we haven't checked if user isSignedIn yet, don't render anything. Better ways to do this...
     if (!checkedSignIn) {
       return null;
     } else if (!signedIn) {

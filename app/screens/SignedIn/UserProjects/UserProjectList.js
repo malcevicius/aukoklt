@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, StatusBar } from 'react-native';
 
 import { Container } from '../../../components/Container';
 import { FacebookLoginButton } from '../../../components/FacebookLoginButton';
+import { Button } from '../../../components/Button';
 
 class UserProjectList extends Component {
   onLoginFinishedAction = () => {
@@ -47,16 +48,17 @@ class UserProjectList extends Component {
             onLoginFinishedAction={this.onLoginFinishedAction}
             onLogoutFinishedAction={this.onLogoutFinishedAction}
           />
-          <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={this.openUserProjectView}>
-            <Text>Peržiūrėti User project</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={1}
-            focusedOpacity={1}
-            onPress={this.openProjectWizardModal}
-          >
-            <Text>Kurti naują projektą</Text>
-          </TouchableOpacity>
+          <Button
+            textValue="Peržiūrėti User project"
+            onPressAction={this.openUserProjectView}
+            smallMarginTop
+            full
+          />
+          <Button
+            textValue="Kurti naują projektą"
+            onPressAction={this.openProjectWizardModal}
+            smallMarginTop
+          />
         </ScrollView>
       </Container>
     );
