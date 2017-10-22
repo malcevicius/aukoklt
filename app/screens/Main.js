@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { FormattedWrapper } from 'react-native-globalize';
 import { isSignedIn } from '../config/auth';
 
 import Welcome from '../screens/SignedOut/Welcome';
@@ -39,10 +38,6 @@ EStyleSheet.build({
 });
 
 class AukokLt extends Component {
-  static navigatorStyle = {
-    navBarHidden: true,
-  };
-
   constructor(props) {
     super(props);
 
@@ -53,6 +48,7 @@ class AukokLt extends Component {
   }
 
   componentWillMount() {
+    // TODO: https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
     isSignedIn()
       .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
       .catch(err => alert(err));
@@ -61,23 +57,19 @@ class AukokLt extends Component {
   render() {
     const { checkedSignIn, signedIn } = this.state;
 
-    // If we haven't checked if user isSignedIn yet, don't render anything. Better ways to do this...
     if (!checkedSignIn) {
       return null;
     } else if (!signedIn) {
-      return (
-        <FormattedWrapper currency="EUR">
-          <Welcome navigator={this.props.navigator} />
-        </FormattedWrapper>
-      );
+      return <Welcome navigator={this.props.navigator} />;
     }
-    return (
-      <FormattedWrapper currency="EUR">
-        <UserProjectList navigator={this.props.navigator} />
-      </FormattedWrapper>
-    );
+    return <UserProjectList navigator={this.props.navigator} />;
   }
 }
+
+AukokLt.navigatorStyle = {
+  navBarHidden: true,
+};
+
 AukokLt.propTypes = {
   navigator: PropTypes.object,
 };

@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, ScrollView, StatusBar } from 'react-native';
+import { isSignedIn } from '../../../config/auth';
 
 import { Container } from '../../../components/Container';
 import { FacebookLoginButton } from '../../../components/FacebookLoginButton';
 import { Button } from '../../../components/Button';
 
 class UserProjectList extends Component {
-  onLoginFinishedAction = () => {
+  // FIXME: These checks isSignedIn not working yet. Needs more investigation
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      signedIn: false,
+      checkedSignIn: false,
+    };
+  }
+
+  componentWillMount() {
+    isSignedIn()
+      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
+      .catch(err => alert(err));
+  }
+
+  resetToWelcomeScreen = () => {
     this.props.navigator.resetTo({
-      screen: 'aukoklt.UserProjectList',
-      title: 'User Projects',
-      animated: true,
-      animationType: 'fade',
+      screen: 'aukoklt.Welcome',
+      animated: false,
     });
   };
 
@@ -39,6 +54,13 @@ class UserProjectList extends Component {
   };
 
   render() {
+    const { checkedSignIn, signedIn } = this.state;
+
+    if (!checkedSignIn) {
+      return null;
+    } else if (!signedIn) {
+      return this.resetToWelcomeScreen;
+    }
     return (
       <Container>
         <StatusBar barStyle="dark-content" />

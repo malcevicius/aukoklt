@@ -24,8 +24,8 @@ const FacebookLoginButton = ({ onLoginFinishedAction, onLogoutFinishedAction }) 
   </View>
 );
 FacebookLoginButton.propTypes = {
-  onLoginFinishedAction: PropTypes.func.isRequired,
-  onLogoutFinishedAction: PropTypes.func.isRequired,
+  onLoginFinishedAction: PropTypes.func,
+  onLogoutFinishedAction: PropTypes.func,
 };
 
 export default FacebookLoginButton;

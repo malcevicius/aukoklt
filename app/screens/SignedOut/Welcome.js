@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
 import { Container } from '../../components/Container';
 import { FacebookLoginButton } from '../../components/FacebookLoginButton';
 
 class Welcome extends Component {
-  static navigatorStyle = {
-    navBarHidden: true,
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
   onLoginFinishedAction = () => {
     this.props.navigator.resetTo({
       screen: 'aukoklt.UserProjectList',
       title: 'User Projects',
-      animated: true,
-      animationType: 'fade',
+      animated: false,
     });
   };
 
@@ -26,8 +18,7 @@ class Welcome extends Component {
     this.props.navigator.resetTo({
       screen: 'aukoklt.Welcome',
       title: 'Welcome!',
-      animated: true,
-      animationType: 'fade',
+      animated: false,
     });
   };
 
@@ -43,5 +34,13 @@ class Welcome extends Component {
     );
   }
 }
+
+Welcome.navigatorStyle = {
+  navBarHidden: true,
+};
+
+Welcome.propTypes = {
+  navigator: PropTypes.object,
+};
 
 export default Welcome;
