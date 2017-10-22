@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { FlatList, ActivityIndicator, View } from 'react-native';
+import PropTypes from 'prop-types';
+import { FlatList, StatusBar, ActivityIndicator, View } from 'react-native';
 
 import { Container } from '../../../../components/Container';
 import { ProjectCard } from '../../../../components/ProjectCard';
 import { ScreenTitle } from '../../../../components/ScreenTitle';
+import { StickyHeader } from '../../../../components/StickyHeader';
 
 class ChooseProject extends Component {
   constructor(props) {
@@ -21,6 +23,12 @@ class ChooseProject extends Component {
   componentDidMount() {
     this.makeRemoteRequest();
   }
+
+  onDismissModalButtonPress = () => {
+    this.props.navigator.dismissModal({
+      animationType: 'slide-down',
+    });
+  };
 
   makeRemoteRequest = () => {
     const { offset } = this.state;
@@ -77,9 +85,17 @@ class ChooseProject extends Component {
   render() {
     return (
       <Container>
+        <StatusBar barStyle="light-content" />
+        <StickyHeader closeIcon dark onPressAction={this.onDismissModalButtonPress} />
         <FlatList
           data={this.state.data}
-          renderItem={({ item }) => <ProjectCard projectInfo={item} />}
+          renderItem={({ item }) => (
+            <ProjectCard
+              projectInfo={item}
+              navigator={this.props.navigator}
+              navigateTo="aukoklt.ProjectWizard.FirstStep.ProjectView"
+            />
+          )}
           keyExtractor={item => item.project_id}
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
@@ -91,5 +107,13 @@ class ChooseProject extends Component {
     );
   }
 }
+
+ChooseProject.navigatorStyle = {
+  navBarHidden: true,
+};
+
+ChooseProject.propTypes = {
+  navigator: PropTypes.object,
+};
 
 export default ChooseProject;

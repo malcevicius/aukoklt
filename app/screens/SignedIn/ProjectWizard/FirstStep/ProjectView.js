@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, StatusBar, TouchableOpacity, Text } from 'react-native';
 
@@ -9,28 +9,51 @@ import { TitleText } from '../../../../components/TitleText';
 import { SemiTransparentLabel } from '../../../../components/SemiTransparentLabel';
 import { TargetNumbers } from '../../../../components/TargetNumbers';
 
-const ProjectView = ({ singleProject }) => (
-  <Container>
-    <StatusBar backgroundColor="black" barStyle="light-content" />
-    <StickyHeader />
-    <ScrollView>
-      <ImageGallery imageList={singleProject.gallery} />
-      <TitleText dark medium title={singleProject.title} />
-      <SemiTransparentLabel dark textValue={singleProject.company} />
-      <TargetNumbers
-        red
-        targetAmount={singleProject.need_to_donate}
-        donatedAmount={singleProject.donated}
-      />
-      <TouchableOpacity activeOpacity={1} focusedOpacity={1}>
-        <Text>Rinkti lėšas šiam projektui</Text>
-      </TouchableOpacity>
-    </ScrollView>
-  </Container>
-);
+class ProjectView extends Component {
+  onBackButtonPress = () => {
+    this.props.navigator.pop({
+      animated: true,
+      animationType: 'slide-horizontal',
+    });
+  };
+
+  openSecondStep = () => {
+    this.props.navigator.push({
+      screen: 'aukoklt.ProjectWizard.SecondStep',
+      passProps: { selectedProjectId: this.props.projectInfo.project_id },
+    });
+  };
+
+  render() {
+    return (
+      <Container>
+        <StatusBar barStyle="light-content" />
+        <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
+        <ScrollView>
+          <ImageGallery imageList={this.props.projectInfo.gallery} />
+          <TitleText dark medium title={this.props.projectInfo.title} />
+          <SemiTransparentLabel dark textValue={this.props.projectInfo.company} />
+          <TargetNumbers
+            red
+            targetAmount={this.props.projectInfo.need_to_donate}
+            donatedAmount={this.props.projectInfo.donated}
+          />
+          <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={this.openSecondStep}>
+            <Text>Rinkti lėšas šiam projektui</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </Container>
+    );
+  }
+}
+
+ProjectView.navigatorStyle = {
+  navBarHidden: true,
+};
 
 ProjectView.propTypes = {
-  singleProject: PropTypes.object,
+  projectInfo: PropTypes.object.isRequired,
+  navigator: PropTypes.object.isRequired,
 };
 
 export default ProjectView;

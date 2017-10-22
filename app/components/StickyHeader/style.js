@@ -8,15 +8,23 @@ const style = EStyleSheet.create({
     right: 0,
     zIndex: 20,
   },
-  backButton: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+  darkButton: {
+    backgroundColor: 'rgba(49,1,1,0.9)',
     borderRadius: 40,
     width: 40,
     height: 40,
     marginTop: 32,
     marginLeft: 20,
   },
-  backIcon: {
+  lightButton: {
+    backgroundColor: 'rgba(242,240,240,0.9)',
+    borderRadius: 40,
+    width: 40,
+    height: 40,
+    marginTop: 32,
+    marginLeft: 20,
+  },
+  iconStyle: {
     width: 24,
     height: 24,
     margin: 8,

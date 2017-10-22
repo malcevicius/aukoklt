@@ -17,7 +17,7 @@ const style = EStyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.32)',
   },
   redTheme: {
-    backgroundColor: '$brandColor',
+    backgroundColor: '$brandRed',
   },
   numberItem: {
     flex: 1,

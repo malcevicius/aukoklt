@@ -5,6 +5,10 @@ import { Container } from '../../components/Container';
 import { FacebookLoginButton } from '../../components/FacebookLoginButton';
 
 class Welcome extends Component {
+  static navigatorStyle = {
+    navBarHidden: true,
+  };
+
   constructor(props) {
     super(props);
   }

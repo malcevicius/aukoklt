@@ -21,8 +21,8 @@ export function registerScreens() {
   Navigation.registerComponent('aukoklt.Welcome', () => Welcome);
   Navigation.registerComponent('aukoklt.UserProjectList', () => UserProjectList);
   Navigation.registerComponent('aukoklt.UserProjectView', () => UserProjectView);
-  Navigation.registerComponent('aukoklt.ChooseProject', () => ChooseProject);
-  Navigation.registerComponent('aukoklt.ProjectView', () => ProjectView);
-  Navigation.registerComponent('aukoklt.SecondStep', () => SecondStep);
-  Navigation.registerComponent('aukoklt.ThirdStep', () => ThirdStep);
+  Navigation.registerComponent('aukoklt.ProjectWizard.FirstStep', () => ChooseProject);
+  Navigation.registerComponent('aukoklt.ProjectWizard.FirstStep.ProjectView', () => ProjectView);
+  Navigation.registerComponent('aukoklt.ProjectWizard.SecondStep', () => SecondStep);
+  Navigation.registerComponent('aukoklt.ProjectWizard.ThirdStep', () => ThirdStep);
 }

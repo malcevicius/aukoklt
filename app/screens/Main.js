@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { FormattedWrapper } from 'react-native-globalize';
 import { isSignedIn } from '../config/auth';
@@ -7,17 +8,26 @@ import Welcome from '../screens/SignedOut/Welcome';
 import UserProjectList from '../screens/SignedIn/UserProjects/UserProjectList';
 
 EStyleSheet.build({
-  // GLOBAL COLORS
-  $backgroundColor: '#fff',
-  $lightText: '#FFFFFF',
-  $darkText: '#333333',
-  $bodyTextColor: '#808080',
-  $titleTextColor: '#333333',
-  $brandColor: '#B9192B',
-  $borderColor: '#ededed',
+  $backgroundColor: '#FFFFFF',
+  $darkerBackgroundColor: '#F2F0F0',
+  $lineColor: '#E3DCDC',
+  // Text colors
+  $superLightTextColor: '#C0B6B6',
+  $lightTextColor: '#9B9090',
+  $normalTextColor: '#827878',
+  // Our reds
+  $lightRed: '#E71E35',
+  $brandRed: '#B9192B',
+  $darkNormal: '#A10F20',
+  $darkerRed: '#530303',
+  $superDarkRed: '#310101',
 });
 
-export default class AukokLt extends Component {
+class AukokLt extends Component {
+  static navigatorStyle = {
+    navBarHidden: true,
+  };
+
   constructor(props) {
     super(props);
 
@@ -53,3 +63,8 @@ export default class AukokLt extends Component {
     );
   }
 }
+AukokLt.propTypes = {
+  navigator: PropTypes.object,
+};
+
+export default AukokLt;
