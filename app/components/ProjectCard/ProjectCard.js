@@ -8,12 +8,17 @@ import { SemiTransparentLabel } from '../SemiTransparentLabel';
 
 import style from './style';
 
-const ProjectCard = ({ projectInfo, navigation }) => (
+const ProjectCard = ({ projectInfo, navigation, rootKey }) => (
   <TouchableOpacity
     style={style.card}
     activeOpacity={1}
     focusedOpacity={1}
-    onPress={() => navigation.navigate('RootProjectView', { singleProject: projectInfo })}
+    onPress={() =>
+      navigation.navigate('ProjectView', {
+        singleProject: projectInfo,
+        navigation,
+        rootKey,
+      })}
   >
     <View style={style.imageOverlay} />
     <Image source={{ uri: projectInfo.gallery[0].url }} style={style.imageBackground} />
@@ -33,8 +38,9 @@ const ProjectCard = ({ projectInfo, navigation }) => (
 );
 
 ProjectCard.propTypes = {
-  projectInfo: PropTypes.object,
   navigation: PropTypes.object,
+  projectInfo: PropTypes.object,
+  rootKey: PropTypes.string,
 };
 
 export default ProjectCard;

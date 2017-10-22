@@ -1,48 +1,39 @@
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
-import WelcomeView from '../screens/WelcomeView';
-import RootProjectList from '../screens/RootProjectList';
-import RootProjectView from '../screens/RootProjectView';
-import UserProjectList from '../screens/UserProjectList';
-import UserProjectView from '../screens/UserProjectView';
-import FundraiseSetup from '../screens/FundraiseSetup';
+// Welcome & Login screen
+import Welcome from '../screens/SignedOut/Welcome';
 
-const AukokProjectsStack = StackNavigator(
-  {
-    RootProjectList: {
-      screen: withMappedNavigationProps(RootProjectList),
-      path: '/RootProjectList',
-    },
-    RootProjectView: {
-      screen: withMappedNavigationProps(RootProjectView),
-    },
-  },
-  {
-    headerMode: 'none',
-  },
-);
+// User Projects list and project details
+import UserProjectList from '../screens/SignedIn/UserProjects/UserProjectList';
+import UserProjectView from '../screens/SignedIn/UserProjects/UserProjectView';
 
-const AukokProjectsTab = StackNavigator(
+// Wizard Screens
+import ChooseProject from '../screens/SignedIn/ProjectWizard/FirstStep/ChooseProject';
+import ProjectView from '../screens/SignedIn/ProjectWizard/FirstStep/ProjectView';
+import SecondStep from '../screens/SignedIn/ProjectWizard/SecondStep';
+import ThirdStep from '../screens/SignedIn/ProjectWizard/ThirdStep';
+
+const FirstStep = StackNavigator(
   {
-    AukokProjectsStack: {
-      screen: AukokProjectsStack,
+    ChooseProject: {
+      screen: withMappedNavigationProps(ChooseProject),
     },
-    FundraiseSetup: {
-      screen: withMappedNavigationProps(FundraiseSetup),
+    ProjectView: {
+      screen: withMappedNavigationProps(ProjectView),
     },
   },
   {
     mode: 'modal',
     headerMode: 'none',
+    initialRouteName: 'ChooseProject',
   },
 );
 
-const UserTab = StackNavigator(
+const UserProjects = StackNavigator(
   {
     UserProjectList: {
       screen: withMappedNavigationProps(UserProjectList),
-      path: '/UserProjectList',
     },
     UserProjectView: {
       screen: withMappedNavigationProps(UserProjectView),
@@ -50,36 +41,51 @@ const UserTab = StackNavigator(
   },
   {
     headerMode: 'none',
+    initialRouteName: 'UserProjectList',
   },
 );
 
-const SignedIn = TabNavigator(
+const ProjectWizard = StackNavigator(
   {
-    AukokProjectsTab: {
-      screen: AukokProjectsTab,
-      navigationOptions: {
-        tabBarVisible: false,
-      },
+    FirstStep: {
+      screen: FirstStep,
     },
-    UserTab: {
-      screen: UserTab,
+    SecondStep: {
+      screen: withMappedNavigationProps(SecondStep),
+    },
+    ThirdStep: {
+      screen: withMappedNavigationProps(ThirdStep),
       navigationOptions: {
-        tabBarVisible: false,
+        gesturesEnabled: false,
       },
     },
   },
   {
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
     headerMode: 'none',
+    initialRouteName: 'FirstStep',
+  },
+);
+
+const SignedIn = StackNavigator(
+  {
+    UserProjects: {
+      screen: UserProjects,
+    },
+    ProjectWizard: {
+      screen: ProjectWizard,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+    initialRouteName: 'UserProjects',
   },
 );
 
 const SignedOut = StackNavigator(
   {
     WelcomeView: {
-      screen: withMappedNavigationProps(WelcomeView),
+      screen: withMappedNavigationProps(Welcome),
     },
   },
   {

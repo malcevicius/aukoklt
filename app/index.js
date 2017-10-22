@@ -39,10 +39,10 @@ export default class AukokLt extends Component {
       return null;
     }
 
-    const Layout = createRootNavigator(signedIn);
+    const Navigator = createRootNavigator(signedIn);
     return (
       <FormattedWrapper currency="EUR">
-        <Layout />
+        <Navigator />
       </FormattedWrapper>
     );
   }

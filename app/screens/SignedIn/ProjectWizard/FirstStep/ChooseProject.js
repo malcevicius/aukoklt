@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { FlatList, ActivityIndicator, View } from 'react-native';
 
-import { Container } from '../components/Container';
-import { ProjectCard } from '../components/ProjectCard';
-import { ScreenTitle } from '../components/ScreenTitle';
-import { FacebookLoginButton } from '../components/FacebookLoginButton';
+import { Container } from '../../../../components/Container';
+import { ProjectCard } from '../../../../components/ProjectCard';
+import { ScreenTitle } from '../../../../components/ScreenTitle';
 
-class RootProjectList extends Component {
+class ChooseProject extends Component {
   constructor(props) {
     super(props);
 
@@ -58,7 +57,6 @@ class RootProjectList extends Component {
     <ScreenTitle
       title="Projektai"
       userAvatar="https://scontent-lhr3-1.xx.fbcdn.net/v/t31.0-8/17349947_10207250909505873_4889216807293798707_o.jpg?oh=d638b37fd311d8d9f1c57276990e3491&oe=5A2846BD"
-      navigation={this.props.navigation}
     />
   );
 
@@ -82,7 +80,11 @@ class RootProjectList extends Component {
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
-            <ProjectCard projectInfo={item} navigation={this.props.navigation} />
+            <ProjectCard
+              projectInfo={item}
+              navigation={this.props.navigation}
+              rootKey={this.props.rootKey}
+            />
           )}
           keyExtractor={item => item.project_id}
           ListHeaderComponent={this.renderHeader}
@@ -96,4 +98,4 @@ class RootProjectList extends Component {
   }
 }
 
-export default RootProjectList;
+export default ChooseProject;

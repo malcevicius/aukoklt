@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, StatusBar, TouchableOpacity, Text } from 'react-native';
 
-import { Container } from '../components/Container';
-import { ImageGallery } from '../components/ImageGallery';
-import { StickyHeader } from '../components/StickyHeader';
-import { TitleText } from '../components/TitleText';
-import { SemiTransparentLabel } from '../components/SemiTransparentLabel';
-import { TargetNumbers } from '../components/TargetNumbers';
+import { Container } from '../../../../components/Container';
+import { ImageGallery } from '../../../../components/ImageGallery';
+import { StickyHeader } from '../../../../components/StickyHeader';
+import { TitleText } from '../../../../components/TitleText';
+import { SemiTransparentLabel } from '../../../../components/SemiTransparentLabel';
+import { TargetNumbers } from '../../../../components/TargetNumbers';
 
-const RootProjectView = ({ singleProject, navigation }) => (
+const ProjectView = ({ singleProject, navigation, rootKey }) => (
   <Container>
     <StatusBar backgroundColor="black" barStyle="light-content" />
-    <StickyHeader navigation={navigation} />
+    <StickyHeader />
     <ScrollView>
       <ImageGallery imageList={singleProject.gallery} />
       <TitleText dark medium title={singleProject.title} />
@@ -26,7 +26,10 @@ const RootProjectView = ({ singleProject, navigation }) => (
         activeOpacity={1}
         focusedOpacity={1}
         onPress={() =>
-          navigation.navigate('FundraiseSetup', { rootProjectId: singleProject.project_id })}
+          navigation.navigate('SecondStep', {
+            selectedProjectId: singleProject.project_id,
+            rootKey,
+          })}
       >
         <Text>Rinkti lėšas šiam projektui</Text>
       </TouchableOpacity>
@@ -34,9 +37,9 @@ const RootProjectView = ({ singleProject, navigation }) => (
   </Container>
 );
 
-RootProjectView.propTypes = {
+ProjectView.propTypes = {
   singleProject: PropTypes.object,
-  navigation: PropTypes.object,
+  rootKey: PropTypes.string,
 };
 
-export default RootProjectView;
+export default ProjectView;

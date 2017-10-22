@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { Container } from '../components/Container';
+import { Container } from '../../../components/Container';
 
 const UserProjectView = () => (
   <Container>
