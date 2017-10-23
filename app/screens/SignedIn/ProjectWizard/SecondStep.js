@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, StatusBar, Text, TextInput } from 'react-native';
+import lang from '../../../config/lang';
 
+import { WizardHeader } from '../../../components/WizardHeader/';
 import { Container } from '../../../components/Container';
-import { StickyHeader } from '../../../components/StickyHeader';
 import { Button } from '../../../components/Button';
 
 class SecondStep extends Component {
@@ -102,8 +103,14 @@ class SecondStep extends Component {
     return (
       <Container>
         <StatusBar barStyle="default" />
-        <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
         <ScrollView>
+          <WizardHeader
+            step="2"
+            headerButtonIcon="back"
+            onPressAction={this.onBackButtonPress}
+            titleText={lang.wizard.step2.title}
+            titleDescription={lang.wizard.step2.description}
+          />
           <Text>Sveiki - Fundraise Setup</Text>
           <Text>Įrašykite pavadinima</Text>
           <TextInput

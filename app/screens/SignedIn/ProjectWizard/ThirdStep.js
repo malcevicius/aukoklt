@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, StatusBar } from 'react-native';
 
+import lang from '../../../config/lang';
+
+import { WizardHeader } from '../../../components/WizardHeader/';
 import { Container } from '../../../components/Container';
+import { Button } from '../../../components/Button';
 
 class ThirdStep extends Component {
   openUserProjectView = () => {
@@ -16,10 +20,18 @@ class ThirdStep extends Component {
       <Container>
         <StatusBar barStyle="dark-content" />
         <ScrollView>
-          <Text>SUCCESS!!!!!</Text>
-          <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={this.openUserProjectView}>
-            <Text>Mano projektai</Text>
-          </TouchableOpacity>
+          <WizardHeader
+            step="3"
+            headerButtonIcon="none"
+            titleText={lang.wizard.step3.title}
+            titleDescription={lang.wizard.step3.description}
+          />
+          <Text>{lang.wizard.step3.title}</Text>
+          <Button
+            textValue={lang.wizard.step3.showProjectsBtn}
+            onPressAction={this.openUserProjectView}
+            smallMarginTop
+          />
         </ScrollView>
       </Container>
     );

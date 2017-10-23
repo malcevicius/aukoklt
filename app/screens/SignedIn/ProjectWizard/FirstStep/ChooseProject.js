@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, StatusBar, ActivityIndicator, View } from 'react-native';
+import lang from '../../../../config/lang';
 
 import { Container } from '../../../../components/Container';
 import { ProjectCard } from '../../../../components/ProjectCard';
-import { ScreenTitle } from '../../../../components/ScreenTitle';
-import { StickyHeader } from '../../../../components/StickyHeader';
+import { WizardHeader } from '../../../../components/WizardHeader/';
 
 class ChooseProject extends Component {
   constructor(props) {
@@ -62,9 +62,12 @@ class ChooseProject extends Component {
   };
 
   renderHeader = () => (
-    <ScreenTitle
-      title="Projektai"
-      userAvatar="https://scontent-lhr3-1.xx.fbcdn.net/v/t31.0-8/17349947_10207250909505873_4889216807293798707_o.jpg?oh=d638b37fd311d8d9f1c57276990e3491&oe=5A2846BD"
+    <WizardHeader
+      step="1"
+      headerButtonIcon="close"
+      onPressAction={this.onDismissModalButtonPress}
+      titleText={lang.wizard.step1.title}
+      titleDescription={lang.wizard.step1.description}
     />
   );
 
@@ -85,8 +88,7 @@ class ChooseProject extends Component {
   render() {
     return (
       <Container>
-        <StatusBar barStyle="light-content" />
-        <StickyHeader closeIcon dark onPressAction={this.onDismissModalButtonPress} />
+        <StatusBar barStyle="dark-content" />
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
