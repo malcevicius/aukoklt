@@ -1,40 +1,55 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Image } from 'react-native';
-
-import { TitleText } from '../TitleText';
-import { TargetNumbers } from '../TargetNumbers';
-import { SemiTransparentLabel } from '../SemiTransparentLabel';
+import { TouchableOpacity, View, Image, Text } from 'react-native';
 
 import style from './style';
 
-const ProjectCard = ({ projectInfo, navigation }) => (
-  <TouchableOpacity
-    style={style.card}
-    activeOpacity={1}
-    focusedOpacity={1}
-    onPress={() => navigation.navigate('RootProjectView', { singleProject: projectInfo })}
-  >
-    <View style={style.imageOverlay} />
-    <Image source={{ uri: projectInfo.gallery[0].url }} style={style.imageBackground} />
-    <View style={style.details}>
-      <View style={style.titleView}>
-        <TitleText light medium title={projectInfo.title} />
-        <SemiTransparentLabel light textValue={projectInfo.company} />
-      </View>
-      <TargetNumbers
-        dark
-        onCard
-        targetAmount={projectInfo.need_to_donate}
-        donatedAmount={projectInfo.donated}
-      />
-    </View>
-  </TouchableOpacity>
-);
+import { MicroText } from '../Text/MicroText';
+import { SmallText } from '../Text/SmallText';
+import { LargeText } from '../Text/LargeText';
+
+class ProjectCard extends PureComponent {
+  onPressAction = () => {
+    this.props.navigator.push({
+      screen: this.props.navigateTo,
+      passProps: { projectInfo: this.props.projectInfo },
+    });
+  };
+
+  render() {
+    return (
+      <TouchableOpacity
+        onPress={this.onPressAction}
+        style={style.projectContainer}
+        activeOpacity={0.8}
+        focusedOpacity={0.8}
+      >
+        <Image style={style.thumbnailImage} source={{ uri: this.props.projectInfo.img }} />
+        <View style={style.details}>
+          <MicroText companyLabel text={this.props.projectInfo.company} />
+          <LargeText projectTitle text={this.props.projectInfo.title} />
+          <View style={style.projectNumbers}>
+            <SmallText currencyNumber highlighted number={this.props.projectInfo.donated} />
+            <SmallText
+              currencyNumber
+              haveSeparator
+              number={this.props.projectInfo.need_to_donate}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}
+
+ProjectCard.navigatorStyle = {
+  navBarHidden: true,
+};
 
 ProjectCard.propTypes = {
-  projectInfo: PropTypes.object,
-  navigation: PropTypes.object,
+  projectInfo: PropTypes.object.isRequired,
+  navigator: PropTypes.object.isRequired,
+  navigateTo: PropTypes.string.isRequired,
 };
 
 export default ProjectCard;

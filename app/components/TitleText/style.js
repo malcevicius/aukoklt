@@ -8,10 +8,10 @@ const style = EStyleSheet.create({
     marginTop: 20,
   },
   lightText: {
-    color: '$lightText',
+    color: '$superLightTextColor',
   },
   darkText: {
-    color: '$darkText',
+    color: '$superDarkRed',
   },
   mediumSize: {
     fontSize: 24,

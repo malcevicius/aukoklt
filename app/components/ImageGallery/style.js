@@ -30,7 +30,7 @@ const style = EStyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '$darkerBackgroundColor',
   },
 });
 
