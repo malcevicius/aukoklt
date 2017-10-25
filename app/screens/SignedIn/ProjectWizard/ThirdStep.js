@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, StatusBar } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 
 import lang from '../../../config/lang';
 
@@ -18,7 +18,6 @@ class ThirdStep extends Component {
   render() {
     return (
       <Container>
-        <StatusBar barStyle="dark-content" />
         <ScrollView>
           <WizardHeader
             step="3"
@@ -39,7 +38,7 @@ class ThirdStep extends Component {
 }
 
 ThirdStep.navigatorStyle = {
-  navBarHidden: true,
+  // navBarHidden: true,
 };
 
 ThirdStep.propTypes = {

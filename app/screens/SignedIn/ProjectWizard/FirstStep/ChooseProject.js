@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, StatusBar, ActivityIndicator, View } from 'react-native';
+import { FlatList, ActivityIndicator, View } from 'react-native';
 import lang from '../../../../config/lang';
 
 import { Container } from '../../../../components/Container';
@@ -88,7 +88,6 @@ class ChooseProject extends Component {
   render() {
     return (
       <Container>
-        <StatusBar barStyle="dark-content" />
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
@@ -111,7 +110,7 @@ class ChooseProject extends Component {
 }
 
 ChooseProject.navigatorStyle = {
-  navBarHidden: true,
+  // navBarHidden: true,
 };
 
 ChooseProject.propTypes = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StatusBar, TouchableOpacity, Text } from 'react-native';
+import { ScrollView, TouchableOpacity, Text } from 'react-native';
 
 import { Container } from '../../../../components/Container';
 import { ImageGallery } from '../../../../components/ImageGallery';
@@ -28,7 +28,6 @@ class ProjectView extends Component {
   render() {
     return (
       <Container>
-        <StatusBar barStyle="light-content" />
         <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
         <ScrollView>
           <ImageGallery imageList={this.props.projectInfo.gallery} />
@@ -52,6 +51,7 @@ class ProjectView extends Component {
 
 ProjectView.navigatorStyle = {
   navBarHidden: true,
+  statusBarHidden: true,
 };
 
 ProjectView.propTypes = {

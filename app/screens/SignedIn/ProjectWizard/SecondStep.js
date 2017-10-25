@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StatusBar, Text, TextInput } from 'react-native';
+import { ScrollView, Text, TextInput } from 'react-native';
 import lang from '../../../config/lang';
 
 import { WizardHeader } from '../../../components/WizardHeader/';
@@ -102,7 +102,6 @@ class SecondStep extends Component {
   render() {
     return (
       <Container>
-        <StatusBar barStyle="default" />
         <ScrollView>
           <WizardHeader
             step="2"
@@ -138,7 +137,7 @@ class SecondStep extends Component {
 }
 
 SecondStep.navigatorStyle = {
-  navBarHidden: true,
+  // navBarHidden: true,
 };
 
 SecondStep.propTypes = {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
 
 import { Container } from '../../../components/Container';
-import { StickyHeader } from '../../../components/StickyHeader';
+import { HeaderButton } from '../../../components/HeaderButton';
 
 class UserProjectView extends Component {
   onBackButtonPress = () => {
@@ -16,9 +16,8 @@ class UserProjectView extends Component {
   render() {
     return (
       <Container>
-        <StatusBar barStyle="dark-content" />
-        <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
         <ScrollView>
+          <HeaderButton onPressAction={this.onBackButtonPress} icon="back" theme="dark" />
           <Text>Sveiki, čia user project view</Text>
           <Text>{this.props.userProjectId}</Text>
           <TouchableOpacity activeOpacity={1} focusedOpacity={1} onPress={this.openUserProjectView}>
@@ -31,7 +30,7 @@ class UserProjectView extends Component {
 }
 
 UserProjectView.navigatorStyle = {
-  navBarHidden: true,
+  // navBarHidden: true,
 };
 
 UserProjectView.propTypes = {

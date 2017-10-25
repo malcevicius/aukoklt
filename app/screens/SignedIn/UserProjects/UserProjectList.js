@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, StatusBar } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { isSignedIn } from '../../../config/auth';
 
 import { Container } from '../../../components/Container';
@@ -63,7 +63,6 @@ class UserProjectList extends Component {
     }
     return (
       <Container>
-        <StatusBar barStyle="dark-content" />
         <ScrollView>
           <Text>Look at my projects!</Text>
           <FacebookLoginButton
@@ -88,7 +87,7 @@ class UserProjectList extends Component {
 }
 
 UserProjectList.navigatorStyle = {
-  navBarHidden: true,
+  // navBarHidden: true,
 };
 
 UserProjectList.propTypes = {
