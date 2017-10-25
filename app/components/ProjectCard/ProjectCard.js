@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Image } from 'react-native';
-
-import { TitleText } from '../TitleText';
-import { TargetNumbers } from '../TargetNumbers';
-import { SemiTransparentLabel } from '../SemiTransparentLabel';
+import { TouchableOpacity, View, Image, Text } from 'react-native';
 
 import style from './style';
 
-class ProjectCard extends Component {
+import { MicroText } from '../Text/MicroText';
+import { SmallText } from '../Text/SmallText';
+import { LargeText } from '../Text/LargeText';
+
+class ProjectCard extends PureComponent {
   onPressAction = () => {
     this.props.navigator.push({
       screen: this.props.navigateTo,
@@ -20,26 +20,22 @@ class ProjectCard extends Component {
     return (
       <TouchableOpacity
         onPress={this.onPressAction}
-        style={style.card}
-        activeOpacity={1}
-        focusedOpacity={1}
+        style={style.projectContainer}
+        activeOpacity={0.8}
+        focusedOpacity={0.8}
       >
-        <View style={style.imageOverlay} />
-        <Image
-          source={{ uri: this.props.projectInfo.gallery[0].url }}
-          style={style.imageBackground}
-        />
+        <Image style={style.thumbnailImage} source={{ uri: this.props.projectInfo.img }} />
         <View style={style.details}>
-          <View style={style.titleView}>
-            <TitleText light medium title={this.props.projectInfo.title} />
-            <SemiTransparentLabel light textValue={this.props.projectInfo.company} />
+          <MicroText companyLabel text={this.props.projectInfo.company} />
+          <LargeText projectTitle text={this.props.projectInfo.title} />
+          <View style={style.projectNumbers}>
+            <SmallText currencyNumber highlighted number={this.props.projectInfo.donated} />
+            <SmallText
+              currencyNumber
+              haveSeparator
+              number={this.props.projectInfo.need_to_donate}
+            />
           </View>
-          <TargetNumbers
-            dark
-            onCard
-            targetAmount={this.props.projectInfo.need_to_donate}
-            donatedAmount={this.props.projectInfo.donated}
-          />
         </View>
       </TouchableOpacity>
     );

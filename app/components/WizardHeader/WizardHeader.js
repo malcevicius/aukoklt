@@ -9,8 +9,15 @@ import { Title2 } from '../Text/Title2';
 import { RegularText } from '../Text/RegularText';
 import { WizardSteps } from '../WizardSteps';
 
-const WizardHeader = ({ step, headerButtonIcon, onPressAction, titleText, titleDescription }) => (
-  <View style={style.headerContainer}>
+const WizardHeader = ({
+  step,
+  headerButtonIcon,
+  onPressAction,
+  titleText,
+  titleDescription,
+  marginHorizontal,
+}) => (
+  <View style={[style.headerContainer, marginHorizontal && style.marginHorizontal]}>
     {(headerButtonIcon === 'none' && <View />) || (
       <HeaderButton onPressAction={onPressAction} icon={headerButtonIcon} theme="dark" />
     )}
@@ -26,6 +33,7 @@ WizardHeader.propTypes = {
   onPressAction: PropTypes.func,
   titleText: PropTypes.string.isRequired,
   titleDescription: PropTypes.string,
+  marginHorizontal: PropTypes.bool,
 };
 
 export default WizardHeader;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, ActivityIndicator, View } from 'react-native';
 import lang from '../../../../config/lang';
+import globalstyle from '../../../../config/globalstyle';
 
 import { Container } from '../../../../components/Container';
 import { ProjectCard } from '../../../../components/ProjectCard';
@@ -68,6 +69,7 @@ class ChooseProject extends Component {
       onPressAction={this.onDismissModalButtonPress}
       titleText={lang.wizard.step1.title}
       titleDescription={lang.wizard.step1.description}
+      marginHorizontal
     />
   );
 
@@ -98,6 +100,8 @@ class ChooseProject extends Component {
             />
           )}
           keyExtractor={item => item.project_id}
+          contentContainerStyle={globalstyle.projectsList}
+          numColumns={2}
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
           onEndReached={this.handleLoadMore}

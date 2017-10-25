@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import { PixelRatio } from 'react-native';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { isSignedIn } from '../config/auth';
 
 import Welcome from '../screens/SignedOut/Welcome';
 import UserProjectList from '../screens/SignedIn/UserProjects/UserProjectList';
+
+const pixelRatio = PixelRatio.get();
+
+const scaleFontSize = (size) => {
+  if (pixelRatio === 2) {
+    return size * 1.15;
+  }
+  if (pixelRatio === 3) {
+    return size * 1.35;
+  }
+  return size * pixelRatio;
+};
 
 EStyleSheet.build({
   $backgroundColor: '#FFFFFF',
@@ -35,6 +48,14 @@ EStyleSheet.build({
   $title3: 24,
   $title2: 28,
   $title1: 56,
+  // $microText: scaleFontSize(10),
+  // $smallText: scaleFontSize(12),
+  // $regularText: scaleFontSize(14),
+  // $largeText: scaleFontSize(16),
+  // $title4: scaleFontSize(20),
+  // $title3: scaleFontSize(24),
+  // $title2: scaleFontSize(28),
+  // $title1: scaleFontSize(56),
 });
 
 class AukokLt extends Component {

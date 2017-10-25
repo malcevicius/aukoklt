@@ -1,8 +1,8 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const style = EStyleSheet.create({
-  headerContainer: {
-    paddingHorizontal: '$base',
+  marginHorizontal: {
+    marginHorizontal: 6,
   },
 });
 
