@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, TouchableOpacity, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { Container } from '../../../../components/Container';
 import { ImageGallery } from '../../../../components/ImageGallery';
 import { StickyHeader } from '../../../../components/StickyHeader';
-import { TitleText } from '../../../../components/TitleText';
-import { SemiTransparentLabel } from '../../../../components/SemiTransparentLabel';
+import { Title2 } from '../../../../components/Text/Title2';
+import { RegularText } from '../../../../components/Text/RegularText';
 import { TargetNumbers } from '../../../../components/TargetNumbers';
 import { Button } from '../../../../components/Button';
 
@@ -31,13 +31,14 @@ class ProjectView extends Component {
         <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
         <ScrollView>
           <ImageGallery imageList={this.props.projectInfo.gallery} />
-          <TitleText dark medium title={this.props.projectInfo.title} />
-          <SemiTransparentLabel dark textValue={this.props.projectInfo.company} />
+          <Title2 text={this.props.projectInfo.title} />
+          <RegularText text={this.props.projectInfo.company} />
           <TargetNumbers
             red
             targetAmount={this.props.projectInfo.need_to_donate}
             donatedAmount={this.props.projectInfo.donated}
           />
+          <RegularText stripHTML text={this.props.projectInfo.description} />
         </ScrollView>
         <Button
           textValue="Rinkti lėšas šiam projektui"

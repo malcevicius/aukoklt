@@ -13,10 +13,7 @@ const style = EStyleSheet.create({
   },
   fixedBottom: {
     alignItems: 'stretch',
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    left: 0,
+    justifyContent: 'flex-end',
   },
   noBorderRadiusWhenFixed: {
     borderRadius: 0,
