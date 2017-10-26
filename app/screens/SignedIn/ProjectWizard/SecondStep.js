@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Text, TextInput } from 'react-native';
+import { ScrollView } from 'react-native';
 import lang from '../../../config/lang';
+import globalstyle from '../../../config/globalstyle';
 
 import { WizardHeader } from '../../../components/WizardHeader/';
 import { Container } from '../../../components/Container';
 import { Button } from '../../../components/Button';
+import { Input } from '../../../components/Input';
 
 class SecondStep extends Component {
   constructor(props) {
@@ -102,7 +104,7 @@ class SecondStep extends Component {
   render() {
     return (
       <Container>
-        <ScrollView>
+        <ScrollView style={globalstyle.baseHorizontalMargins}>
           <WizardHeader
             step="2"
             headerButtonIcon="back"
@@ -110,27 +112,22 @@ class SecondStep extends Component {
             titleText={lang.wizard.step2.title}
             titleDescription={lang.wizard.step2.description}
           />
-          <Text>Sveiki - Fundraise Setup</Text>
-          <Text>Įrašykite pavadinima</Text>
-          <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          <Input
+            textInput
+            label={lang.wizard.step2.nameFieldLabel}
             onChangeText={projectName => this.setState({ projectName })}
             value={this.state.projectName}
-            defaultValue={this.state.placeholder}
-            keyboardType={'default'}
-            autoCorrect={false}
+            placeholder={lang.wizard.step2.nameFieldPlaceholder}
           />
-
-          <Text>Įrašykite sumą</Text>
-          <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            keyboardType={'numeric'}
+          <Input
+            currencyInput
+            label={lang.wizard.step2.goalFieldLabel}
             onChangeText={goalNumber => this.onGoalNumberInputChange(goalNumber)}
             value={this.state.goalNumber}
-            autoCorrect={false}
+            placeholder={lang.wizard.step2.goalFieldPlaceholder}
           />
         </ScrollView>
-        <Button textValue="Patvirtinti" onPressAction={this.createFundraiseProject} fixedBottom />
+        <Button textValue="Toliau" onPressAction={this.createFundraiseProject} fixedBottom />
       </Container>
     );
   }

@@ -8,6 +8,10 @@ const style = EStyleSheet.create({
     marginTop: '$tiny',
     lineHeight: 20,
   },
+  inputLabel: {
+    color: '$lightTextColor',
+    marginBottom: '$tiny',
+  },
   p: {
     fontSize: '$regularText',
     color: '$normalTextColor',

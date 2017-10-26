@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Image, Text } from 'react-native';
+import { TouchableOpacity, View, Image } from 'react-native';
 
 import style from './style';
 
 import { MicroText } from '../Text/MicroText';
 import { SmallText } from '../Text/SmallText';
-import { LargeText } from '../Text/LargeText';
+import { MediumText } from '../Text/MediumText';
 
 class ProjectCard extends PureComponent {
   onPressAction = () => {
@@ -27,7 +27,7 @@ class ProjectCard extends PureComponent {
         <Image style={style.thumbnailImage} source={{ uri: this.props.projectInfo.img }} />
         <View style={style.details}>
           <MicroText companyLabel text={this.props.projectInfo.company} />
-          <LargeText projectTitle text={this.props.projectInfo.title} />
+          <MediumText projectTitle text={this.props.projectInfo.title} />
           <View style={style.projectNumbers}>
             <SmallText currencyNumber highlighted number={this.props.projectInfo.donated} />
             <SmallText

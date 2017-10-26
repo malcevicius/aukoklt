@@ -17,6 +17,13 @@ class RegularText extends PureComponent {
         />
       );
     }
+    if (this.props.inputLabel === true) {
+      return (
+        <Text style={[style.RegularText, style.inputLabel]} numberOfLines={1}>
+          {this.props.text}
+        </Text>
+      );
+    }
     return <Text style={style.RegularText}>{this.props.text}</Text>;
   };
   render() {
@@ -27,6 +34,7 @@ class RegularText extends PureComponent {
 RegularText.propTypes = {
   text: PropTypes.string.isRequired,
   stripHTML: PropTypes.bool,
+  inputLabel: PropTypes.bool,
 };
 
 export default RegularText;

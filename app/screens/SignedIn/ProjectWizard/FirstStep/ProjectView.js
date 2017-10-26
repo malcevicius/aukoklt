@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import globalstyle from '../../../../config/globalstyle';
 
 import { Container } from '../../../../components/Container';
 import { ImageGallery } from '../../../../components/ImageGallery';
@@ -31,14 +32,16 @@ class ProjectView extends Component {
         <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
         <ScrollView>
           <ImageGallery imageList={this.props.projectInfo.gallery} />
-          <Title2 text={this.props.projectInfo.title} />
-          <RegularText text={this.props.projectInfo.company} />
-          <TargetNumbers
-            red
-            targetAmount={this.props.projectInfo.need_to_donate}
-            donatedAmount={this.props.projectInfo.donated}
-          />
-          <RegularText stripHTML text={this.props.projectInfo.description} />
+          <View style={globalstyle.baseHorizontalMargins}>
+            <Title2 text={this.props.projectInfo.title} />
+            <RegularText text={this.props.projectInfo.company} />
+            <TargetNumbers
+              red
+              targetAmount={this.props.projectInfo.need_to_donate}
+              donatedAmount={this.props.projectInfo.donated}
+            />
+            <RegularText stripHTML text={this.props.projectInfo.description} />
+          </View>
         </ScrollView>
         <Button
           textValue="Rinkti lėšas šiam projektui"

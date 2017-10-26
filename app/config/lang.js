@@ -10,6 +10,8 @@ const lang = {
       description: 'Nurodyk ambasadoriavimo projekto pavadinimą ir siekiama surinkti pinigų sumą!',
       nameFieldLabel: 'Pavadinimas',
       goalFieldLabel: 'Projekto tikslas',
+      nameFieldPlaceholder: 'Įveskite pavadinimą...',
+      goalFieldPlaceholder: 'Įveskite sumą...',
     },
     step3: {
       title: 'Tu tai padarei!',
