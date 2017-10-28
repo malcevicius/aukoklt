@@ -13,6 +13,30 @@ const style = EStyleSheet.create({
     color: '$lightRed',
     fontWeight: '600',
   },
+  uppercaseTitle: {
+    color: '$lightTextColor',
+    fontWeight: '500',
+  },
+
+  // Margin options
+  marginBottomBase: {
+    marginBottom: '$base',
+  },
+  marginTopBase: {
+    marginTop: '$base',
+  },
+  marginBottomSmall: {
+    marginBottom: '$small',
+  },
+  marginTopSmall: {
+    marginTop: '$small',
+  },
+  marginBottomTiny: {
+    marginBottom: '$tiny',
+  },
+  marginTopTiny: {
+    marginTop: '$tiny',
+  },
 });
 
 export default style;

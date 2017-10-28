@@ -1,16 +1,21 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const style = EStyleSheet.create({
-  RegularText: {
+  regularText: {
     fontSize: '$regularText',
     color: '$normalTextColor',
     fontWeight: '400',
-    marginTop: '$tiny',
     lineHeight: 20,
   },
   inputLabel: {
     color: '$lightTextColor',
-    marginBottom: '$tiny',
+  },
+  companyLabel: {
+    color: '$lightTextColor',
+  },
+  uppercaseTitle: {
+    color: '$superLightTextColor',
+    fontWeight: '500',
   },
   p: {
     fontSize: '$regularText',
@@ -22,6 +27,31 @@ const style = EStyleSheet.create({
   },
   b: {
     fontWeight: '700',
+  },
+
+  // Color options
+  lightRed: {
+    color: '$lightRed',
+  },
+
+  // Margin options
+  marginBottomBase: {
+    marginBottom: '$base',
+  },
+  marginTopBase: {
+    marginTop: '$base',
+  },
+  marginBottomSmall: {
+    marginBottom: '$small',
+  },
+  marginTopSmall: {
+    marginTop: '$small',
+  },
+  marginBottomTiny: {
+    marginBottom: '$tiny',
+  },
+  marginTopTiny: {
+    marginTop: '$tiny',
   },
 });
 

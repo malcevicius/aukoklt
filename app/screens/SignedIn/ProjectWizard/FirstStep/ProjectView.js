@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View } from 'react-native';
+import lang from '../../../../config/lang';
 import globalstyle from '../../../../config/globalstyle';
 
 import { Container } from '../../../../components/Container';
 import { ImageGallery } from '../../../../components/ImageGallery';
 import { StickyHeader } from '../../../../components/StickyHeader';
 import { Title2 } from '../../../../components/Text/Title2';
+import { SmallText } from '../../../../components/Text/SmallText';
 import { RegularText } from '../../../../components/Text/RegularText';
+import { TextWithTitle } from '../../../../components/TextWithTitle';
 import { TargetNumbers } from '../../../../components/TargetNumbers';
 import { Button } from '../../../../components/Button';
 
@@ -33,18 +36,27 @@ class ProjectView extends Component {
         <ScrollView>
           <ImageGallery imageList={this.props.projectInfo.gallery} />
           <View style={globalstyle.baseHorizontalMargins}>
-            <Title2 text={this.props.projectInfo.title} />
-            <RegularText text={this.props.projectInfo.company} />
+            <Title2 marginTopBase marginBottomTiny text={this.props.projectInfo.title} />
+            <RegularText companyLabel marginBottomBase text={this.props.projectInfo.company} />
             <TargetNumbers
               red
               targetAmount={this.props.projectInfo.need_to_donate}
               donatedAmount={this.props.projectInfo.donated}
             />
-            <RegularText stripHTML text={this.props.projectInfo.description} />
+            <TextWithTitle
+              title={lang.wizard.step1.project.purposeTitle}
+              text={this.props.projectInfo.purpose}
+            />
+            <TextWithTitle
+              collapsible
+              stripHTML
+              title={lang.wizard.step1.project.descriptionTitle}
+              text={this.props.projectInfo.description}
+            />
           </View>
         </ScrollView>
         <Button
-          textValue="Rinkti lėšas šiam projektui"
+          textValue={lang.wizard.step1.project.ctaButtonText}
           onPressAction={this.openSecondStep}
           fixedBottom
         />

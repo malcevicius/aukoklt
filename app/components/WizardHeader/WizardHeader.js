@@ -21,7 +21,7 @@ const WizardHeader = ({
     {(headerButtonIcon === 'none' && <View />) || (
       <HeaderButton onPressAction={onPressAction} icon={headerButtonIcon} theme="dark" />
     )}
-    <Title2 text={titleText} />
+    <Title2 marginTopBase marginBottomTiny text={titleText} />
     <RegularText text={titleDescription} />
     <WizardSteps step={step} />
   </View>

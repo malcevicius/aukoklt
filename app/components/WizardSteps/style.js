@@ -12,9 +12,9 @@ const style = EStyleSheet.create({
   },
   // Normal state
   normalCircle: {
-    width: '$base',
-    height: '$base',
-    borderRadius: '$base',
+    width: '$base + $tiny',
+    height: '$base + $tiny',
+    borderRadius: '$medium',
     borderWidth: 1,
     borderColor: '$lineColor',
     backgroundColor: 'transparent',
@@ -26,11 +26,12 @@ const style = EStyleSheet.create({
     backgroundColor: 'transparent',
     fontSize: '$smallText',
     color: '$superLightTextColor',
+    fontWeight: '500',
   },
   line: {
     borderBottomWidth: 1,
     borderColor: '$lineColor',
-    marginVertical: 12.5,
+    marginVertical: 16.5,
     marginHorizontal: 6,
     height: 1,
     flex: 1,

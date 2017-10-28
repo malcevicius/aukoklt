@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, Image } from 'react-native';
 import Images from '../../config/images';
@@ -51,42 +51,6 @@ const WizardSteps = ({ step }) => (
     )}
   </View>
 );
-
-export class WizardSteps2 extends PureComponent {
-  getStep = ({ number, position, totalPositions }) => {
-    if (position < totalPositions) {
-      return <Step finished number={number} />;
-    }
-
-    if (position === totalPositions) {
-      return <Step active number={number} />;
-    }
-
-    return null;
-  };
-
-  getLine = ({ highlighted }) => <Line highlighted={highlighted} />;
-
-  render() {
-    // numbers
-    const { step, totalSteps } = this.props;
-
-    const a = [];
-
-    for (let i = 1; i <= totalSteps; i += 1) {
-      a.push(
-        this.getStep({
-          number: i,
-          position: step,
-          totalPositions: totalSteps,
-        }),
-      );
-      if (i !== totalSteps) {
-        a.push(this.getLine({ highlighted: i < step }));
-      }
-    }
-  }
-}
 
 Step.propTypes = {
   active: PropTypes.bool,
