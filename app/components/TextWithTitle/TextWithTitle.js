@@ -23,7 +23,7 @@ class TextWithTitle extends PureComponent {
     if (this.props.collapsible) {
       return (
         <View style={[style.textWithTitle, style.collapsibleContainer]}>
-          <RegularText uppercaseTitle marginBottomSmall text={this.props.title} />
+          <RegularText sectionTitle marginBottomSmall text={this.props.title} />
           <Collapsible collapsed={this.state.isCollapsed} collapsedHeight={110} duration={300}>
             <RegularText collapsed stripHTML={this.props.stripHTML} text={this.props.text} />
           </Collapsible>
@@ -37,7 +37,7 @@ class TextWithTitle extends PureComponent {
     }
     return (
       <View style={style.textWithTitle}>
-        <RegularText uppercaseTitle marginBottomSmall text={this.props.title} />
+        <RegularText sectionTitle marginBottomSmall text={this.props.title} />
         <RegularText stripHTML={this.props.stripHTML} text={this.props.text} />
       </View>
     );

@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Image } from 'react-native';
+import { TouchableOpacity, View, Image, Platform } from 'react-native';
 
+import images from '../../config/images';
 import style from './style';
 
 import { MicroText } from '../Text/MicroText';
@@ -10,9 +11,24 @@ import { MediumText } from '../Text/MediumText';
 
 class ProjectCard extends PureComponent {
   onPressAction = () => {
+    let leftButtons = [];
+
+    if (Platform.OS === 'ios') {
+      leftButtons = [
+        {
+          id: 'back',
+          title: 'Back',
+          icon: images.navBar.back.dark,
+          disableIconTint: true,
+        },
+      ];
+    }
     this.props.navigator.push({
       screen: this.props.navigateTo,
       passProps: { projectInfo: this.props.projectInfo },
+      navigatorButtons: {
+        leftButtons,
+      },
     });
   };
 
@@ -41,10 +57,6 @@ class ProjectCard extends PureComponent {
     );
   }
 }
-
-ProjectCard.navigatorStyle = {
-  navBarHidden: true,
-};
 
 ProjectCard.propTypes = {
   projectInfo: PropTypes.object.isRequired,

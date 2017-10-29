@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ActivityIndicator, View } from 'react-native';
+import { FlatList, ActivityIndicator, View, Platform } from 'react-native';
 import lang from '../../../../config/lang';
 import globalstyle from '../../../../config/globalstyle';
 
@@ -19,17 +19,21 @@ class ChooseProject extends Component {
       error: null,
       refreshing: false,
     };
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   componentDidMount() {
     this.makeRemoteRequest();
   }
 
-  onDismissModalButtonPress = () => {
-    this.props.navigator.dismissModal({
-      animationType: 'slide-down',
-    });
-  };
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'close') {
+        this.props.navigator.dismissModal();
+      }
+    }
+  }
 
   makeRemoteRequest = () => {
     const { offset } = this.state;
@@ -65,7 +69,6 @@ class ChooseProject extends Component {
   renderHeader = () => (
     <WizardHeader
       step="1"
-      headerButtonIcon="close"
       onPressAction={this.onDismissModalButtonPress}
       titleText={lang.wizard.step1.title}
       titleDescription={lang.wizard.step1.description}
@@ -113,8 +116,20 @@ class ChooseProject extends Component {
   }
 }
 
+let navigatorStyle = {};
+
+if (Platform.OS === 'ios') {
+  navigatorStyle = {};
+} else {
+  navigatorStyle = {
+    navBarHideOnScroll: true,
+    drawUnderNavBar: true,
+  };
+}
+
 ChooseProject.navigatorStyle = {
-  // navBarHidden: true,
+  ...navigatorStyle,
+  navBarBackgroundColor: '#FFF',
 };
 
 ChooseProject.propTypes = {

@@ -79,6 +79,7 @@ class RegularText extends PureComponent {
       <Text
         style={[
           style.regularText,
+          this.props.sectionTitle && style.sectionTitle,
           this.props.lightRed && style.lightRed,
           this.props.marginBottomBase && style.marginBottomBase,
           this.props.marginTopBase && style.marginTopBase,
@@ -103,6 +104,7 @@ RegularText.propTypes = {
   inputLabel: PropTypes.bool,
   companyLabel: PropTypes.bool,
   uppercaseTitle: PropTypes.bool,
+  sectionTitle: PropTypes.bool,
 
   // Colors
   lightRed: PropTypes.bool,

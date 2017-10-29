@@ -7,6 +7,9 @@ const style = EStyleSheet.create({
     fontWeight: '400',
     lineHeight: 20,
   },
+  sectionTitle: {
+    fontWeight: '500',
+  },
   inputLabel: {
     color: '$lightTextColor',
   },

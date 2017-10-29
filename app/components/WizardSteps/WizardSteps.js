@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, Image } from 'react-native';
-import Images from '../../config/images';
+import images from '../../config/images';
 
 import style from './style';
 
@@ -10,7 +10,7 @@ const Step = ({ active, finished, number }) => (
     style={[style.normalCircle, active && style.activeCircle, finished && style.finishedCircle]}
   >
     {(active && <Text style={style.activeCircleText}>{number}</Text>) ||
-      ((finished && <Image source={Images.checkmark.small.red} style={style.checkmarkIcon} />) || (
+      ((finished && <Image source={images.checkmark.small.red} style={style.checkmarkIcon} />) || (
         <Text style={style.normalCircleText}>{number}</Text>
       ))}
   </View>

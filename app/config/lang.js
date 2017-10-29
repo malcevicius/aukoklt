@@ -19,6 +19,7 @@ const lang = {
       goalFieldLabel: 'Projekto tikslas',
       nameFieldPlaceholder: 'Įveskite pavadinimą...',
       goalFieldPlaceholder: 'Įveskite sumą...',
+      ctaButtonText: 'Patvirtinti',
     },
     step3: {
       title: 'Tu tai padarei!',

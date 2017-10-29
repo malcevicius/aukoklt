@@ -17,6 +17,7 @@ import ThirdStep from '../screens/SignedIn/ProjectWizard/ThirdStep';
 
 // Registering all screens
 export function registerScreens() {
+  // Screens
   Navigation.registerComponent('aukoklt.Main', () => Main);
   Navigation.registerComponent('aukoklt.Welcome', () => Welcome);
   Navigation.registerComponent('aukoklt.UserProjectList', () => UserProjectList);

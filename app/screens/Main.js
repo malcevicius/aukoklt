@@ -89,7 +89,8 @@ class AukokLt extends Component {
 }
 
 AukokLt.navigatorStyle = {
-  navBarHidden: true,
+  navBarBackgroundColor: '#FFF',
+  navBarNoBorder: true,
 };
 
 AukokLt.propTypes = {
