@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { PixelRatio } from 'react-native';
+import { PixelRatio, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { isSignedIn } from '../config/auth';
 
 import Welcome from '../screens/SignedOut/Welcome';
-import UserProjectList from '../screens/SignedIn/UserProjects/UserProjectList';
+import { Loading } from '../components/Loading';
 
 const pixelRatio = PixelRatio.get();
 
@@ -63,28 +62,26 @@ class AukokLt extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      signedIn: false,
-      checkedSignIn: false,
-    };
+    this.state = { token: null };
   }
 
-  componentWillMount() {
-    // TODO: https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
-    isSignedIn()
-      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
-      .catch(err => alert(err));
+  async componentWillMount() {
+    const token = await AsyncStorage.getItem('fb_token');
+    if (token) {
+      this.props.navigator.resetTo({
+        screen: 'aukoklt.UserProjectList',
+        animated: false,
+      });
+    } else {
+      this.setState({ token: false });
+    }
   }
 
   render() {
-    const { checkedSignIn, signedIn } = this.state;
-
-    if (!checkedSignIn) {
-      return null;
-    } else if (!signedIn) {
-      return <Welcome navigator={this.props.navigator} />;
+    if (this.state.token === null) {
+      return <Loading fullScreen />;
     }
-    return <UserProjectList navigator={this.props.navigator} />;
+    return <Welcome navigator={this.props.navigator} />;
   }
 }
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, Platform } from 'react-native';
+import { Text, ScrollView, Platform, AsyncStorage } from 'react-native';
 
 import images from '../../../config/images';
 
 import { Container } from '../../../components/Container';
-import { FacebookLoginButton } from '../../../components/FacebookLoginButton';
 import { Button } from '../../../components/Button';
 
 class UserProjectList extends Component {
@@ -52,20 +51,24 @@ class UserProjectList extends Component {
     });
   };
 
+  onLogoutAction = () => {
+    AsyncStorage.removeItem('fb_token');
+    this.props.navigator.resetTo({
+      screen: 'aukoklt.Welcome',
+      animated: false,
+    });
+  };
+
   render() {
     return (
       <Container>
         <ScrollView>
           <Text>Look at my projects!</Text>
-          <FacebookLoginButton
-            onLoginFinishedAction={this.onLoginFinishedAction}
-            onLogoutFinishedAction={this.onLogoutFinishedAction}
-          />
+          <Button textValue="Atsijungti" onPressAction={this.onLogoutAction} smallMarginTop />
           <Button
             textValue="Peržiūrėti User project"
             onPressAction={this.openUserProjectView}
             smallMarginTop
-            full
           />
           <Button
             textValue="Kurti naują projektą"
