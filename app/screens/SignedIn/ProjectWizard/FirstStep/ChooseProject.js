@@ -16,15 +16,13 @@ class ChooseProject extends Component {
       loading: false,
       data: [],
       offset: 0,
-      error: null,
-      refreshing: false,
     };
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  componentDidMount() {
-    this.makeRemoteRequest();
+  async componentDidMount() {
+    await this.makeRemoteRequest();
   }
 
   onNavigatorEvent(event) {
@@ -35,24 +33,21 @@ class ChooseProject extends Component {
     }
   }
 
-  makeRemoteRequest = () => {
+  makeRemoteRequest = async () => {
     const { offset } = this.state;
     const url = `https://www.aukok.lt/api/projects?limit=10&offset=${offset}`;
     this.setState({ loading: true });
 
-    fetch(url)
-      .then(response => response.json())
-      .then((response) => {
-        this.setState({
-          data: offset === 0 ? response.projects : [...this.state.data, ...response.projects],
-          error: response.error || null,
-          loading: false,
-          refreshing: false,
-        });
-      })
-      .catch((error) => {
-        this.setState({ error, loading: false });
+    try {
+      const res = await fetch(url);
+      const response = await res.json();
+      this.setState({
+        data: offset === 0 ? response.projects : [...this.state.data, ...response.projects],
+        loading: false,
       });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleLoadMore = () => {

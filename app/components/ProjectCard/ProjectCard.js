@@ -40,7 +40,10 @@ class ProjectCard extends PureComponent {
         activeOpacity={0.8}
         focusedOpacity={0.8}
       >
-        <Image style={style.thumbnailImage} source={{ uri: this.props.projectInfo.img }} />
+        <Image
+          style={style.thumbnailImage}
+          source={{ uri: this.props.projectInfo.img, cache: 'force-cache' }}
+        />
         <View style={style.details}>
           <MicroText companyLabel text={this.props.projectInfo.company} />
           <MediumText projectTitle text={this.props.projectInfo.title} />
