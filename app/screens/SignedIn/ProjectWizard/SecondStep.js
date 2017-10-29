@@ -17,7 +17,7 @@ class SecondStep extends Component {
       error: null,
       projectName: null,
       goalNumber: null,
-      userProjectId: '',
+      userProjectInfo: [],
     };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -62,12 +62,13 @@ class SecondStep extends Component {
   checkResult = () => {
     if (!this.state.error == null) {
       console.log(`Error found: ${this.state.error}`);
-    } else if (this.state.userProjectId === '00000000-0000-0000-0000-000000000000') {
+    } else if (this.state.userProjectInfo === '00000000-0000-0000-0000-000000000000') {
       console.log('You have already created fundraise project for this root project');
-    } else if (this.state.userProjectId === '') {
+    } else if (this.state.userProjectInfo === '') {
       console.log('Can not connect to server: Something is wrong with a API server');
     } else {
-      this.showThirdStep();
+      console.log(this.state.userProjectInfo);
+      // this.showThirdStep();
     }
   };
 
@@ -91,7 +92,7 @@ class SecondStep extends Component {
       .then(response => response.json())
       .then((response) => {
         this.setState({
-          userProjectId: response,
+          userProjectInfo: response,
           error: response.error || null,
           loading: false,
         });
