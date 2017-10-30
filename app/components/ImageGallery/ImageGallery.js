@@ -28,16 +28,11 @@ Slide.propTypes = {
 };
 
 class ImageGallery extends Component {
-  static propTypes = {
-    imageList: PropTypes.array,
-  };
   constructor(props) {
     super(props);
     this.state = {
       loadQueue: [0],
     };
-    console.log(this.props.imageList);
-    console.log(this.state.imgList);
     this.loadHandle = this.loadHandle.bind(this);
   }
   loadHandle(i) {
@@ -71,5 +66,9 @@ class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propTypes = {
+  imageList: PropTypes.array,
+};
 
 export default ImageGallery;

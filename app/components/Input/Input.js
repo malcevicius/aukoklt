@@ -8,7 +8,7 @@ import { LargeText } from '../Text/LargeText';
 
 class Input extends PureComponent {
   renderComponent = () => {
-    if (this.props.textInput === true) {
+    if (this.props.textInput) {
       return (
         <View style={[style.inputContainer, style.textInput]}>
           <RegularText inputLabel text={this.props.label} />
@@ -23,7 +23,7 @@ class Input extends PureComponent {
         </View>
       );
     }
-    if (this.props.currencyInput === true) {
+    if (this.props.currencyInput) {
       return (
         <View style={[style.inputContainer, style.currencyInput]}>
           <RegularText inputLabel text={this.props.label} />

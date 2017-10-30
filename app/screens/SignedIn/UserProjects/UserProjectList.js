@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, ScrollView, Platform, AsyncStorage } from 'react-native';
 
 import images from '../../../config/images';
+import lang from '../../../config/lang';
 
 import { Container } from '../../../components/Container';
 import { Button } from '../../../components/Button';
@@ -64,14 +65,14 @@ class UserProjectList extends Component {
       <Container>
         <ScrollView>
           <Text>Look at my projects!</Text>
-          <Button textValue="Atsijungti" onPressAction={this.onLogoutAction} smallMarginTop />
+          <Button textValue={lang.user.logout} onPressAction={this.onLogoutAction} smallMarginTop />
           <Button
-            textValue="Peržiūrėti User project"
+            textValue="Peržiūrėti user project"
             onPressAction={this.openUserProjectView}
             smallMarginTop
           />
           <Button
-            textValue="Kurti naują projektą"
+            textValue={lang.user.createProject}
             onPressAction={this.openProjectWizardModal}
             smallMarginTop
           />

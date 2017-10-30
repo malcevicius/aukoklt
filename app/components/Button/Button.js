@@ -5,17 +5,16 @@ import { Text, View, TouchableHighlight } from 'react-native';
 import style from './style';
 
 const Button = ({
-  // Required props:
-  textValue, // Required: Button text
-  onPressAction, // Required: Function with actions what when OnPress
-  // Optional props:
-  secondary, // If TRUE: button style will be changed to outline
-  smallMarginTop, // If TRUE: 16px marginTop will be added
-  smallMarginBottom, // If TRUE: 16px marginBottom will be added
-  baseMarginTop, // If TRUE: 24px marginTop will be added
-  baseMarginBottom, // If TRUE: 24px marginBottom will be added
-  full, // If TRUE: button will be rendered with 100% width
-  fixedBottom, // If True: button will be fixed to the bottom
+  textValue,
+  onPressAction,
+  secondary,
+  facebookButton,
+  smallMarginTop,
+  smallMarginBottom,
+  baseMarginTop,
+  baseMarginBottom,
+  full,
+  fixedBottom,
 }) => (
   <View
     style={[style.buttonContainer, full && style.fullWidth, fixedBottom && style.fixedBottom]}
@@ -25,6 +24,7 @@ const Button = ({
       style={[
         style.buttonPrimary,
         secondary && style.buttonSecondary,
+        facebookButton && style.facebookButton,
         fixedBottom && style.noBorderRadiusWhenFixed,
         smallMarginTop && style.smallMarginTop,
         smallMarginBottom && style.smallMarginBottom,
@@ -44,6 +44,7 @@ Button.propTypes = {
   textValue: PropTypes.string.isRequired,
   onPressAction: PropTypes.func.isRequired,
   secondary: PropTypes.bool,
+  facebookButton: PropTypes.bool,
   smallMarginTop: PropTypes.bool,
   smallMarginBottom: PropTypes.bool,
   baseMarginTop: PropTypes.bool,

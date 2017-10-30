@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+import lang from '../../config/lang';
 import { Container } from '../../components/Container';
 import { Button } from '../../components/Button';
+import { IntroSlider } from '../../components/IntroSlider';
 
 class Welcome extends Component {
   componentWillReceiveProps(nextProps) {
@@ -24,12 +25,13 @@ class Welcome extends Component {
   render() {
     return (
       <Container>
-        <Text>Labas, Welcome View</Text>
+        <IntroSlider />
         <Button
-          textValue="Prisijungti su Facebook"
+          textValue={lang.welcome.facebookButtonText}
           onPressAction={this.props.facebookLogin}
-          smallMarginTop
+          facebookButton
           full
+          fixedBottom
         />
       </Container>
     );
@@ -37,7 +39,8 @@ class Welcome extends Component {
 }
 
 Welcome.navigatorStyle = {
-  navBarHidden: true,
+  navBarBackgroundColor: '#FFFFFF',
+  navBarNoBorder: true,
 };
 
 Welcome.propTypes = {

@@ -46,6 +46,11 @@ const style = EStyleSheet.create({
     backgroundColor: '$lightRed',
   },
 
+  // Facebook button
+  facebookButton: {
+    backgroundColor: '#3B5998',
+  },
+
   // Additional spacing
   smallMarginTop: {
     marginTop: '$small',
