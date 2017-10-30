@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ActivityIndicator, View } from 'react-native';
+import { FlatList, ActivityIndicator, View, Platform } from 'react-native';
 import lang from '../../../../config/lang';
 import globalstyle from '../../../../config/globalstyle';
 
@@ -16,39 +16,42 @@ class ChooseProject extends Component {
       loading: false,
       data: [],
       offset: 0,
-      error: null,
-      refreshing: false,
     };
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  componentDidMount() {
-    this.makeRemoteRequest();
+  async componentDidMount() {
+    await this.makeRemoteRequest();
   }
 
-  onDismissModalButtonPress = () => {
-    this.props.navigator.dismissModal({
-      animationType: 'slide-down',
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'close') {
+        this.props.navigator.dismissModal();
+      }
+    }
+  }
+
+  useResponseToUpdateState(response) {
+    this.setState({
+      data:
+        this.state.offset === 0 ? response.projects : [...this.state.data, ...response.projects],
+      loading: false,
     });
-  };
+  }
 
-  makeRemoteRequest = () => {
-    const { offset } = this.state;
-    const url = `https://www.aukok.lt/api/projects?limit=10&offset=${offset}`;
+  makeRemoteRequest = async () => {
+    const url = `https://www.aukok.lt/api/projects?limit=10&offset=${this.state.offset}`;
     this.setState({ loading: true });
 
-    fetch(url)
-      .then(response => response.json())
-      .then((response) => {
-        this.setState({
-          data: offset === 0 ? response.projects : [...this.state.data, ...response.projects],
-          error: response.error || null,
-          loading: false,
-          refreshing: false,
-        });
-      })
-      .catch((error) => {
-        this.setState({ error, loading: false });
-      });
+    try {
+      const res = await fetch(url);
+      const response = await res.json();
+      this.useResponseToUpdateState(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleLoadMore = () => {
@@ -65,7 +68,6 @@ class ChooseProject extends Component {
   renderHeader = () => (
     <WizardHeader
       step="1"
-      headerButtonIcon="close"
       onPressAction={this.onDismissModalButtonPress}
       titleText={lang.wizard.step1.title}
       titleDescription={lang.wizard.step1.description}
@@ -113,8 +115,20 @@ class ChooseProject extends Component {
   }
 }
 
+let navigatorStyle = {};
+
+if (Platform.OS === 'ios') {
+  navigatorStyle = {};
+} else {
+  navigatorStyle = {
+    navBarHideOnScroll: true,
+    drawUnderNavBar: true,
+  };
+}
+
 ChooseProject.navigatorStyle = {
-  // navBarHidden: true,
+  ...navigatorStyle,
+  navBarBackgroundColor: '#FFF',
 };
 
 ChooseProject.propTypes = {

@@ -13,6 +13,7 @@ const style = EStyleSheet.create({
     height: 100,
     borderRadius: 3,
     resizeMode: 'cover',
+    backgroundColor: '$darkerBackgroundColor',
   },
   projectNumbers: {
     flexDirection: 'row',

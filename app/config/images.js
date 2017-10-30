@@ -1,19 +1,15 @@
-const Images = {
+const images = {
   // Icons sizes:
   // small  =  16px
   // base   =  24px
   // large  =  32px
 
-  back: {
-    base: {
-      light: require('../images/back_icon_light_24.png'),
-      dark: require('../images/back_icon_dark_24.png'),
+  navBar: {
+    close: {
+      dark: require('../images/ios-navbar-close-dark-44.png'),
     },
-  },
-  close: {
-    base: {
-      light: require('../images/close_icon_light_24.png'),
-      dark: require('../images/close_icon_dark_24.png'),
+    back: {
+      dark: require('../images/ios-navbar-back-dark-44.png'),
     },
   },
   checkmark: {
@@ -23,4 +19,4 @@ const Images = {
   },
 };
 
-export default Images;
+export default images;

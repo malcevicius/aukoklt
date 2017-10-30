@@ -1,13 +1,10 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const style = EStyleSheet.create({
-  buttonContainer: {
-    // marginTop: 32,
-    marginLeft: -4,
-  },
-  iconStyle: {
-    width: 24,
-    height: 24,
+  fullScreen: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

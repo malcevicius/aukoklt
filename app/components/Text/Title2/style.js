@@ -5,7 +5,25 @@ const style = EStyleSheet.create({
     fontSize: '$title2',
     color: '$superDarkRed',
     fontWeight: '700',
+  },
+  // Margin options
+  marginBottomBase: {
+    marginBottom: '$base',
+  },
+  marginTopBase: {
+    marginTop: '$base',
+  },
+  marginBottomSmall: {
+    marginBottom: '$small',
+  },
+  marginTopSmall: {
     marginTop: '$small',
+  },
+  marginBottomTiny: {
+    marginBottom: '$tiny',
+  },
+  marginTopTiny: {
+    marginTop: '$tiny',
   },
 });
 

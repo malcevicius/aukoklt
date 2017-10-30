@@ -38,7 +38,39 @@ class SmallText extends PureComponent {
         </Text>
       );
     }
-    return <Text style={style.smallText}>{this.props.text}</Text>;
+    if (this.props.uppercaseTitle) {
+      return (
+        <Text
+          style={[
+            style.smallText,
+            style.uppercaseTitle,
+            this.props.marginBottomBase && style.marginBottomBase,
+            this.props.marginTopBase && style.marginTopBase,
+            this.props.marginBottomSmall && style.marginBottomSmall,
+            this.props.marginTopSmall && style.marginTopSmall,
+            this.props.marginBottomTiny && style.marginBottomTiny,
+            this.props.marginTopTiny && style.marginTopTiny,
+          ]}
+        >
+          {this.props.text.toUpperCase()}
+        </Text>
+      );
+    }
+    return (
+      <Text
+        style={[
+          style.smallText,
+          this.props.marginBottomBase && style.marginBottomBase,
+          this.props.marginTopBase && style.marginTopBase,
+          this.props.marginBottomSmall && style.marginBottomSmall,
+          this.props.marginTopSmall && style.marginTopSmall,
+          this.props.marginBottomTiny && style.marginBottomTiny,
+          this.props.marginTopTiny && style.marginTopTiny,
+        ]}
+      >
+        {this.props.text}
+      </Text>
+    );
   };
   render() {
     return this.renderComponent();
@@ -51,6 +83,15 @@ SmallText.propTypes = {
   currencyNumber: PropTypes.bool,
   highlighted: PropTypes.bool,
   haveSeparator: PropTypes.bool,
+  uppercaseTitle: PropTypes.bool,
+
+  // Margins
+  marginBottomBase: PropTypes.bool,
+  marginTopBase: PropTypes.bool,
+  marginBottomSmall: PropTypes.bool,
+  marginTopSmall: PropTypes.bool,
+  marginBottomTiny: PropTypes.bool,
+  marginTopTiny: PropTypes.bool,
 };
 
 export default SmallText;

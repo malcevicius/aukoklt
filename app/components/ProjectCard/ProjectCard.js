@@ -1,18 +1,34 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Image, Text } from 'react-native';
+import { TouchableOpacity, View, Image, Platform } from 'react-native';
 
+import images from '../../config/images';
 import style from './style';
 
 import { MicroText } from '../Text/MicroText';
 import { SmallText } from '../Text/SmallText';
-import { LargeText } from '../Text/LargeText';
+import { MediumText } from '../Text/MediumText';
 
 class ProjectCard extends PureComponent {
   onPressAction = () => {
+    let leftButtons = [];
+
+    if (Platform.OS === 'ios') {
+      leftButtons = [
+        {
+          id: 'back',
+          title: 'Back',
+          icon: images.navBar.back.dark,
+          disableIconTint: true,
+        },
+      ];
+    }
     this.props.navigator.push({
       screen: this.props.navigateTo,
       passProps: { projectInfo: this.props.projectInfo },
+      navigatorButtons: {
+        leftButtons,
+      },
     });
   };
 
@@ -24,10 +40,13 @@ class ProjectCard extends PureComponent {
         activeOpacity={0.8}
         focusedOpacity={0.8}
       >
-        <Image style={style.thumbnailImage} source={{ uri: this.props.projectInfo.img }} />
+        <Image
+          style={style.thumbnailImage}
+          source={{ uri: this.props.projectInfo.img, cache: 'force-cache' }}
+        />
         <View style={style.details}>
           <MicroText companyLabel text={this.props.projectInfo.company} />
-          <LargeText projectTitle text={this.props.projectInfo.title} />
+          <MediumText projectTitle text={this.props.projectInfo.title} />
           <View style={style.projectNumbers}>
             <SmallText currencyNumber highlighted number={this.props.projectInfo.donated} />
             <SmallText
@@ -41,10 +60,6 @@ class ProjectCard extends PureComponent {
     );
   }
 }
-
-ProjectCard.navigatorStyle = {
-  navBarHidden: true,
-};
 
 ProjectCard.propTypes = {
   projectInfo: PropTypes.object.isRequired,

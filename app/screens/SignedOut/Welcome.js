@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 import { Container } from '../../components/Container';
-import { FacebookLoginButton } from '../../components/FacebookLoginButton';
+import { Button } from '../../components/Button';
 
 class Welcome extends Component {
-  onLoginFinishedAction = () => {
-    this.props.navigator.resetTo({
-      screen: 'aukoklt.UserProjectList',
-      title: 'User Projects',
-      animated: false,
-    });
-  };
+  componentWillReceiveProps(nextProps) {
+    this.onAuthComplete(nextProps);
+  }
 
-  onLogoutFinishedAction = () => {
-    this.props.navigator.resetTo({
-      screen: 'aukoklt.Welcome',
-      title: 'Welcome!',
-      animated: false,
-    });
-  };
+  onAuthComplete(props) {
+    if (props.token) {
+      this.props.navigator.resetTo({
+        screen: 'aukoklt.UserProjectList',
+        animated: false,
+      });
+    }
+  }
 
   render() {
     return (
       <Container>
         <Text>Labas, Welcome View</Text>
-        <FacebookLoginButton
-          onLoginFinishedAction={this.onLoginFinishedAction}
-          onLogoutFinishedAction={this.onLogoutFinishedAction}
+        <Button
+          textValue="Prisijungti su Facebook"
+          onPressAction={this.props.facebookLogin}
+          smallMarginTop
+          full
         />
       </Container>
     );
@@ -41,6 +42,11 @@ Welcome.navigatorStyle = {
 
 Welcome.propTypes = {
   navigator: PropTypes.object,
+  facebookLogin: PropTypes.func,
 };
 
-export default Welcome;
+function mapStateToProps({ auth }) {
+  return { token: auth.token };
+}
+
+export default connect(mapStateToProps, actions)(Welcome);

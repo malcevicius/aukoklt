@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { PixelRatio } from 'react-native';
+import { PixelRatio, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { isSignedIn } from '../config/auth';
 
 import Welcome from '../screens/SignedOut/Welcome';
-import UserProjectList from '../screens/SignedIn/UserProjects/UserProjectList';
+import { Loading } from '../components/Loading';
 
 const pixelRatio = PixelRatio.get();
 
@@ -37,58 +36,58 @@ EStyleSheet.build({
   $tiny: 8,
   $small: 16,
   $base: 24,
-  $large: 48,
-  $xLarge: 64,
+  $medium: 48,
+  $large: 64,
   // Text sizes
-  // $microText: 10,
-  // $smallText: 12,
-  // $regularText: 14,
-  // $largeText: 16,
-  // $title4: 20,
-  // $title3: 24,
-  // $title2: 28,
-  // $title1: 56,
-  $microText: scaleFontSize(10),
-  $smallText: scaleFontSize(12),
-  $regularText: scaleFontSize(14),
-  $largeText: scaleFontSize(16),
-  $title4: scaleFontSize(20),
-  $title3: scaleFontSize(24),
-  $title2: scaleFontSize(28),
-  $title1: scaleFontSize(56),
+  $microText: 10,
+  $smallText: 12,
+  $regularText: 14,
+  $mediumText: 16,
+  $largeText: 18,
+  $title4: 20,
+  $title3: 24,
+  $title2: 28,
+  $title1: 56,
+  // $microText: scaleFontSize(10),
+  // $smallText: scaleFontSize(12),
+  // $regularText: scaleFontSize(14),
+  // $largeText: scaleFontSize(16),
+  // $title4: scaleFontSize(20),
+  // $title3: scaleFontSize(24),
+  // $title2: scaleFontSize(28),
+  // $title1: scaleFontSize(56),
 });
 
 class AukokLt extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      signedIn: false,
-      checkedSignIn: false,
-    };
+    this.state = { token: null };
   }
 
-  componentWillMount() {
-    // TODO: https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
-    isSignedIn()
-      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
-      .catch(err => alert(err));
+  async componentWillMount() {
+    const token = await AsyncStorage.getItem('fb_token');
+    if (token) {
+      this.props.navigator.resetTo({
+        screen: 'aukoklt.UserProjectList',
+        animated: false,
+      });
+    } else {
+      this.setState({ token: false });
+    }
   }
 
   render() {
-    const { checkedSignIn, signedIn } = this.state;
-
-    if (!checkedSignIn) {
-      return null;
-    } else if (!signedIn) {
-      return <Welcome navigator={this.props.navigator} />;
+    if (this.state.token === null) {
+      return <Loading fullScreen />;
     }
-    return <UserProjectList navigator={this.props.navigator} />;
+    return <Welcome navigator={this.props.navigator} />;
   }
 }
 
 AukokLt.navigatorStyle = {
-  navBarHidden: true,
+  navBarBackgroundColor: '#FFF',
+  navBarNoBorder: true,
 };
 
 AukokLt.propTypes = {

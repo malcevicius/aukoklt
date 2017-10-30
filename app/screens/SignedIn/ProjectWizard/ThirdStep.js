@@ -21,7 +21,6 @@ class ThirdStep extends Component {
         <ScrollView>
           <WizardHeader
             step="3"
-            headerButtonIcon="none"
             titleText={lang.wizard.step3.title}
             titleDescription={lang.wizard.step3.description}
           />

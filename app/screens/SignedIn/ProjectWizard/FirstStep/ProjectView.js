@@ -1,47 +1,90 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, Platform } from 'react-native';
+
+import lang from '../../../../config/lang';
+import globalstyle from '../../../../config/globalstyle';
+import images from '../../../../config/images';
 
 import { Container } from '../../../../components/Container';
 import { ImageGallery } from '../../../../components/ImageGallery';
-import { StickyHeader } from '../../../../components/StickyHeader';
 import { Title2 } from '../../../../components/Text/Title2';
 import { RegularText } from '../../../../components/Text/RegularText';
+import { TextWithTitle } from '../../../../components/TextWithTitle';
 import { TargetNumbers } from '../../../../components/TargetNumbers';
 import { Button } from '../../../../components/Button';
 
 class ProjectView extends Component {
-  onBackButtonPress = () => {
-    this.props.navigator.pop({
-      animated: true,
-      animationType: 'slide-horizontal',
-    });
-  };
+  constructor(props) {
+    super(props);
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'back') {
+        this.props.navigator.pop({
+          animated: true,
+          animationType: 'slide-horizontal',
+        });
+      }
+    }
+  }
 
   openSecondStep = () => {
+    let leftButtons = [];
+
+    if (Platform.OS === 'ios') {
+      leftButtons = [
+        {
+          id: 'back',
+          title: 'Back',
+          icon: images.navBar.back.dark,
+          disableIconTint: true,
+        },
+      ];
+    }
     this.props.navigator.push({
       screen: 'aukoklt.ProjectWizard.SecondStep',
       passProps: { selectedProjectId: this.props.projectInfo.project_id },
+      navigatorButtons: {
+        leftButtons,
+      },
     });
   };
 
   render() {
     return (
       <Container>
-        <StickyHeader backIcon dark onPressAction={this.onBackButtonPress} />
         <ScrollView>
           <ImageGallery imageList={this.props.projectInfo.gallery} />
-          <Title2 text={this.props.projectInfo.title} />
-          <RegularText text={this.props.projectInfo.company} />
-          <TargetNumbers
-            red
-            targetAmount={this.props.projectInfo.need_to_donate}
-            donatedAmount={this.props.projectInfo.donated}
-          />
-          <RegularText stripHTML text={this.props.projectInfo.description} />
+          <View style={globalstyle.baseHorizontalMargins}>
+            <Title2 marginTopBase marginBottomTiny text={this.props.projectInfo.title} />
+            <RegularText companyLabel marginBottomBase text={this.props.projectInfo.company} />
+            <TargetNumbers
+              red
+              targetAmount={this.props.projectInfo.need_to_donate}
+              donatedAmount={this.props.projectInfo.donated}
+            />
+            {this.props.projectInfo.purpose !== null && (
+              <TextWithTitle
+                title={lang.wizard.step1.project.purposeTitle}
+                text={this.props.projectInfo.purpose}
+              />
+            )}
+            {this.props.projectInfo.description !== null && (
+              <TextWithTitle
+                collapsible
+                stripHTML
+                title={lang.wizard.step1.project.descriptionTitle}
+                text={this.props.projectInfo.description}
+              />
+            )}
+          </View>
         </ScrollView>
         <Button
-          textValue="Rinkti lėšas šiam projektui"
+          textValue={lang.wizard.step1.project.ctaButtonText}
           onPressAction={this.openSecondStep}
           fixedBottom
         />
@@ -50,10 +93,22 @@ class ProjectView extends Component {
   }
 }
 
-ProjectView.navigatorStyle = {
-  navBarHidden: true,
-  statusBarHidden: true,
-};
+// let navigatorStyle = {};
+
+// if (Platform.OS === 'ios') {
+//   navigatorStyle = {
+//     drawUnderNavBar: true,
+//   };
+// } else {
+//   navigatorStyle = {
+//     navBarHideOnScroll: true,
+//     drawUnderNavBar: true,
+//   };
+// }
+
+// ProjectView.navigatorStyle = {
+//   ...navigatorStyle,
+// };
 
 ProjectView.propTypes = {
   projectInfo: PropTypes.object.isRequired,

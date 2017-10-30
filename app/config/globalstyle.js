@@ -4,6 +4,9 @@ const globalstyle = EStyleSheet.create({
   projectsList: {
     marginHorizontal: 18,
   },
+  baseHorizontalMargins: {
+    marginHorizontal: '$base',
+  },
 });
 
 export default globalstyle;
