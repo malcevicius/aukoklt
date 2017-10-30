@@ -31,6 +31,12 @@ public class MainApplication extends NavigationApplication {
     return BuildConfig.DEBUG;
   }
 
+  @NonNull
+  @Override
+  public String getJSMainModuleName() {
+    return "index";
+  }
+
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 
   protected static CallbackManager getCallbackManager() {

@@ -33,18 +33,22 @@ class ChooseProject extends Component {
     }
   }
 
+  useResponseToUpdateState(response) {
+    this.setState({
+      data:
+        this.state.offset === 0 ? response.projects : [...this.state.data, ...response.projects],
+      loading: false,
+    });
+  }
+
   makeRemoteRequest = async () => {
-    const { offset } = this.state;
-    const url = `https://www.aukok.lt/api/projects?limit=10&offset=${offset}`;
+    const url = `https://www.aukok.lt/api/projects?limit=10&offset=${this.state.offset}`;
     this.setState({ loading: true });
 
     try {
       const res = await fetch(url);
       const response = await res.json();
-      this.setState({
-        data: offset === 0 ? response.projects : [...this.state.data, ...response.projects],
-        loading: false,
-      });
+      this.useResponseToUpdateState(response);
     } catch (error) {
       console.log(error);
     }
