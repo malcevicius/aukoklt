@@ -50,7 +50,14 @@ const lang = {
       description:
         'Sėkmingai sukūrei savo ambasadoriavimo projektą. Dabar beliko apie jį paskelbti pasauliui!',
       shareFacebookBtn: 'Pasidalinti Facebook',
-      shareSMSBtn: 'Pasidalinti SMS',
+      shareSMSBtn: 'Išsiųsti SMS draugui',
+      shareMisc: 'Pasidalinti kitur...',
+      shareDialog: {
+        messageTitle: 'Mano naujas projektas',
+        messageBody:
+          'Labas! Noriu pasidalinti savo nauju ambasadoriavimo projektu: http://www.aukok.lt',
+        dialogTitle: 'Pasidalink su draugais!',
+      },
       showProjectsBtn: 'Mano projektai',
     },
   },

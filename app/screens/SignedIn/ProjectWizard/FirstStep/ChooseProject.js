@@ -21,8 +21,8 @@ class ChooseProject extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  async componentDidMount() {
-    await this.makeRemoteRequest();
+  componentDidMount() {
+    this.makeRemoteRequest();
   }
 
   onNavigatorEvent(event) {
@@ -41,17 +41,17 @@ class ChooseProject extends Component {
     });
   }
 
-  makeRemoteRequest = async () => {
+  makeRemoteRequest = () => {
     const url = `https://www.aukok.lt/api/projects?limit=10&offset=${this.state.offset}`;
-    this.setState({ loading: true });
-
-    try {
-      const res = await fetch(url);
-      const response = await res.json();
-      this.useResponseToUpdateState(response);
-    } catch (error) {
-      console.log(error);
-    }
+    this.setState({ loading: true }, async () => {
+      try {
+        const res = await fetch(url);
+        const response = await res.json();
+        this.useResponseToUpdateState(response);
+      } catch (error) {
+        console.log(error);
+      }
+    });
   };
 
   handleLoadMore = () => {
@@ -68,7 +68,6 @@ class ChooseProject extends Component {
   renderHeader = () => (
     <WizardHeader
       step="1"
-      onPressAction={this.onDismissModalButtonPress}
       titleText={lang.wizard.step1.title}
       titleDescription={lang.wizard.step1.description}
       marginHorizontal

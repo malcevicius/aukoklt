@@ -14,10 +14,9 @@ class SecondStep extends Component {
     super(props);
     this.state = {
       loading: false,
-      error: null,
       projectName: null,
       goalNumber: null,
-      userProjectInfo: [],
+      userProjectUrl: null,
     };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -36,7 +35,7 @@ class SecondStep extends Component {
   showThirdStep = () => {
     this.props.navigator.resetTo({
       screen: 'aukoklt.ProjectWizard.ThirdStep',
-      passProps: { userProjectId: this.state.userProjectId },
+      passProps: { userProjectUrl: this.state.userProjectUrl },
       animated: true,
       animationType: 'slide-horizontal',
     });
@@ -60,47 +59,49 @@ class SecondStep extends Component {
   }
 
   checkResult = () => {
-    if (!this.state.error == null) {
-      console.log(`Error found: ${this.state.error}`);
-    } else if (this.state.userProjectInfo === '00000000-0000-0000-0000-000000000000') {
-      console.log('You have already created fundraise project for this root project');
-    } else if (this.state.userProjectInfo === '') {
+    if (this.state.userProjectUrl === null) {
       console.log('Can not connect to server: Something is wrong with a API server');
     } else {
-      console.log(this.state.userProjectInfo);
-      // this.showThirdStep();
+      this.showThirdStep();
     }
   };
 
-  createFundraiseProject = () => {
-    this.setState({ loading: true });
-
-    fetch('https://www.aukok.lt/api/userprojects', {
-      method: 'POST',
-      headers: {
-        charset: 'utf-8',
-        'Content-Type': 'application/json',
+  useResponseToUpdateState(response) {
+    this.setState(
+      {
+        userProjectUrl: response.userprojecturl,
+        loading: false,
       },
-      body: JSON.stringify({
-        projectId: this.props.selectedProjectId,
-        accesstoken:
-          '26BDFABF0F7A428259CF94415718787B66148156176174663C8233E0DAE82DBE3873F775F005635096A8C89DB6256A2E1F2A5B3ED0932FD6C156AFE84AFC64119AD8E851F89FD5EDCF0F133F2C2F3C854DB7FAD286B12E1CFA6A5EF8B8C47B70184553DA780F5E84030FCB1C1576711D0A76A1D45BB79A853AB5BD84A2B24481FA8E0FFD41CAAC1A8D8007031AABBD938FE0E3BA5F8BB53451AE9A632DDD18F1032E91F09276666309F9CA2F1AEA9BB8C08C1D23DA8E94E7813EFF83D59FB3B6',
-        title: this.state.projectName,
-        need_to_donate: this.state.goalNumber,
-      }),
-    })
-      .then(response => response.json())
-      .then((response) => {
-        this.setState({
-          userProjectInfo: response,
-          error: response.error || null,
-          loading: false,
-        });
+      () => {
         this.checkResult();
-      })
-      .catch((error) => {
-        this.setState({ error, loading: false });
-      });
+      },
+    );
+  }
+
+  createFundraiseProject = () => {
+    const url = 'https://www.aukok.lt/api/userprojects';
+    this.setState({ loading: true }, async () => {
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            charset: 'utf-8',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            projectId: this.props.selectedProjectId,
+            accesstoken:
+              '26BDFABF0F7A428259CF94415718787B66148156176174663C8233E0DAE82DBE3873F775F005635096A8C89DB6256A2E1F2A5B3ED0932FD6C156AFE84AFC64119AD8E851F89FD5EDCF0F133F2C2F3C854DB7FAD286B12E1CFA6A5EF8B8C47B70184553DA780F5E84030FCB1C1576711D0A76A1D45BB79A853AB5BD84A2B24481FA8E0FFD41CAAC1A8D8007031AABBD938FE0E3BA5F8BB53451AE9A632DDD18F1032E91F09276666309F9CA2F1AEA9BB8C08C1D23DA8E94E7813EFF83D59FB3B6',
+            title: this.state.projectName,
+            need_to_donate: this.state.goalNumber,
+          }),
+        });
+        const response = await res.json();
+        this.useResponseToUpdateState(response);
+      } catch (error) {
+        console.log(error);
+      }
+    });
   };
 
   render() {
@@ -109,7 +110,6 @@ class SecondStep extends Component {
         <ScrollView style={globalstyle.baseHorizontalMargins}>
           <WizardHeader
             step="2"
-            onPressAction={this.onBackButtonPress}
             titleText={lang.wizard.step2.title}
             titleDescription={lang.wizard.step2.description}
           />
