@@ -2,6 +2,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const style = EStyleSheet.create({
   $underlayColor: '$darkRed',
+  $facebookUnderlayColor: '#2f4779',
 
   // Container options
   buttonContainer: {
