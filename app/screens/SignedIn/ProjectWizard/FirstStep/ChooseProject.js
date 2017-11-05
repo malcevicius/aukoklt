@@ -117,17 +117,16 @@ class ChooseProject extends Component {
 let navigatorStyle = {};
 
 if (Platform.OS === 'ios') {
-  navigatorStyle = {};
-} else {
   navigatorStyle = {
-    navBarHideOnScroll: true,
-    drawUnderNavBar: true,
+    navBarNoBorder: true,
+    navBarTransparent: true,
   };
+} else {
+  navigatorStyle = {};
 }
 
 ChooseProject.navigatorStyle = {
   ...navigatorStyle,
-  navBarBackgroundColor: '#FFF',
 };
 
 ChooseProject.propTypes = {

@@ -6,9 +6,13 @@ import style from './style';
 
 class MicroText extends PureComponent {
   renderComponent = () => {
-    if (this.props.companyLabel === true) {
+    if (this.props.uppercaseLabel === true) {
       return (
-        <Text style={[style.microText, style.companyLabel]} ellipsizeMode="tail" numberOfLines={1}>
+        <Text
+          style={[style.microText, style.uppercaseLabel]}
+          ellipsizeMode="tail"
+          numberOfLines={1}
+        >
           {this.props.text.toUpperCase()}
         </Text>
       );
@@ -22,7 +26,7 @@ class MicroText extends PureComponent {
 
 MicroText.propTypes = {
   text: PropTypes.string.isRequired,
-  companyLabel: PropTypes.bool,
+  uppercaseLabel: PropTypes.bool,
 };
 
 export default MicroText;

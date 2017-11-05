@@ -1,4 +1,8 @@
 const lang = {
+  global: {
+    donatedLabel: 'Surinkta',
+    needToDonateLabel: 'Tikslas',
+  },
   welcome: {
     facebookButtonText: 'Prisijungti su Facebook',
     intro: {
@@ -20,8 +24,13 @@ const lang = {
     },
   },
   user: {
+    title: 'Mano projektai',
     logout: 'Atsijungti',
     createProject: 'Kurti naują projektą',
+    project: {
+      descriptionTitle: 'Aprašymas',
+      purposeTitle: 'Parama skiriama projektui',
+    },
   },
   wizard: {
     step1: {
@@ -29,8 +38,6 @@ const lang = {
       description:
         'Šiame žingsnyje tau reikia pasirinkti vieną projektą kuriam ruošiesi rinkti pinigus.',
       project: {
-        donatedLabel: 'Surinkta',
-        needToDonateLabel: 'Reikia',
         descriptionTitle: 'Projekto aprašymas',
         purposeTitle: 'Parama skiriama',
         ctaButtonText: 'Pasirinkti šį projektą',
@@ -41,8 +48,8 @@ const lang = {
       description: 'Nurodyk ambasadoriavimo projekto pavadinimą ir siekiama surinkti pinigų sumą!',
       nameFieldLabel: 'Pavadinimas',
       goalFieldLabel: 'Projekto tikslas',
-      nameFieldPlaceholder: 'Įveskite pavadinimą...',
-      goalFieldPlaceholder: 'Įveskite sumą...',
+      nameFieldPlaceholder: 'Įvesk pavadinimą...',
+      goalFieldPlaceholder: 'Įvesk sumą...',
       ctaButtonText: 'Patvirtinti',
     },
     step3: {

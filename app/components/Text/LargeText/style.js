@@ -4,10 +4,13 @@ const style = EStyleSheet.create({
   largeText: {
     fontSize: '$largeText',
   },
-  projectTitle: {
+  currencyNumber: {
+    color: '$lightTextColor',
     fontWeight: '600',
-    color: '$superDarkRed',
-    marginTop: 4,
+  },
+  currencyNumberHighlighted: {
+    color: '$lightRed',
+    fontWeight: '600',
   },
 });
 

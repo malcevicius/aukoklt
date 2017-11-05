@@ -10,7 +10,7 @@ import { WizardSteps } from '../WizardSteps';
 
 const WizardHeader = ({ step, titleText, titleDescription, marginHorizontal }) => (
   <View style={[style.headerContainer, marginHorizontal && style.marginHorizontal]}>
-    <Title2 marginTopBase marginBottomTiny text={titleText} />
+    <Title2 marginBottomTiny text={titleText} />
     <RegularText text={titleDescription} />
     <WizardSteps step={step} />
   </View>

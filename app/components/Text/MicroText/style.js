@@ -4,10 +4,9 @@ const style = EStyleSheet.create({
   microText: {
     fontSize: '$microText',
   },
-  companyLabel: {
+  uppercaseLabel: {
     fontWeight: '500',
     color: '$lightTextColor',
-    marginTop: '$tiny',
   },
 });
 

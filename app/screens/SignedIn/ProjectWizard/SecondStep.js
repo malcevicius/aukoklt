@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import { ScrollView, Platform } from 'react-native';
 import lang from '../../../config/lang';
 import globalstyle from '../../../config/globalstyle';
 
@@ -137,6 +137,21 @@ class SecondStep extends Component {
     );
   }
 }
+
+let navigatorStyle = {};
+
+if (Platform.OS === 'ios') {
+  navigatorStyle = {
+    navBarNoBorder: true,
+    navBarTransparent: true,
+  };
+} else {
+  navigatorStyle = {};
+}
+
+SecondStep.navigatorStyle = {
+  ...navigatorStyle,
+};
 
 SecondStep.propTypes = {
   selectedProjectId: PropTypes.string,

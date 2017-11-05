@@ -93,22 +93,23 @@ class ProjectView extends Component {
   }
 }
 
-// let navigatorStyle = {};
+let navigatorStyle = {};
 
-// if (Platform.OS === 'ios') {
-//   navigatorStyle = {
-//     drawUnderNavBar: true,
-//   };
-// } else {
-//   navigatorStyle = {
-//     navBarHideOnScroll: true,
-//     drawUnderNavBar: true,
-//   };
-// }
+if (Platform.OS === 'ios') {
+  navigatorStyle = {
+    statusBarTextColorSchemeSingleScreen: 'light',
+  };
+} else {
+  navigatorStyle = {};
+}
 
-// ProjectView.navigatorStyle = {
-//   ...navigatorStyle,
-// };
+ProjectView.navigatorStyle = {
+  ...navigatorStyle,
+  drawUnderNavBar: true,
+  navBarNoBorder: true,
+  navBarTranslucent: true,
+  navBarTransparent: true,
+};
 
 ProjectView.propTypes = {
   projectInfo: PropTypes.object.isRequired,

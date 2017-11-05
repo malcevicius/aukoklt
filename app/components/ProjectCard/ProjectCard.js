@@ -18,7 +18,7 @@ class ProjectCard extends PureComponent {
         {
           id: 'back',
           title: 'Back',
-          icon: images.navBar.back.dark,
+          icon: images.navBar.back.light,
           disableIconTint: true,
         },
       ];
@@ -30,6 +30,15 @@ class ProjectCard extends PureComponent {
         leftButtons,
       },
     });
+  };
+
+  getUppercaseLabel = () => {
+    if (this.props.projectInfo.projectTitle !== undefined) {
+      return this.props.projectInfo.projectTitle;
+    } else if (this.props.projectInfo.company !== undefined) {
+      return this.props.projectInfo.company;
+    }
+    return '';
   };
 
   render() {
@@ -45,7 +54,7 @@ class ProjectCard extends PureComponent {
           source={{ uri: this.props.projectInfo.img, cache: 'force-cache' }}
         />
         <View style={style.details}>
-          <MicroText companyLabel text={this.props.projectInfo.company} />
+          <MicroText uppercaseLabel text={this.getUppercaseLabel()} />
           <MediumText projectTitle text={this.props.projectInfo.title} />
           <View style={style.projectNumbers}>
             <SmallText currencyNumber highlighted number={this.props.projectInfo.donated} />

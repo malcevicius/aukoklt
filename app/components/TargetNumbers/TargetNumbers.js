@@ -9,13 +9,13 @@ import { Title4 } from '../Text/Title4';
 import style from './style';
 
 class TargetNumbers extends PureComponent {
-  renderDonatedAmount = () => {
+  renderTargetAmount = () => {
     if (this.props.targetAmount === 9999999) {
       return null;
     }
     return (
       <View style={style.numberItem}>
-        <SmallText uppercaseTitle text={lang.wizard.step1.project.needToDonateLabel} />
+        <SmallText uppercaseTitle text={lang.global.needToDonateLabel} />
         <Title4 number={this.props.targetAmount} currencyNumber />
       </View>
     );
@@ -24,10 +24,10 @@ class TargetNumbers extends PureComponent {
     return (
       <View style={style.numbersView}>
         <View style={style.numberItem}>
-          <SmallText uppercaseTitle text={lang.wizard.step1.project.donatedLabel} />
+          <SmallText uppercaseTitle text={lang.global.donatedLabel} />
           <Title4 number={this.props.donatedAmount} currencyNumber highlighted />
         </View>
-        {this.renderDonatedAmount(this.props.targetAmount)}
+        {this.renderTargetAmount(this.props.targetAmount)}
       </View>
     );
   }

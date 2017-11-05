@@ -3,7 +3,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const style = EStyleSheet.create({
   textWithTitle: {
     borderTopWidth: 1,
-    borderColor: '$darkerBackgroundColor',
+    borderColor: '$lineColor',
     paddingTop: '$base',
     marginBottom: '$base + $tiny',
   },

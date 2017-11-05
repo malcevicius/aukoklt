@@ -2,6 +2,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const style = EStyleSheet.create({
   $underlayColor: '$darkRed',
+  $secondaryUnderlayColor: '$lineColor',
   $facebookUnderlayColor: '#2f4779',
 
   // Container options
@@ -38,13 +39,12 @@ const style = EStyleSheet.create({
 
   // Secondary button
   buttonSecondary: {
-    backgroundColor: 'transparent',
-    borderWidth: 2,
-    borderColor: '$lightRed',
+    backgroundColor: '$darkerBackgroundColor',
     borderRadius: 4,
   },
   textSecondary: {
-    backgroundColor: '$lightRed',
+    backgroundColor: 'transparent',
+    color: '$superDarkRed',
   },
 
   // Facebook button
@@ -52,7 +52,10 @@ const style = EStyleSheet.create({
     backgroundColor: '#3B5998',
   },
 
-  // Additional spacing
+  // Margins
+  marginHorizontal: {
+    marginHorizontal: 6,
+  },
   smallMarginTop: {
     marginTop: '$small',
   },
