@@ -7,19 +7,19 @@ const lang = {
     facebookButtonText: 'Prisijungti su Facebook',
     intro: {
       slide1: {
-        title: 'Sugalvok temą',
-        description:
-          'Lėšas gali rinkti savo gimtadienio proga, dalyvaudamas sporto renginiuose, ar mesdamas sau iššūkį. Šioje vietoje laimi originalumas!',
-      },
-      slide2: {
         title: 'Pasirink projektą',
         description:
-          'Išsirink projektą kuriam norėtum pradėti rinkti lėšas, sukurk savo lėšų rinkimo kampaniją ir būtinai pasidalink jos nuoroda su savo draugais!',
+          'Visų pirma, pasirink vieną „Aukok.lt” projektą, kuriam nori padėti rinkti lėšas. Visos tavo surinktos lėšos automatiškai bus priskirtos tam projektui.',
+      },
+      slide2: {
+        title: 'Sugalvok temą ir tikslą',
+        description:
+          'Lėšas gali rinkti savo gimtadienio proga, dalyvaudamas sporto renginiuose, ar kitaip suburdamas draugus kilniam tikslui. Šioje vietoje tau labai padės originalumas!',
       },
       slide3: {
         title: 'Pranešk draugams',
         description:
-          'Kas kart kuomet tavo draugas paaukos pinigų tavo pasirinktam projektui, mes tau apie tai pranešime. Be to visą informaciją matysi šioje programėlėje.',
+          'Tam, jog tavo sukurtas ambasadoriavimo projektas būtų sėkmingas, pasidalink juo su savo draugais ir bendraminčiais.',
       },
     },
   },
@@ -35,8 +35,7 @@ const lang = {
   wizard: {
     step1: {
       title: 'Pasirink projektą',
-      description:
-        'Šiame žingsnyje tau reikia pasirinkti vieną projektą kuriam ruošiesi rinkti pinigus.',
+      description: 'Pasirink vieną „Aukok.lt” projektą, kuriam nori padėti rinkti lėšas.',
       project: {
         descriptionTitle: 'Projekto aprašymas',
         purposeTitle: 'Parama skiriama',
@@ -44,8 +43,9 @@ const lang = {
       },
     },
     step2: {
-      title: 'Įvesk informaciją',
-      description: 'Nurodyk ambasadoriavimo projekto pavadinimą ir siekiama surinkti pinigų sumą!',
+      title: 'Sugalvok pavadinimą ir tikslą',
+      description:
+        'Lėšas gali rinkti savo gimtadienio proga, dalyvaudamas sporto renginiuose, ar kitaip suburdamas draugus kilniam tikslui. Nurodyk savo projekto pavadinimą ir siekiama surinkti pinigų sumą!',
       nameFieldLabel: 'Pavadinimas',
       goalFieldLabel: 'Projekto tikslas',
       nameFieldPlaceholder: 'Įvesk pavadinimą...',
@@ -53,9 +53,9 @@ const lang = {
       ctaButtonText: 'Patvirtinti',
     },
     step3: {
-      title: 'Tu tai padarei!',
+      title: 'Pranešk draugams',
       description:
-        'Sėkmingai sukūrei savo ambasadoriavimo projektą. Dabar beliko apie jį paskelbti pasauliui!',
+        'Tam, jog tavo sukurtas ambasadoriavimo projektas būtų sėkmingas, pasidalink juo su savo draugais ir bendraminčiais.',
       shareFacebookBtn: 'Pasidalinti Facebook',
       shareSMSBtn: 'Išsiųsti SMS draugui',
       shareMisc: 'Pasidalinti kitur...',

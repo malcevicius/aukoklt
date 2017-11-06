@@ -47,7 +47,10 @@ class ProjectView extends Component {
     }
     this.props.navigator.push({
       screen: 'aukoklt.ProjectWizard.SecondStep',
-      passProps: { selectedProjectId: this.props.projectInfo.project_id },
+      passProps: {
+        selectedProjectId: this.props.projectInfo.project_id,
+        onDismissFunction: this.props.onDismissFunction,
+      },
       navigatorButtons: {
         leftButtons,
       },
@@ -114,6 +117,7 @@ ProjectView.navigatorStyle = {
 ProjectView.propTypes = {
   projectInfo: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
+  onDismissFunction: PropTypes.func,
 };
 
 export default ProjectView;

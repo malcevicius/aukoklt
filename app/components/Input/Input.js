@@ -4,45 +4,23 @@ import { View, TextInput } from 'react-native';
 
 import style from './style';
 import { RegularText } from '../Text/RegularText';
-import { LargeText } from '../Text/LargeText';
 
 class Input extends PureComponent {
-  renderComponent = () => {
-    if (this.props.textInput) {
-      return (
-        <View style={[style.inputContainer, style.textInput]}>
-          <RegularText inputLabel text={this.props.label} />
-          <TextInput
-            style={style.basicInput}
-            onChangeText={this.props.onChangeText}
-            value={this.props.value}
-            keyboardType="default"
-            autoCorrect={false}
-            placeholder={this.props.placeholder}
-          />
-        </View>
-      );
-    }
-    if (this.props.currencyInput) {
-      return (
-        <View style={[style.inputContainer, style.currencyInput]}>
-          <RegularText inputLabel text={this.props.label} />
-          <View style={style.currencyInputInner}>
-            <LargeText inputLabel text="€" />
-            <TextInput
-              style={[style.basicInput, style.currencyInputField]}
-              onChangeText={this.props.onChangeText}
-              value={this.props.value}
-              keyboardType="number-pad"
-              autoCorrect={false}
-              placeholder={this.props.placeholder}
-            />
-          </View>
-        </View>
-      );
-    }
-    return <TextInput style={style.basicInput} autoCorrect={false} />;
-  };
+  renderComponent = () => (
+    <View style={[style.inputContainer, style.textInput]}>
+      <RegularText inputLabel text={this.props.label} />
+      <TextInput
+        style={style.basicInput}
+        onChangeText={this.props.onChangeText}
+        value={this.props.value}
+        keyboardType={this.props.keyboardType}
+        autoCorrect={false}
+        placeholder={this.props.placeholder}
+          // ios only
+        clearButtonMode={'while-editing'}
+      />
+    </View>
+    );
   render() {
     return this.renderComponent();
   }
@@ -53,9 +31,9 @@ Input.propTypes = {
   value: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
+  keyboardType: PropTypes.string,
   // Themes
   textInput: PropTypes.bool,
-  currencyInput: PropTypes.bool,
 };
 
 export default Input;

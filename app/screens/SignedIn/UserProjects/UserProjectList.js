@@ -18,8 +18,8 @@ class UserProjectList extends Component {
 
     this.state = {
       loading: false,
+      refreshing: false,
       data: [],
-      offset: 0,
       userAccessToken:
         '26BDFABF0F7A428259CF94415718787B66148156176174663C8233E0DAE82DBE3873F775F005635096A8C89DB6256A2E1F2A5B3ED0932FD6C156AFE84AFC64119AD8E851F89FD5EDCF0F133F2C2F3C854DB7FAD286B12E1CFA6A5EF8B8C47B70184553DA780F5E84030FCB1C1576711D0A76A1D45BB79A853AB5BD84A2B24481FA8E0FFD41CAAC1A8D8007031AABBD938FE0E3BA5F8BB53451AE9A632DDD18F1032E91F09276666309F9CA2F1AEA9BB8C08C1D23DA8E94E7813EFF83D59FB3B6',
     };
@@ -29,39 +29,59 @@ class UserProjectList extends Component {
     this.makeRemoteRequest();
   }
 
-  useResponseToUpdateState(response) {
-    this.setState({
-      data:
-        this.state.offset === 0
-          ? response.userProjects
-          : [...this.state.data, ...response.userProjects],
-      loading: false,
-    });
-  }
-
   makeRemoteRequest = () => {
-    const url = `https://www.aukok.lt/api/userprojects?accesstoken=${this.state
-      .userAccessToken}&limit=10&offset=${this.state.offset}`;
+    const url = `https://www.aukok.lt/api/userprojects?accesstoken=${this.state.userAccessToken}`;
     this.setState({ loading: true }, async () => {
       try {
         const res = await fetch(url);
         const response = await res.json();
-        this.useResponseToUpdateState(response);
+        this.setState({
+          data: [...response.userProjects],
+          loading: false,
+          refreshing: false,
+        });
       } catch (error) {
         console.log(error);
+        this.setState({
+          loading: false,
+          refreshing: false,
+        });
       }
     });
   };
 
-  handleLoadMore = () => {
+  handleRefresh = () => {
     this.setState(
       {
-        offset: this.state.offset + 10,
+        refreshing: true,
       },
       () => {
         this.makeRemoteRequest();
       },
     );
+  };
+
+  openProjectWizardModal = () => {
+    let leftButtons = [];
+
+    if (Platform.OS === 'ios') {
+      leftButtons = [
+        {
+          id: 'close',
+          title: 'Close',
+          icon: images.navBar.close.dark,
+          disableIconTint: true,
+        },
+      ];
+    }
+    this.props.navigator.showModal({
+      screen: 'aukoklt.ProjectWizard.FirstStep',
+      animationType: 'slide-up',
+      passProps: { onDismissFunction: this.handleRefresh },
+      navigatorButtons: {
+        leftButtons,
+      },
+    });
   };
 
   renderHeader = () => <UserHeader titleText={lang.user.title} navigator={this.props.navigator} />;
@@ -87,31 +107,9 @@ class UserProjectList extends Component {
           paddingVertical: 20,
         }}
       >
-        <ActivityIndicator animating size="large" />
+        <ActivityIndicator animating size="small" />
       </View>
     );
-  };
-
-  openProjectWizardModal = () => {
-    let leftButtons = [];
-
-    if (Platform.OS === 'ios') {
-      leftButtons = [
-        {
-          id: 'close',
-          title: 'Close',
-          icon: images.navBar.close.dark,
-          disableIconTint: true,
-        },
-      ];
-    }
-    this.props.navigator.showModal({
-      screen: 'aukoklt.ProjectWizard.FirstStep',
-      animationType: 'slide-up',
-      navigatorButtons: {
-        leftButtons,
-      },
-    });
   };
 
   render() {
@@ -127,13 +125,13 @@ class UserProjectList extends Component {
                 navigateTo="aukoklt.UserProjectView"
               />
             )}
-            keyExtractor={item => item.title}
-            contentContainerStyle={globalstyle.baseHorizontalMargins}
+            keyExtractor={item => item.projectId}
+            contentContainerStyle={globalstyle.userProjectList}
             ListHeaderComponent={this.renderHeader}
             ListFooterComponent={this.renderFooter}
-            onEndReached={this.handleLoadMore}
-            onEndReachedThreshold={50}
             showsVerticalScrollIndicator={false}
+            refreshing={this.state.refreshing}
+            onRefresh={this.handleRefresh}
           />
         </Container>
       </MenuContext>

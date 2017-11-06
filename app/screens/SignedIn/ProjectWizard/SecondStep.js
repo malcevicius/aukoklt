@@ -15,9 +15,10 @@ class SecondStep extends Component {
     this.state = {
       loading: false,
       projectName: null,
-      goalNumber: null,
+      goalNumber: '',
       userProjectUrl: null,
     };
+
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
@@ -35,7 +36,10 @@ class SecondStep extends Component {
   showThirdStep = () => {
     this.props.navigator.resetTo({
       screen: 'aukoklt.ProjectWizard.ThirdStep',
-      passProps: { userProjectUrl: this.state.userProjectUrl },
+      passProps: {
+        userProjectUrl: this.state.userProjectUrl,
+        onDismissFunction: this.props.onDismissFunction,
+      },
       animated: true,
       animationType: 'slide-horizontal',
     });
@@ -45,9 +49,9 @@ class SecondStep extends Component {
     let cleanedString = '';
     const allowedNumbers = '0123456789';
 
-    for (let i = 0; i < goalNumberString.length; i++) {
+    for (let i = 1; i < goalNumberString.length; i++) {
       // Number can't start with 0
-      if (goalNumberString[0] === '0') {
+      if (goalNumberString[1] === '0') {
         i += 1;
       }
       // Allowing only numbers to be added
@@ -105,6 +109,7 @@ class SecondStep extends Component {
   };
 
   render() {
+    const goalInputValue = `€${this.state.goalNumber}`;
     return (
       <Container>
         <ScrollView style={globalstyle.baseHorizontalMargins}>
@@ -114,18 +119,17 @@ class SecondStep extends Component {
             titleDescription={lang.wizard.step2.description}
           />
           <Input
-            textInput
             label={lang.wizard.step2.nameFieldLabel}
             onChangeText={projectName => this.setState({ projectName })}
             value={this.state.projectName}
             placeholder={lang.wizard.step2.nameFieldPlaceholder}
+            keyboardType="default"
           />
           <Input
-            currencyInput
             label={lang.wizard.step2.goalFieldLabel}
             onChangeText={goalNumber => this.onGoalNumberInputChange(goalNumber)}
-            value={this.state.goalNumber}
-            placeholder={lang.wizard.step2.goalFieldPlaceholder}
+            value={goalInputValue}
+            keyboardType="number-pad"
           />
         </ScrollView>
         <Button
@@ -156,6 +160,7 @@ SecondStep.navigatorStyle = {
 SecondStep.propTypes = {
   selectedProjectId: PropTypes.string,
   navigator: PropTypes.object,
+  onDismissFunction: PropTypes.func,
 };
 
 export default SecondStep;

@@ -27,8 +27,8 @@ const style = EStyleSheet.create({
     marginRight: '$small',
   },
   projectThumbnail: {
-    width: 80,
-    height: 64,
+    width: 100,
+    height: 70,
     borderRadius: '$tiny',
     resizeMode: 'cover',
     backgroundColor: '$darkerBackgroundColor',

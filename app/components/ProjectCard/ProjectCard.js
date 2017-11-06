@@ -25,7 +25,10 @@ class ProjectCard extends PureComponent {
     }
     this.props.navigator.push({
       screen: this.props.navigateTo,
-      passProps: { projectInfo: this.props.projectInfo },
+      passProps: {
+        projectInfo: this.props.projectInfo,
+        onDismissFunction: this.props.onDismissFunction,
+      },
       navigatorButtons: {
         leftButtons,
       },
@@ -74,6 +77,7 @@ ProjectCard.propTypes = {
   projectInfo: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
   navigateTo: PropTypes.string.isRequired,
+  onDismissFunction: PropTypes.func,
 };
 
 export default ProjectCard;

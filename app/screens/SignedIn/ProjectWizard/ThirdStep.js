@@ -10,12 +10,12 @@ import { Container } from '../../../components/Container';
 import { Button } from '../../../components/Button';
 
 class ThirdStep extends Component {
-  constructor(props) {
-    super(props);
+  componentWillUnmount() {
+    this.props.onDismissFunction();
   }
 
-  openUserProjectView = () => {
-    this.props.navigator.dismissModal({
+  openUserProjectView = async () => {
+    await this.props.navigator.dismissModal({
       animationType: 'slide-down',
     });
   };
@@ -87,6 +87,7 @@ ThirdStep.navigatorStyle = {
 ThirdStep.propTypes = {
   navigator: PropTypes.object,
   userProjectUrl: PropTypes.string,
+  onDismissFunction: PropTypes.func,
 };
 
 export default ThirdStep;

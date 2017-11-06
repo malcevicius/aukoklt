@@ -33,21 +33,19 @@ class ChooseProject extends Component {
     }
   }
 
-  useResponseToUpdateState(response) {
-    this.setState({
-      data:
-        this.state.offset === 0 ? response.projects : [...this.state.data, ...response.projects],
-      loading: false,
-    });
-  }
-
   makeRemoteRequest = () => {
-    const url = `https://www.aukok.lt/api/projects?limit=10&offset=${this.state.offset}`;
+    const url = `https://www.aukok.lt/api/projects?limit=20&offset=${this.state.offset}`;
     this.setState({ loading: true }, async () => {
       try {
         const res = await fetch(url);
         const response = await res.json();
-        this.useResponseToUpdateState(response);
+        this.setState({
+          data:
+            this.state.offset === 0
+              ? response.projects
+              : [...this.state.data, ...response.projects],
+          loading: false,
+        });
       } catch (error) {
         console.log(error);
       }
@@ -55,14 +53,17 @@ class ChooseProject extends Component {
   };
 
   handleLoadMore = () => {
-    this.setState(
-      {
-        offset: this.state.offset + 10,
-      },
-      () => {
-        this.makeRemoteRequest();
-      },
-    );
+    if (!this.onEndReachedCalledDuringMomentum) {
+      this.setState(
+        {
+          offset: this.state.offset + 20,
+        },
+        () => {
+          this.makeRemoteRequest();
+        },
+      );
+      this.onEndReachedCalledDuringMomentum = true;
+    }
   };
 
   renderHeader = () => (
@@ -83,7 +84,7 @@ class ChooseProject extends Component {
           paddingVertical: 20,
         }}
       >
-        <ActivityIndicator animating size="large" />
+        <ActivityIndicator animating size="small" />
       </View>
     );
   };
@@ -97,16 +98,20 @@ class ChooseProject extends Component {
             <ProjectCard
               projectInfo={item}
               navigator={this.props.navigator}
+              onDismissFunction={this.props.onDismissFunction}
               navigateTo="aukoklt.ProjectWizard.FirstStep.ProjectView"
             />
           )}
           keyExtractor={item => item.project_id}
           contentContainerStyle={globalstyle.projectsList}
           numColumns={2}
+          onMomentumScrollBegin={() => {
+            this.onEndReachedCalledDuringMomentum = false;
+          }}
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
           onEndReached={this.handleLoadMore}
-          onEndReachedThreshold={50}
+          onEndReachedThreshold={0.6}
           showsVerticalScrollIndicator={false}
         />
       </Container>
@@ -131,6 +136,7 @@ ChooseProject.navigatorStyle = {
 
 ChooseProject.propTypes = {
   navigator: PropTypes.object,
+  onDismissFunction: PropTypes.func,
 };
 
 export default ChooseProject;
