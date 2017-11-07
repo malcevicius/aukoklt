@@ -19,6 +19,8 @@ class Button extends PureComponent {
       style.buttonPrimary,
       this.props.secondary && style.buttonSecondary,
       this.props.facebookButton && style.facebookButton,
+      this.props.disabled && style.buttonDisabled,
+      this.props.noRoundCorners && style.noBorderRadiusWhenFixed,
       this.props.fixedBottom && style.noBorderRadiusWhenFixed,
       this.props.marginHorizontal && style.marginHorizontal,
       this.props.smallMarginTop && style.smallMarginTop,
@@ -29,7 +31,11 @@ class Button extends PureComponent {
   }
 
   getButtonTextStyles() {
-    return [style.textPrimary, this.props.secondary && style.textSecondary];
+    return [
+      style.textPrimary,
+      this.props.secondary && style.textSecondary,
+      this.props.disabled && style.textDisabled,
+    ];
   }
 
   getUnderlayColor() {
@@ -42,14 +48,20 @@ class Button extends PureComponent {
   }
 
   renderComponent = () => {
+    const touchableProps = {};
+
+    if (!this.props.disabled) {
+      touchableProps.onPress = this.props.onPressAction;
+    }
+
     if (this.props.icon !== undefined) {
       return (
         <View style={this.getButtonContainerStyles()}>
           <TouchableHighlight
+            {...touchableProps}
             style={this.getButtonStyles()}
             underlayColor={this.getUnderlayColor()}
             activeOpacity={1}
-            onPress={this.props.onPressAction}
           >
             <View style={style.buttonInnerContainer}>
               <View style={style.iconContainer}>
@@ -64,10 +76,10 @@ class Button extends PureComponent {
     return (
       <View style={this.getButtonContainerStyles()}>
         <TouchableHighlight
+          {...touchableProps}
           style={this.getButtonStyles()}
           underlayColor={this.getUnderlayColor()}
           activeOpacity={1}
-          onPress={this.props.onPressAction}
         >
           <Text style={this.getButtonTextStyles()}>{this.props.textValue}</Text>
         </TouchableHighlight>
@@ -83,10 +95,12 @@ Button.propTypes = {
   textValue: PropTypes.string.isRequired,
   onPressAction: PropTypes.func.isRequired,
   // Style
+  disabled: PropTypes.bool,
   secondary: PropTypes.bool,
   facebookButton: PropTypes.bool,
   icon: PropTypes.string,
   iconColor: PropTypes.string,
+  noRoundCorners: PropTypes.bool,
   // Margins
   marginHorizontal: PropTypes.bool,
   smallMarginTop: PropTypes.bool,

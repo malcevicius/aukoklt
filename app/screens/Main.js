@@ -21,6 +21,7 @@ const scaleFontSize = (size) => {
 EStyleSheet.build({
   $backgroundColor: '#FFFFFF',
   $darkerBackgroundColor: '#F8F5F5',
+  $lightLineColor: '#F2F0F0',
   $lineColor: '#E3DCDC',
   // Text colors
   $superLightTextColor: '#C0B6B6',

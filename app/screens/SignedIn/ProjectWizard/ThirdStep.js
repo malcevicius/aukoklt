@@ -61,17 +61,18 @@ class ThirdStep extends Component {
             titleText={lang.wizard.step3.title}
             titleDescription={lang.wizard.step3.description}
           />
-          <Text>{lang.wizard.step3.title}</Text>
-          <Text>{this.props.userProjectUrl}</Text>
           <Button
-            smallMarginTop
+            baseMarginTop
             textValue={lang.wizard.step3.shareMisc}
             onPressAction={this.openDefaultShareDialog}
+            secondary
+            full
           />
           <Button
-            smallMarginTop
+            baseMarginTop
             textValue={lang.wizard.step3.showProjectsBtn}
             onPressAction={this.openUserProjectView}
+            full
           />
         </ScrollView>
       </Container>

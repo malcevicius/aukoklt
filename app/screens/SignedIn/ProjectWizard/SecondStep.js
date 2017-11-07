@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Platform, AsyncStorage } from 'react-native';
+import { View, Platform, AsyncStorage, Animated, Keyboard } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import lang from '../../../config/lang';
 import globalstyle from '../../../config/globalstyle';
 
@@ -15,16 +17,29 @@ class SecondStep extends Component {
     this.state = {
       userData: [],
       loading: false,
-      projectName: null,
+      projectName: '',
       goalNumber: '',
-      userProjectUrl: null,
+      userProjectUrl: '',
+      buttonDisabled: true,
     };
+
+    this.keyboardHeight = new Animated.Value(0);
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
+  componentWillMount() {
+    this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
+    this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
+  }
+
   async componentDidMount() {
     await this.getUserData();
+  }
+
+  componentWillUnmount() {
+    this.keyboardWillShowSub.remove();
+    this.keyboardWillHideSub.remove();
   }
 
   getUserData = async () => {
@@ -37,9 +52,24 @@ class SecondStep extends Component {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.log(
+        `There has been a problem with your asyncStorage getItem operation on SECOND STEP: ${error.message}`,
+      );
+      throw error;
     }
     return null;
+  };
+
+  keyboardWillShow = (event) => {
+    Animated.timing(this.keyboardHeight, {
+      toValue: event.endCoordinates.height,
+    }).start();
+  };
+
+  keyboardWillHide = (event) => {
+    Animated.timing(this.keyboardHeight, {
+      toValue: 0,
+    }).start();
   };
 
   onNavigatorEvent(event) {
@@ -65,6 +95,20 @@ class SecondStep extends Component {
     });
   };
 
+  validateForm = () => {
+    if (this.state.projectName.length > 2 && this.state.goalNumber.length > 1) {
+      this.setState({ buttonDisabled: false });
+    } else {
+      this.setState({ buttonDisabled: true });
+    }
+  };
+
+  onNameInputChange(projectName) {
+    this.setState({ projectName }, () => {
+      this.validateForm();
+    });
+  }
+
   onGoalNumberInputChange(goalNumberString) {
     let cleanedString = '';
     const allowedNumbers = '0123456789';
@@ -79,11 +123,13 @@ class SecondStep extends Component {
         cleanedString += goalNumberString[i];
       }
     }
-    this.setState({ goalNumber: cleanedString });
+    this.setState({ goalNumber: cleanedString }, () => {
+      this.validateForm();
+    });
   }
 
   checkResult = () => {
-    if (this.state.userProjectUrl === null) {
+    if (this.state.userProjectUrl === '') {
       console.log('Can not connect to server: Something is wrong with a API server');
     } else {
       this.showThirdStep();
@@ -122,7 +168,10 @@ class SecondStep extends Component {
         const response = await res.json();
         this.useResponseToUpdateState(response);
       } catch (error) {
-        console.log(error);
+        console.log(
+          `There has been a problem with your fetch operation on SECOND STEP: ${error.message}`,
+        );
+        throw error;
       }
     });
   };
@@ -131,31 +180,52 @@ class SecondStep extends Component {
     const goalInputValue = `€${this.state.goalNumber}`;
     return (
       <Container>
-        <ScrollView style={globalstyle.baseHorizontalMargins}>
-          <WizardHeader
-            step="2"
-            titleText={lang.wizard.step2.title}
-            titleDescription={lang.wizard.step2.description}
+        <KeyboardAwareScrollView
+          extraScrollHeight={52}
+          keyboardShouldPersistTaps="never"
+          enableAutoAutomaticScroll={false}
+          enableResetScrollToCoords={false}
+        >
+          <View style={globalstyle.baseHorizontalMargins}>
+            <WizardHeader
+              step="2"
+              titleText={lang.wizard.step2.title}
+              titleDescription={lang.wizard.step2.description}
+            />
+            <Input
+              label={lang.wizard.step2.nameFieldLabel}
+              onChangeText={projectName => this.onNameInputChange(projectName)}
+              value={this.state.projectName}
+              placeholder={lang.wizard.step2.nameFieldPlaceholder}
+              keyboardType="default"
+            />
+            <Input
+              label={lang.wizard.step2.goalFieldLabel}
+              onChangeText={goalNumber => this.onGoalNumberInputChange(goalNumber)}
+              value={goalInputValue}
+              keyboardType="number-pad"
+            />
+          </View>
+        </KeyboardAwareScrollView>
+        <Animated.View
+          style={{
+            flex: 1,
+            height: 48,
+            width: '100%',
+            bottom: this.keyboardHeight,
+            left: 0,
+            right: 0,
+            position: 'absolute',
+          }}
+        >
+          <Button
+            textValue={lang.wizard.step2.ctaButtonText}
+            onPressAction={this.createFundraiseProject}
+            disabled={this.state.buttonDisabled}
+            full
+            noRoundCorners
           />
-          <Input
-            label={lang.wizard.step2.nameFieldLabel}
-            onChangeText={projectName => this.setState({ projectName })}
-            value={this.state.projectName}
-            placeholder={lang.wizard.step2.nameFieldPlaceholder}
-            keyboardType="default"
-          />
-          <Input
-            label={lang.wizard.step2.goalFieldLabel}
-            onChangeText={goalNumber => this.onGoalNumberInputChange(goalNumber)}
-            value={goalInputValue}
-            keyboardType="number-pad"
-          />
-        </ScrollView>
-        <Button
-          textValue={lang.wizard.step2.ctaButtonText}
-          onPressAction={this.createFundraiseProject}
-          fixedBottom
-        />
+        </Animated.View>
       </Container>
     );
   }

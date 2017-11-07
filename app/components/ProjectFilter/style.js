@@ -10,7 +10,7 @@ const style = EStyleSheet.create({
   // Primary button
   buttonPrimary: {
     backgroundColor: '$lightRed',
-    paddingVertical: '$small',
+    paddingVertical: 12,
     borderRadius: '$tiny',
     paddingHorizontal: '$base',
   },
@@ -27,7 +27,7 @@ const style = EStyleSheet.create({
   // Secondary button
   buttonSecondary: {
     backgroundColor: '$darkerBackgroundColor',
-    borderRadius: 4,
+    borderRadius: 8,
   },
   textSecondary: {
     backgroundColor: 'transparent',

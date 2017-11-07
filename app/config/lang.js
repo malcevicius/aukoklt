@@ -59,7 +59,7 @@ const lang = {
         'Tam, jog tavo sukurtas ambasadoriavimo projektas būtų sėkmingas, pasidalink juo su savo draugais ir bendraminčiais.',
       shareFacebookBtn: 'Pasidalinti Facebook',
       shareSMSBtn: 'Išsiųsti SMS draugui',
-      shareMisc: 'Pasidalinti kitur...',
+      shareMisc: 'Pasidalinti',
       shareDialog: {
         messageTitle: 'Mano naujas projektas',
         messageBody:

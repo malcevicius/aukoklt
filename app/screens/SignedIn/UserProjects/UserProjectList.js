@@ -123,6 +123,7 @@ class UserProjectList extends Component {
             full
             secondary
             smallMarginTop
+            baseMarginBottom
           />
         </View>
       );

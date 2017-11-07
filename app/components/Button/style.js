@@ -42,10 +42,20 @@ const style = EStyleSheet.create({
     alignSelf: 'center',
   },
 
+  // Disabled button
+  buttonDisabled: {
+    backgroundColor: '$lightLineColor',
+    borderRadius: '$tiny',
+  },
+  textDisabled: {
+    backgroundColor: 'transparent',
+    color: '$superLightTextColor',
+  },
+
   // Secondary button
   buttonSecondary: {
     backgroundColor: '$darkerBackgroundColor',
-    borderRadius: 4,
+    borderRadius: '$tiny',
   },
   textSecondary: {
     backgroundColor: 'transparent',
