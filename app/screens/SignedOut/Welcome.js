@@ -29,6 +29,8 @@ class Welcome extends Component {
         <Button
           textValue={lang.welcome.facebookButtonText}
           onPressAction={this.props.facebookLogin}
+          icon={'facebook'}
+          iconColor={'#FFFFFF'}
           facebookButton
           full
           fixedBottom

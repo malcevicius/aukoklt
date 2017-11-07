@@ -71,5 +71,9 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Nuotrauka naudojama vartotojo profiliui</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Feather.ttf</string>
+	</array>
 </dict>
 </plist>

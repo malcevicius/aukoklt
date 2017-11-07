@@ -93,6 +93,8 @@ class UserProjectList extends Component {
           <Button
             textValue={lang.user.createProject}
             onPressAction={this.openProjectWizardModal}
+            icon={'plus-circle'}
+            iconColor={'#310101'}
             full
             secondary
             smallMarginTop

@@ -10,6 +10,10 @@ const style = EStyleSheet.create({
     alignItems: 'flex-start',
     width: 'auto',
   },
+  buttonInnerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   fullWidth: {
     alignItems: 'stretch',
   },
@@ -32,9 +36,10 @@ const style = EStyleSheet.create({
     width: 'auto',
     color: '#FFFFFF',
     backgroundColor: 'transparent',
-    fontSize: '$largeText',
-    fontWeight: '600',
+    fontSize: '$mediumText',
+    fontWeight: '500',
     textAlign: 'center',
+    alignSelf: 'center',
   },
 
   // Secondary button
@@ -50,6 +55,12 @@ const style = EStyleSheet.create({
   // Facebook button
   facebookButton: {
     backgroundColor: '#3B5998',
+  },
+
+  // Button with icon
+  iconContainer: {
+    alignSelf: 'center',
+    marginRight: '$tiny',
   },
 
   // Margins
