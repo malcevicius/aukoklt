@@ -24,7 +24,7 @@ const style = EStyleSheet.create({
   projectTitle: {
     flexDirection: 'column',
     flex: 1,
-    marginRight: '$small',
+    marginLeft: '$small',
   },
   projectThumbnail: {
     width: 100,

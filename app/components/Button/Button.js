@@ -81,7 +81,7 @@ class Button extends PureComponent {
 
 Button.propTypes = {
   textValue: PropTypes.string.isRequired,
-  onPressAction: PropTypes.func,
+  onPressAction: PropTypes.func.isRequired,
   // Style
   secondary: PropTypes.bool,
   facebookButton: PropTypes.bool,

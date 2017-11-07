@@ -36,6 +36,7 @@ const lang = {
     step1: {
       title: 'Pasirink projektą',
       description: 'Pasirink vieną „Aukok.lt” projektą, kuriam nori padėti rinkti lėšas.',
+      filterButtonText: 'Filtruoti sąrašą',
       project: {
         descriptionTitle: 'Projekto aprašymas',
         purposeTitle: 'Parama skiriama',

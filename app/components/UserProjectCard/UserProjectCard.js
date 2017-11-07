@@ -61,14 +61,14 @@ class UserProjectCard extends PureComponent {
       >
         <View>
           <View style={style.mainInfo}>
-            <View style={style.projectTitle}>
-              <MicroText uppercaseLabel text={this.props.projectInfo.projectTitle} />
-              <MediumText projectTitle text={this.props.projectInfo.title} />
-            </View>
             <Image
               style={style.projectThumbnail}
               source={{ uri: this.props.projectInfo.img, cache: 'force-cache' }}
             />
+            <View style={style.projectTitle}>
+              <MicroText uppercaseLabel text={this.props.projectInfo.projectTitle} />
+              <MediumText projectTitle text={this.props.projectInfo.title} />
+            </View>
           </View>
           <View style={style.details}>
             <ProgressLine

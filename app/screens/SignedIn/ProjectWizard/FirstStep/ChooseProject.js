@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ActivityIndicator, View, Platform, Text, ListView } from 'react-native';
+import { FlatList, ActivityIndicator, View, Platform, ListView } from 'react-native';
 import { MenuContext, Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 
 import lang from '../../../../config/lang';
@@ -9,7 +9,48 @@ import globalstyle from '../../../../config/globalstyle';
 import { Container } from '../../../../components/Container';
 import { ProjectCard } from '../../../../components/ProjectCard';
 import { WizardHeader } from '../../../../components/WizardHeader/';
-import { Button } from '../../../../components/Button';
+import { ProjectFilter } from '../../../../components/ProjectFilter';
+
+const triggerStyles = {
+  triggerOuterWrapper: {
+    alignItems: 'stretch',
+    width: 'auto',
+    marginHorizontal: 6,
+    marginBottom: 16,
+  },
+  triggerWrapper: {},
+  triggerTouchable: {
+    underlayColor: 'transparent',
+  },
+};
+
+const optionsStyles = {
+  optionsWrapper: {
+    backgroundColor: '#310101',
+    borderRadius: 8,
+    paddingVertical: 8,
+  },
+  optionsContainer: {
+    backgroundColor: 'transparent',
+    width: '100%',
+    paddingHorizontal: 24,
+  },
+};
+
+const optionStyles = {
+  optionWrapper: {
+    alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+  },
+  optionText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+  },
+  optionTouchable: {
+    underlayColor: '#230000',
+  },
+};
 
 class ChooseProject extends Component {
   constructor(props) {
@@ -23,7 +64,7 @@ class ChooseProject extends Component {
       offset: 0,
       activeCategory: {
         category_id: '',
-        name: 'Filtruoti sąrašą',
+        name: lang.wizard.step1.filterButtonText,
       },
       categories: ds.cloneWithRows([
         {
@@ -146,29 +187,33 @@ class ChooseProject extends Component {
         marginHorizontal
       />
       <Menu>
-        <MenuTrigger>
-          <Text style={{ fontSize: 16, alignSelf: 'center' }}>FILTRUOTI SĄRAŠĄ</Text>
-          {/* <Button
-            textValue={
-              this.state.activeCategory.name.charAt(0).toUpperCase() +
-              this.state.activeCategory.name.slice(1).toLowerCase()
-            }
-            onPressAction={null}
+        <MenuTrigger customStyles={triggerStyles}>
+          <ProjectFilter
+            activeCategory={this.state.activeCategory.name}
+            icon={'filter'}
+            iconColor={'#310101'}
             full
             secondary
-            smallMarginTop
-          /> */}
+            smallMarginBottom
+          />
         </MenuTrigger>
-        <MenuOptions>
+        <MenuOptions customStyles={optionsStyles}>
           <ListView
             dataSource={this.state.categories}
             renderRow={rowData => (
               <MenuOption
+                customStyles={optionStyles}
                 onSelect={() =>
                   this.handleCategoryChange({
                     selectedCategory: rowData,
                   })}
-                text={rowData.name.charAt(0).toUpperCase() + rowData.name.slice(1).toLowerCase()}
+                text={
+                  rowData.name.charAt(0).toUpperCase() +
+                  rowData.name
+                    .slice(1)
+                    .toString()
+                    .toLowerCase()
+                }
               />
             )}
           />
