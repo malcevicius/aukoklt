@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image, AsyncStorage } from 'react-native';
+import { LoginManager } from 'react-native-fbsdk';
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 
 import lang from '../../config/lang';
@@ -15,34 +16,42 @@ const triggerStyles = {
 };
 
 const optionsStyles = {
-  optionsWrapper: {
-    backgroundColor: '#310101',
-    borderRadius: 8,
-    paddingVertical: 8,
-  },
+  optionsWrapper: {},
   optionsContainer: {
-    backgroundColor: 'transparent',
+    backgroundColor: '#827878',
+    borderRadius: 8,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.24,
+    shadowRadius: 0,
   },
 };
 
 const optionStyles = {
   optionWrapper: {
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 16,
     paddingHorizontal: 24,
   },
   optionText: {
-    color: '#FFFFFF',
+    color: '#FFF',
+    alignSelf: 'center',
+    fontWeight: '500',
     fontSize: 16,
   },
   optionTouchable: {
-    underlayColor: '#230000',
+    underlayColor: 'transparent',
   },
 };
 
 class UserHeader extends PureComponent {
-  onLogoutAction = () => {
-    AsyncStorage.removeItem('fb_token');
+  onLogoutAction = async () => {
+    await AsyncStorage.removeItem('fb_token');
+    await AsyncStorage.removeItem('user');
+    LoginManager.logOut();
     this.props.navigator.resetTo({
       screen: 'aukoklt.Welcome',
       animated: false,
@@ -58,13 +67,7 @@ class UserHeader extends PureComponent {
         <View style={style.headerRight}>
           <Menu>
             <MenuTrigger customStyles={triggerStyles}>
-              <Image
-                style={style.userThumbnail}
-                source={{
-                  uri:
-                    'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-1/c75.0.320.320/p320x320/17342860_10207250909505873_4889216807293798707_n.jpg?oh=480bdf9011fd7fbe6981e1e41419f46f&oe=5A68B37E',
-                }}
-              />
+              <Image style={style.userThumbnail} source={{ uri: this.props.userImage }} />
             </MenuTrigger>
             <MenuOptions customStyles={optionsStyles}>
               <MenuOption
@@ -83,6 +86,7 @@ class UserHeader extends PureComponent {
 UserHeader.propTypes = {
   titleText: PropTypes.string.isRequired,
   navigator: PropTypes.object,
+  userImage: PropTypes.string,
   // Margins
   marginHorizontal: PropTypes.bool,
 };

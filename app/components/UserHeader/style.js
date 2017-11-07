@@ -18,6 +18,7 @@ const style = EStyleSheet.create({
     height: 32,
     borderRadius: 16,
     alignSelf: 'flex-end',
+    backgroundColor: '$lineColor',
   },
 
   // Margin options

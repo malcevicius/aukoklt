@@ -25,30 +25,34 @@ const triggerStyles = {
 };
 
 const optionsStyles = {
-  optionsWrapper: {
-    backgroundColor: '#310101',
-    borderRadius: 8,
-    paddingVertical: 8,
-  },
+  optionsWrapper: { paddingVertical: 4 },
   optionsContainer: {
-    backgroundColor: 'transparent',
-    width: '100%',
-    paddingHorizontal: 24,
+    backgroundColor: '#827878',
+    borderRadius: 8,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.24,
+    shadowRadius: 0,
+    width: 'auto',
   },
 };
 
 const optionStyles = {
   optionWrapper: {
-    alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 24,
   },
   optionText: {
+    alignSelf: 'center',
     color: '#FFFFFF',
+    fontWeight: '500',
     fontSize: 16,
   },
   optionTouchable: {
-    underlayColor: '#230000',
+    underlayColor: 'transparent',
   },
 };
 

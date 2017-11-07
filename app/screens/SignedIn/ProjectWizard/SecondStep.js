@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Platform } from 'react-native';
+import { ScrollView, Platform, AsyncStorage } from 'react-native';
 import lang from '../../../config/lang';
 import globalstyle from '../../../config/globalstyle';
 
@@ -13,6 +13,7 @@ class SecondStep extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userData: [],
       loading: false,
       projectName: null,
       goalNumber: '',
@@ -21,6 +22,25 @@ class SecondStep extends Component {
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
+
+  async componentDidMount() {
+    await this.getUserData();
+  }
+
+  getUserData = async () => {
+    try {
+      const response = await AsyncStorage.getItem('user');
+      if (response !== null) {
+        const user = JSON.parse(response);
+        this.setState({
+          userData: user,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    return null;
+  };
 
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress') {
@@ -94,8 +114,7 @@ class SecondStep extends Component {
           },
           body: JSON.stringify({
             projectId: this.props.selectedProjectId,
-            accesstoken:
-              '26BDFABF0F7A428259CF94415718787B66148156176174663C8233E0DAE82DBE3873F775F005635096A8C89DB6256A2E1F2A5B3ED0932FD6C156AFE84AFC64119AD8E851F89FD5EDCF0F133F2C2F3C854DB7FAD286B12E1CFA6A5EF8B8C47B70184553DA780F5E84030FCB1C1576711D0A76A1D45BB79A853AB5BD84A2B24481FA8E0FFD41CAAC1A8D8007031AABBD938FE0E3BA5F8BB53451AE9A632DDD18F1032E91F09276666309F9CA2F1AEA9BB8C08C1D23DA8E94E7813EFF83D59FB3B6',
+            accesstoken: this.state.userData.id,
             title: this.state.projectName,
             need_to_donate: this.state.goalNumber,
           }),
