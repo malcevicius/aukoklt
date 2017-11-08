@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import Swiper from 'react-native-swiper';
 
 import style from './style';
+import { HandledImage } from '../HandledImage';
 
 const Slide = props => (
   <View style={style.slide}>
-    <Image
-      onLoad={props.loadHandle.bind(null, props.i)}
+    <HandledImage
+      image={props.uri}
       style={style.image}
-      source={{ uri: props.uri }}
+      onLoad={props.loadHandle.bind(null, props.i)}
     />
     {!props.loaded && (
       <View style={style.loadingView}>

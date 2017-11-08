@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Image, Platform } from 'react-native';
+import { TouchableOpacity, View, Platform } from 'react-native';
 
 import images from '../../config/images';
 import style from './style';
@@ -8,6 +8,7 @@ import style from './style';
 import { MicroText } from '../Text/MicroText';
 import { SmallText } from '../Text/SmallText';
 import { MediumText } from '../Text/MediumText';
+import { HandledImage } from '../HandledImage';
 
 class ProjectCard extends PureComponent {
   onPressAction = () => {
@@ -52,10 +53,7 @@ class ProjectCard extends PureComponent {
         activeOpacity={0.8}
         focusedOpacity={0.8}
       >
-        <Image
-          style={style.thumbnailImage}
-          source={{ uri: this.props.projectInfo.img, cache: 'force-cache' }}
-        />
+        <HandledImage image={this.props.projectInfo.img} style={style.thumbnailImage} />
         <View style={style.details}>
           <MicroText uppercaseLabel text={this.getUppercaseLabel()} />
           <MediumText projectTitle text={this.props.projectInfo.title} />

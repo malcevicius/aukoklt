@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableHighlight, View, Image, Platform } from 'react-native';
+import { TouchableHighlight, View, Platform } from 'react-native';
 
 import images from '../../config/images';
 import style from './style';
@@ -10,23 +10,8 @@ import { MicroText } from '../Text/MicroText';
 import { SmallText } from '../Text/SmallText';
 import { MediumText } from '../Text/MediumText';
 import { LargeText } from '../Text/LargeText';
-
-class ProgressLine extends PureComponent {
-  getFilledPercentage() {
-    if (this.props.goal === 0) {
-      return '0%';
-    }
-    const x = this.props.donated / this.props.goal;
-    return `${x * 100}%`;
-  }
-  render() {
-    return (
-      <View style={style.progressLine}>
-        <View style={[style.activeProgressLine, { width: this.getFilledPercentage() }]} />
-      </View>
-    );
-  }
-}
+import { ProgressLine } from '../ProgressLine';
+import { HandledImage } from '../HandledImage';
 
 class UserProjectCard extends PureComponent {
   onPressAction = () => {
@@ -61,10 +46,7 @@ class UserProjectCard extends PureComponent {
       >
         <View>
           <View style={style.mainInfo}>
-            <Image
-              style={style.projectThumbnail}
-              source={{ uri: this.props.projectInfo.img, cache: 'force-cache' }}
-            />
+            <HandledImage image={this.props.projectInfo.img} style={style.projectThumbnail} />
             <View style={style.projectTitle}>
               <MicroText uppercaseLabel text={this.props.projectInfo.projectTitle} />
               <MediumText projectTitle text={this.props.projectInfo.title} />
@@ -91,11 +73,6 @@ class UserProjectCard extends PureComponent {
     );
   }
 }
-
-ProgressLine.propTypes = {
-  donated: PropTypes.number,
-  goal: PropTypes.number,
-};
 
 UserProjectCard.propTypes = {
   projectInfo: PropTypes.object.isRequired,

@@ -34,17 +34,6 @@ const style = EStyleSheet.create({
     backgroundColor: '$darkerBackgroundColor',
   },
   // Details
-  progressLine: {
-    height: 1,
-    flex: 1,
-    backgroundColor: '$lineColor',
-    marginHorizontal: '$small',
-  },
-  activeProgressLine: {
-    height: 1,
-    backgroundColor: '$lightRed',
-    maxWidth: '100%',
-  },
   projectNumbers: {
     flexDirection: 'row',
     marginVertical: '$tiny',

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Image, AsyncStorage } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import { LoginManager } from 'react-native-fbsdk';
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 
@@ -8,6 +8,7 @@ import lang from '../../config/lang';
 import style from './style';
 
 import { Title2 } from '../Text/Title2';
+import { HandledImage } from '../HandledImage';
 
 const triggerStyles = {
   triggerTouchable: {
@@ -67,7 +68,7 @@ class UserHeader extends PureComponent {
         <View style={style.headerRight}>
           <Menu>
             <MenuTrigger customStyles={triggerStyles}>
-              <Image style={style.userThumbnail} source={{ uri: this.props.userImage }} />
+              <HandledImage image={this.props.userImage} style={style.userThumbnail} />
             </MenuTrigger>
             <MenuOptions customStyles={optionsStyles}>
               <MenuOption
