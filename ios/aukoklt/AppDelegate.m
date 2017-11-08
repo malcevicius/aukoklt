@@ -13,6 +13,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "RCCManager.h"
 #import <React/RCTRootView.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 
 @implementation AppDelegate
@@ -24,6 +26,8 @@
                            didFinishLaunchingWithOptions:launchOptions];
   
   // Add any custom logic here.
+  [Fabric with:@[[Crashlytics class]]];
+  
     NSURL *jsCodeLocation;
   #ifdef DEBUG
     jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
