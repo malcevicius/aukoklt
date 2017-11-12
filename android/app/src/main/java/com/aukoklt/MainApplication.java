@@ -6,6 +6,7 @@ import android.app.Application;
 import android.util.Log;
 
 
+import com.crashlytics.android.Crashlytics;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
@@ -22,6 +23,7 @@ import com.reactnativenavigation.controllers.ActivityCallbacks;
 import com.reactnativenavigation.NavigationApplication;
 
 
+import io.fabric.sdk.android.Fabric;
 import java.util.List;
 import java.util.Arrays;
 
@@ -47,6 +49,7 @@ public class MainApplication extends NavigationApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    Fabric.with(this, new Crashlytics());
 
     setActivityCallbacks(new ActivityCallbacks() {
 
