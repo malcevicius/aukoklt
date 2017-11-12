@@ -138,6 +138,7 @@ captures/
 
 # Intellij
 *.iml
+.idea
 .idea/
 .idea/workspace.xml
 .idea/tasks.xml
@@ -207,3 +208,4 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+fabric.properties
