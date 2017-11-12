@@ -16,11 +16,11 @@ class Input extends PureComponent {
         keyboardType={this.props.keyboardType}
         autoCorrect={false}
         placeholder={this.props.placeholder}
-          // ios only
+        // ios only
         clearButtonMode={'while-editing'}
       />
     </View>
-    );
+  );
   render() {
     return this.renderComponent();
   }
@@ -32,8 +32,6 @@ Input.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   keyboardType: PropTypes.string,
-  // Themes
-  textInput: PropTypes.bool,
 };
 
 export default Input;

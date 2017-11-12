@@ -19,6 +19,11 @@ const images = {
       red: require('../images/checkmark_icon_red_16.png'),
     },
   },
+  intro: {
+    firstStep: require('../images/intro/first-step.png'),
+    secondStep: require('../images/intro/second-step.png'),
+    thirdStep: require('../images/intro/third-step.png'),
+  },
 };
 
 export default images;

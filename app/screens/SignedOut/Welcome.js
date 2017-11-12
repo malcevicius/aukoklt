@@ -41,8 +41,10 @@ class Welcome extends Component {
 }
 
 Welcome.navigatorStyle = {
-  navBarBackgroundColor: '#FFFFFF',
-  navBarNoBorder: true,
+  navBarHidden: true,
+  statusBarHidden: true,
+  drawUnderNavBar: true,
+  statusBarTextColorSchemeSingleScreen: 'light',
 };
 
 Welcome.propTypes = {
