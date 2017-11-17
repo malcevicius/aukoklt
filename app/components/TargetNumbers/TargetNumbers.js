@@ -15,7 +15,7 @@ class TargetNumbers extends PureComponent {
     }
     return (
       <View style={style.numberItem}>
-        <SmallText uppercaseTitle text={lang.global.needToDonateLabel} />
+        <SmallText uppercaseTitle text={lang.wizard.step1.project.needToDonateLabel} />
         <Title4 number={this.props.targetAmount} currencyNumber />
       </View>
     );
@@ -24,7 +24,7 @@ class TargetNumbers extends PureComponent {
     return (
       <View style={style.numbersView}>
         <View style={style.numberItem}>
-          <SmallText uppercaseTitle text={lang.global.donatedLabel} />
+          <SmallText uppercaseTitle text={lang.wizard.step1.project.donatedLabel} />
           <Title4 number={this.props.donatedAmount} currencyNumber highlighted />
         </View>
         {this.renderTargetAmount(this.props.targetAmount)}

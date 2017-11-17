@@ -1,52 +1,52 @@
 const lang = {
-  global: {
-    donatedLabel: 'Surinkta',
-    needToDonateLabel: 'Tikslas',
-  },
   welcome: {
     facebookButtonText: 'Prisijungti su Facebook',
     intro: {
       slide1: {
         title: 'Pasirink projektą',
         description:
-          'Visų pirma, pasirink vieną „Aukok.lt” projektą, kuriam nori padėti rinkti lėšas. Visos tavo surinktos lėšos automatiškai bus priskirtos tam projektui.',
+          'Nori padėti vaikams? Senoliams? O gal gyvūnams? Pasirink projektą, kuriam padėsi rinkti lėšas.',
       },
       slide2: {
         title: 'Sugalvok temą ir tikslą',
         description:
-          'Lėšas gali rinkti savo gimtadienio proga, dalyvaudamas sporto renginiuose, ar kitaip suburdamas draugus kilniam tikslui. Šioje vietoje tau labai padės originalumas!',
+          'Tavo gimtadienis? Dalyvausi sporto renginyje? Iškėlei sau iššūkį? Sugalvok, kokia proga bursi savo draugus kilniam tikslui!',
       },
       slide3: {
         title: 'Pranešk draugams',
         description:
-          'Tam, jog tavo sukurtas ambasadoriavimo projektas būtų sėkmingas, pasidalink juo su savo draugais ir bendraminčiais.',
+          'Iki sėkmės – vienas žingsnis! Dalinkis savo iniciatyva su savo draugais ir bendraminčiais.',
       },
     },
   },
   user: {
-    title: 'Mano projektai',
+    title: 'Mano geri darbai',
     logout: 'Atsijungti',
-    createProject: 'Kurti naują projektą',
+    createProject: 'Pradėti naują gerą darbą',
     project: {
       descriptionTitle: 'Aprašymas',
       purposeTitle: 'Parama skiriama projektui',
+      donatedLabel: 'Surinkta',
+      needToDonateLabel: 'Tikslas',
     },
   },
   wizard: {
     step1: {
       title: 'Pasirink projektą',
-      description: 'Pasirink vieną „Aukok.lt” projektą, kuriam nori padėti rinkti lėšas.',
+      description: 'Pasirink vieną projektą, kuriam nori padėti rinkti lėšas.',
       filterButtonText: 'Filtruoti sąrašą',
       project: {
         descriptionTitle: 'Projekto aprašymas',
         purposeTitle: 'Parama skiriama',
         ctaButtonText: 'Pasirinkti šį projektą',
+        donatedLabel: 'Surinkta',
+        needToDonateLabel: 'Reikia',
       },
     },
     step2: {
       title: 'Sugalvok pavadinimą ir tikslą',
       description:
-        'Lėšas gali rinkti savo gimtadienio proga, dalyvaudamas sporto renginiuose, ar kitaip suburdamas draugus kilniam tikslui. Nurodyk savo projekto pavadinimą ir siekiama surinkti pinigų sumą!',
+        'Sugalvok, kokia proga bursi savo draugus kilniam tikslui! Nurodyk savo pavadinimą ir siekiamą surinkti pinigų sumą.',
       nameFieldLabel: 'Pavadinimas',
       goalFieldLabel: 'Projekto tikslas',
       nameFieldPlaceholder: 'Įvesk pavadinimą...',
@@ -56,17 +56,17 @@ const lang = {
     step3: {
       title: 'Pranešk draugams',
       description:
-        'Tam, jog tavo sukurtas ambasadoriavimo projektas būtų sėkmingas, pasidalink juo su savo draugais ir bendraminčiais.',
+        'Iki sėkmės – vienas žingsnis! Dalinkis savo iniciatyva su savo draugais ir bendraminčiais.',
       shareFacebookBtn: 'Pasidalinti Facebook',
       shareSMSBtn: 'Išsiųsti SMS draugui',
-      shareMisc: 'Pasidalinti',
+      shareMisc: 'Dalintis',
       shareDialog: {
         messageTitle: 'Mano naujas projektas',
         messageBody:
           'Labas! Noriu pasidalinti savo nauju ambasadoriavimo projektu: http://www.aukok.lt',
         dialogTitle: 'Pasidalink su draugais!',
       },
-      showProjectsBtn: 'Mano projektai',
+      showProjectsBtn: 'Mano geri darbai',
     },
   },
 };

@@ -59,15 +59,11 @@ class UserProjectCard extends PureComponent {
             />
             <View style={style.projectNumbers}>
               <View style={style.numberContainer}>
-                <SmallText text={lang.global.donatedLabel} />
-                <LargeText
-                  currencyNumber
-                  highlighted
-                  number={this.props.projectInfo.donated}
-                />
+                <SmallText text={lang.user.project.donatedLabel} />
+                <LargeText currencyNumber highlighted number={this.props.projectInfo.donated} />
               </View>
               <View style={style.numberContainer}>
-                <SmallText text={lang.global.needToDonateLabel} />
+                <SmallText text={lang.user.project.needToDonateLabel} />
                 <LargeText currencyNumber number={this.props.projectInfo.need_to_donate} />
               </View>
             </View>
